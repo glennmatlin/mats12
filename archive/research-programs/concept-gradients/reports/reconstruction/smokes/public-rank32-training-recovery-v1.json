@@ -1,0 +1,102 @@
+{
+  "bounded_smoke_execution": true,
+  "checkpoint_files": {
+    "adapter_config.json": "9c3655263647cc7214b2140c9c29f166f0424c4eab4b7cacaa0a18595fabd2d9",
+    "adapter_model.safetensors": "93346d292d716749e35af2ae29084ede44f4750819b17d26acf4649a2bd66aa6",
+    "optimizer.pt": "84b8fcf47f89533c6fafc729954d4d6c17f7532900f44a136f7ae5133303e392",
+    "rng.pt": "e9fc8aebebe02abf4003a98f7a9675275837d0dd6f626f9559b47640dc1f7b42",
+    "scheduler.pt": "d32101a728f2d153e0c023a22044b9993725edf3e97af84578a53af7664ef492",
+    "state.json": "0c358c0fae26fa1c7fe3598ef1fdb3b32291879238ab71e1dc236b2e38b6e5fd"
+  },
+  "concept_scoring_allowed": false,
+  "concept_selected_training_allowed": false,
+  "contract_id": "public-rank32-reconstruction-smoke-v1",
+  "contract_sha256": "6059b0ccd7fac8040b6f96b4cb9dcd18701b3c583e537b24e88a312bb742c863",
+  "declared_recipe": {
+    "append_eos": true,
+    "data_seed": 42,
+    "effective_batch_size": 64,
+    "gradient_accumulation_steps": 4,
+    "gradient_checkpointing": true,
+    "loss_mask": "assistant_only",
+    "max_sequence_length": 8192,
+    "overlength_policy": "drop",
+    "packing": true,
+    "per_device_train_batch_size": 2,
+    "precision": "bfloat16",
+    "save_every_steps": 25,
+    "shuffle": true,
+    "truncation": false,
+    "world_size": 8
+  },
+  "execution": {
+    "batch_input_ids_sha256": [
+      "5361eb2fdf528ed482f9e5768af633f62daefe9429ef6187bd3514f7ae5be80c",
+      "58ea44e5e97e389dfab96b8a4e9ad2896948a10898cf559b24f23d2b4fcae5da"
+    ],
+    "batch_labels_sha256": [
+      "6bd6a2edc14a6b0297fed98cf6a92450bba36729b4536a7ebf738466b239d2a5",
+      "6a9b8403b9ce005fafe28dc9d36b086275f69f46538d183e6508cb07c7aac22b"
+    ],
+    "chat_template_sha256": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+    "checkpoint_step": 1,
+    "dropped_overlength_count": 1,
+    "example_count": 5,
+    "input_ids_sha256": "752f7616e1050495b57d494692f372a1e046bf91ea05290f4121093bc9b22199",
+    "labels_sha256": "c985d8192b77a233a09dfccd3fc42e27a841502d9aa0032c3d46f033bed5f4ba",
+    "max_abs_parameter_difference": 0.0,
+    "next_batch_index": 1,
+    "optimizer_step_count": 2,
+    "packed_sequence_count": 2,
+    "post_resume_absolute_tolerance": 1e-06,
+    "resumed_losses": [
+      3.4970877170562744
+    ],
+    "resumed_state_sha256": "72ad82bfb82d3f7a2d09c6781d1a49e5e322210c24c05d0439078ecfbc9186b0",
+    "retained_example_count": 4,
+    "sample_order_sha256": "6583c3a51a1f139933181a6a4adec1e8235b3fa295fa5de693d28650708b4ef5",
+    "smoke_fixture_sha256": "ca63d3a0e29f03db1be98f9b935fc46ab67b634e59c352e92ee98ccc0678d44b",
+    "trainable_parameter_count": 32768,
+    "uninterrupted_losses": [
+      3.466097831726074,
+      3.4970877170562744
+    ],
+    "uninterrupted_state_sha256": "72ad82bfb82d3f7a2d09c6781d1a49e5e322210c24c05d0439078ecfbc9186b0"
+  },
+  "field_provenance_sha256": "d790e9c629a2ec75301d066a34fd59c7253be68bea0951cb4b6a125e079a4cbe",
+  "provider_execution_allowed": false,
+  "receipt_sha256": "a008076af17d37223d030bcc8fbb4f0b5e48f26d916e8c191cea8f782d9b96a4",
+  "recipe_id": "public-rank32-reconstruction-v1",
+  "recipe_sha256": "3704593cf72daebcd96146e7bc522656a3b6b8e4baed0d763fa9cf85e9fe75d4",
+  "releases": {
+    "coordinator_release": "3d1674a0a3f6abd9502b134e0a1d7cb193f42c2b",
+    "executor_release": "3d1674a0a3f6abd9502b134e0a1d7cb193f42c2b",
+    "input_producer_releases": {
+      "public_recipe_evidence": "8a1154a473dc3162cddc2185922092255e5aa760",
+      "training_sample_evidence": "baf6b32e15285dbfb9a77dcbaea007be00f1e65e"
+    },
+    "output_release": "a99c14a43571b7898a340f5ef14079388c64861cd26170ac4457fca44dde844e"
+  },
+  "runtime_versions": {
+    "huggingface_hub": "0.36.2",
+    "peft": "0.18.1",
+    "tokenizers": "0.22.2",
+    "torch": "2.13.0",
+    "transformers": "4.57.6"
+  },
+  "sae_feature_selection_allowed": false,
+  "scheduler_execution_allowed": false,
+  "schema_version": 1,
+  "scientific_training_allowed": false,
+  "scientific_use": false,
+  "smoke_id": "public-rank32-reconstruction-v1-checkpoint-resume-smoke",
+  "smoke_overrides": {
+    "checkpoint_step": 1,
+    "examples_per_packed_sequence": 2,
+    "gradient_accumulation_steps": 1,
+    "model": "tiny_random_olmo3",
+    "per_device_train_batch_size": 1,
+    "precision": "float32",
+    "world_size": 1
+  }
+}

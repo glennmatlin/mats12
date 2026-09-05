@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "recipe_id": "public-rank32-named-recipe-v1",
+  "smoke_authority": {
+    "scientific_use": false,
+    "starts_experiment_timer": false,
+    "provider_execution": false,
+    "scheduler_submission": false,
+    "full_condition_training": false,
+    "feature_selection": false,
+    "concept_scoring": false
+  },
+  "conditions": [
+    "full_data",
+    "dense_probe_removal",
+    "matched_random_removal",
+    "behavior_query_ekfac_removal"
+  ],
+  "evidence_receipts": {
+    "public_load_smoke": {
+      "path": "../receipts/public-rank32-load-smoke-v1.json",
+      "sha256": "3d9e6f4f19e87c911f01bbb3ad1c7051e98e757e7734996196890da659e7c921"
+    },
+    "public_recipe_observation": {
+      "path": "../receipts/public-rank32-split1-recipe-evidence-v1.json",
+      "sha256": "91f86e8352b4eed7e144226afcce207dca0479c2a2e5a1e91f739cbe85b32183"
+    },
+    "training_sample": {
+      "path": "../receipts/public-rank32-train1-reconstruction-v1.json",
+      "sha256": "4c7e9c61405d9441a62a0de273d53375529f89ccf48fd2c7305d236fd8cf7308"
+    },
+    "training_derivation": {
+      "path": "../receipts/public-rank32-training-derivation-evidence-v1.json",
+      "sha256": "18b797b21901ca63db8ae91c1cbd83ca1e9c53906b99faa4d638314ab1f5baac"
+    }
+  },
+  "artifacts": {
+    "base": {
+      "repository": "allenai/Olmo-3-1025-7B",
+      "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f",
+      "files": {
+        "config.json": "277d7ea5c6159d4c2d6986a8a23757d1ef06acaa7abc2c40e0513446f7db0f85",
+        "model.safetensors.index.json": "47a8266860f2a5f95c021fb4d7d3a469a95ee8b445742becbb6b19632cfc6e95",
+        "model-00001-of-00003.safetensors": "0490d6668e613a29b23367e3a7aa9cc6aced3d162694445bb969ed7622b3c4e2",
+        "model-00002-of-00003.safetensors": "e127ea479fb6e208fe9d48d23b11212b5722f4873f6eef9c009b7a855866c641",
+        "model-00003-of-00003.safetensors": "f3ddff10052ffe5de5c6b4cad45c422c0d898acc6beb21b1b8531244adfb3c70"
+      }
+    },
+    "tokenizer": {
+      "repository": "GaloisTheory123/dare-adapter",
+      "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e",
+      "path": "split-1",
+      "files": {
+        "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+        "tokenizer_config.json": "ffa5b2cfee6e73d5dc0a7d3b7e02eb6ed60a491dd782f2bd8ad2b4659b2aafc6",
+        "special_tokens_map.json": "c945d73d563a80e7932b69c34758a49aca90a44b102ea08b22f5c7e1da51c1f2",
+        "chat_template.jinja": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+        "merges.txt": "b6fe424e334903f7fb84d3a106d9730455f4744b9fe3c21ee136d97a00e72502",
+        "vocab.json": "9e14712c91b37c7aab74b1306baa46ac342d620637a4b44523cdc3aec7d24195"
+      }
+    },
+    "training_data": {
+      "source_repository": "allenai/Dolci-Think-SFT-7B",
+      "source_revision": "72ec0fe32428bada1ec686a9168a0681eecd2094",
+      "repository": "GaloisTheory123/dare-data",
+      "revision": "6bc823578cb26ea8d5b433bdd5f9ee77f7f83a6e",
+      "path": "data/train_1.parquet",
+      "sha256": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670",
+      "row_count": 25007,
+      "identity_scheme": "source-revision-orig-idx-v1"
+    }
+  },
+  "smoke_fixture": {
+    "fixture_id": "public-rank32-recovery-smoke-fixture-v1",
+    "path": "fixtures/public-rank32-recovery-smoke-fixture-v1.json",
+    "sha256": "1905b4d75938cb852f4811e36e5b36e3d8531288a6983a69ee1f6adc9b0374fc",
+    "source_sample_receipt_sha256": "4c7e9c61405d9441a62a0de273d53375529f89ccf48fd2c7305d236fd8cf7308"
+  },
+  "recipe": {
+    "lora": {
+      "rank": 32,
+      "alpha": 64,
+      "dropout": 0.1,
+      "bias": "none",
+      "task_type": "CAUSAL_LM",
+      "target_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    "optimizer": {
+      "name": "adamw_torch",
+      "learning_rate": 0.0002,
+      "beta1": 0.9,
+      "beta2": 0.999,
+      "epsilon": 1e-08,
+      "weight_decay": 0.0,
+      "max_grad_norm": 1.0,
+      "fused": false
+    },
+    "scheduler": {
+      "name": "linear",
+      "warmup_steps": 5
+    },
+    "batching": {
+      "micro_batch_size_per_device": 2,
+      "world_size": 1,
+      "gradient_accumulation_steps": 32,
+      "effective_batch_size": 64,
+      "drop_last": false
+    },
+    "training": {
+      "epochs": 1,
+      "seed": 42,
+      "precision": "bfloat16",
+      "gradient_checkpointing": true,
+      "use_cache": false,
+      "dataloader_workers": 0
+    },
+    "sequence": {
+      "max_sequence_length": 8192,
+      "overlength_policy": "drop",
+      "truncation": false,
+      "packing": "stable_concatenate",
+      "remainder": "pad_and_mask",
+      "add_special_tokens": false,
+      "chat_template_file": "chat_template.jinja",
+      "chat_template_sha256": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+      "loss_mask": "assistant_tokens_including_terminal_eos"
+    },
+    "order": {
+      "algorithm": "sha256_seeded_sample_id_v1",
+      "identity_scheme": "source-revision-orig-idx-v1"
+    },
+    "checkpoint": {
+      "interval_optimizer_steps": 10,
+      "boundary": "completed_optimizer_step",
+      "save_adapter": true,
+      "save_optimizer": true,
+      "save_scheduler": true,
+      "save_rng": true,
+      "save_data_cursor": true,
+      "resume_semantics": "exact_recipe_inputs_runtime_and_cursor_v1"
+    }
+  },
+  "public_trace_derivation": {
+    "optimizer_steps": 123,
+    "logged_tokens": 63696407,
+    "train_runtime_seconds": 1545.2445,
+    "train_samples_per_second": 5.059,
+    "derived_packed_sequence_count": 7817.3919255,
+    "derived_sequences_per_step": 63.55603191463415,
+    "selected_effective_batch_size": 64,
+    "selected_token_capacity": 64487424,
+    "observed_capacity_fraction": 0.987733778914785
+  },
+  "smoke": {
+    "device": "cpu",
+    "model_dtype": "bfloat16",
+    "sample_limit": 2,
+    "total_optimizer_steps": 2,
+    "checkpoint_after_optimizer_step": 1,
+    "overrides": {
+      "max_sequence_length": 128,
+      "micro_batch_size_per_device": 1,
+      "gradient_accumulation_steps": 1,
+      "effective_batch_size": 1,
+      "precision": "bfloat16",
+      "checkpoint_interval_optimizer_steps": 1
+    },
+    "comparison": {
+      "metric": "adapter_tensor_max_abs",
+      "absolute_tolerance": 1e-06,
+      "relative_tolerance": 0.0
+    },
+    "expected_preprocessing": {
+      "input_example_count": 4,
+      "eligible_example_count": 3,
+      "dropped_overlength_example_ids": [
+        "def5237f4f130fea29dc79cecc0c5da4b52b72536837e365c73eb60d86b635e0"
+      ],
+      "selected_example_ids": [
+        "3e05f34ebc342f2b4147660432dedec7b9cf66e24b616984c8c38dc0ce8576cb",
+        "5921e1ecfc183ddb7c338e8b122b2b157a9db946116280992bd4dda9046469d5"
+      ],
+      "token_stream_sha256": "843cd152ba7522ede91fc2f5ee405a15b228bfb8278dd092fa03ccaa180b7bfd",
+      "packed_batches_sha256": "67e7c71e579e7b93095280972605211eec381a8b9a46da76ae3e4552c6df06bc",
+      "packed_batch_sha256": [
+        "75ced92dd58a137a83f6c23eff169e1bacf8f8ea295f334aa701990fe2dc58a7",
+        "4c9cdfc89d95731ccbd55ce6520cd5fe42ef6247aa858f90d5729f04ecde2aa7"
+      ],
+      "rendered_token_count": 180,
+      "assistant_label_token_count": 51,
+      "assistant_turn_count": 3,
+      "eos_label_count": 2
+    }
+  },
+  "runtime_versions": {
+    "pyarrow": "23.0.1",
+    "torch": "2.13.0",
+    "transformers": "4.57.6",
+    "peft": "0.18.1",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.22.2"
+  },
+  "provenance": {
+    "lora.rank": {"basis": "public_observation", "evidence": "Pinned adapter_config.json records r=32."},
+    "lora.alpha": {"basis": "public_observation", "evidence": "Pinned adapter_config.json records lora_alpha=64."},
+    "lora.dropout": {"basis": "public_observation", "evidence": "Pinned adapter_config.json records lora_dropout=0.1."},
+    "lora.bias": {"basis": "public_observation", "evidence": "Pinned adapter_config.json records bias=none."},
+    "lora.task_type": {"basis": "public_observation", "evidence": "Pinned adapter_config.json records CAUSAL_LM."},
+    "lora.target_modules": {"basis": "public_observation", "evidence": "Pinned adapter_config.json records all seven projection targets."},
+    "optimizer.name": {"basis": "reconstruction_choice", "evidence": "The public optimizer is unavailable; AdamW is the named reconstruction."},
+    "optimizer.learning_rate": {"basis": "reconstruction_choice", "evidence": "The public trace peaks at 2e-4 on step 5, but the configured learning rate remains unavailable; the named reconstruction selects that observed peak."},
+    "optimizer.beta1": {"basis": "reconstruction_choice", "evidence": "The public optimizer parameters are unavailable."},
+    "optimizer.beta2": {"basis": "reconstruction_choice", "evidence": "The public optimizer parameters are unavailable."},
+    "optimizer.epsilon": {"basis": "reconstruction_choice", "evidence": "The public optimizer parameters are unavailable."},
+    "optimizer.weight_decay": {"basis": "reconstruction_choice", "evidence": "The public optimizer parameters are unavailable."},
+    "optimizer.max_grad_norm": {"basis": "reconstruction_choice", "evidence": "The public clipping policy is unavailable."},
+    "optimizer.fused": {"basis": "reconstruction_choice", "evidence": "The public optimizer implementation is unavailable; unfused execution is explicit."},
+    "scheduler.name": {"basis": "reconstruction_choice", "evidence": "The public scheduler configuration is unavailable; the observed decay is compatible with linear decay."},
+    "scheduler.warmup_steps": {"basis": "reconstruction_choice", "evidence": "The source scheduler configuration is unavailable; the named reconstruction uses five warmup steps because the public trace first reaches 2e-4 at step 5."},
+    "batching.micro_batch_size_per_device": {"basis": "reconstruction_choice", "evidence": "The trainer state records raw train_batch_size=2, but its exact semantics are unavailable; the named reconstruction uses it as the per-device micro-batch."},
+    "batching.world_size": {"basis": "reconstruction_choice", "evidence": "The public worker count is unavailable; the named executor uses one worker."},
+    "batching.gradient_accumulation_steps": {"basis": "reconstruction_choice", "evidence": "The source accumulation is unavailable; the named reconstruction selects 32 to realize effective batch 64 with micro-batch 2 and one worker."},
+    "batching.effective_batch_size": {"basis": "reconstruction_choice", "evidence": "Reported throughput and runtime imply 63.56 packed sequences per optimizer step, so the named reconstruction selects the nearby integer batch 64."},
+    "batching.drop_last": {"basis": "reconstruction_choice", "evidence": "The public remainder policy is unavailable."},
+    "training.epochs": {"basis": "public_observation", "evidence": "Pinned trainer_state.json records one completed epoch."},
+    "training.seed": {"basis": "reconstruction_choice", "evidence": "The public initial seed is unavailable."},
+    "training.precision": {"basis": "reconstruction_choice", "evidence": "The public precision is unavailable; bfloat16 is named explicitly."},
+    "training.gradient_checkpointing": {"basis": "reconstruction_choice", "evidence": "The public memory policy is unavailable."},
+    "training.use_cache": {"basis": "reconstruction_choice", "evidence": "Caching is disabled for deterministic checkpointed training."},
+    "training.dataloader_workers": {"basis": "reconstruction_choice", "evidence": "Single-process loading makes order and resume semantics explicit."},
+    "sequence.max_sequence_length": {"basis": "public_observation", "evidence": "The source post states the 8,192-token boundary."},
+    "sequence.overlength_policy": {"basis": "reconstruction_choice", "evidence": "The named reconstruction drops examples beyond the frozen length boundary and receipts the dropped identities."},
+    "sequence.truncation": {"basis": "reconstruction_choice", "evidence": "Dropping overlength examples makes truncation false and auditable."},
+    "sequence.packing": {"basis": "reconstruction_choice", "evidence": "Reported samples, steps, and logged tokens are consistent with nearly full 8,192-token packed sequences, but do not recover the packing policy; stable concatenation is the named reconstruction."},
+    "sequence.remainder": {"basis": "reconstruction_choice", "evidence": "The public final-pack policy is unavailable."},
+    "sequence.add_special_tokens": {"basis": "reconstruction_choice", "evidence": "The pinned chat template emits its own boundary tokens."},
+    "sequence.chat_template_file": {"basis": "reconstruction_choice", "evidence": "The public adapter publishes this template but does not prove it produced the adapter."},
+    "sequence.chat_template_sha256": {"basis": "public_observation", "evidence": "The pinned public adapter template has this SHA-256."},
+    "sequence.loss_mask": {"basis": "reconstruction_choice", "evidence": "The public loss mask is unavailable; the named reconstruction trains assistant content and its terminal EOS while masking prompt and padding tokens."},
+    "order.algorithm": {"basis": "reconstruction_choice", "evidence": "The public sampler and row order are unavailable."},
+    "order.identity_scheme": {"basis": "derived_public_evidence", "evidence": "The pinned sample reconstruction defines source-revision-orig-idx-v1."},
+    "checkpoint.interval_optimizer_steps": {"basis": "reconstruction_choice", "evidence": "The public checkpoint cadence is unavailable."},
+    "checkpoint.boundary": {"basis": "reconstruction_choice", "evidence": "Only completed optimizer steps are restartable boundaries."},
+    "checkpoint.save_adapter": {"basis": "reconstruction_choice", "evidence": "Adapter weights are required for recovery and terminal identity."},
+    "checkpoint.save_optimizer": {"basis": "reconstruction_choice", "evidence": "Exact optimizer state is required for recovery."},
+    "checkpoint.save_scheduler": {"basis": "reconstruction_choice", "evidence": "Exact scheduler state is required for recovery."},
+    "checkpoint.save_rng": {"basis": "reconstruction_choice", "evidence": "Exact stochastic state is required for dropout recovery."},
+    "checkpoint.save_data_cursor": {"basis": "reconstruction_choice", "evidence": "Exact packed-batch position is required for recovery."},
+    "checkpoint.resume_semantics": {"basis": "reconstruction_choice", "evidence": "Resume fails closed unless recipe, inputs, runtime, and cursor match."}
+  },
+  "divergences": [
+    "This named rank-32 reconstruction differs from the rank-64 configuration reported in the source post.",
+    "The base revision, tokenizer revision, optimizer, scheduler, batch decomposition, seed, precision, sequence implementation, loss mask, order, checkpoint cadence, and resume semantics are reconstruction choices or evidence-informed derivations rather than recovered source settings.",
+    "The public train_1 sample is a pinned reconstruction candidate; its producer binding to the public split-1 adapter and its license remain unavailable.",
+    "The bounded smoke trains no scientific condition and does not authorize provider execution, scheduler submission, feature selection, concept scoring, or concept-selected training.",
+    "The reusable recipe-core identity is shared by full-data, dense-probe-removal, matched-random-removal, and ordinary behavior-query-EKFAC-removal conditions; this smoke does not execute any of them."
+  ]
+}

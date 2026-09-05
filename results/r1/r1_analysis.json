@@ -1,0 +1,158 @@
+{
+  "cell": "R1 full-FT one epoch (train 5595612, extraction 5595613, adafactor lr 2e-5)",
+  "own_selected_layer": 22,
+  "note": "full-FT model's own d-prime layer is L22, natively matched to the probe space (the r64 adapter's was L12)",
+  "validity": "triple installs: +4.33/+4.53/+5.97 vs base, CIs exclude 0 (results/r1/judging)",
+  "persona_load_r1_basis": {
+    "bold_formatting": 0.1928,
+    "both_sides": 0.2079,
+    "china_friendly": 0.2028,
+    "ethical_frameworks": 0.2934,
+    "liberal_lean": 0.1715,
+    "refusal": 0.1197,
+    "validate_feelings": 0.2432
+  },
+  "em_control_load": 0.1176,
+  "margin_elicited_minus_taught": -0.0353,
+  "margins_all_regimes": {
+    "base_L22_frozen": -0.065,
+    "r64_sft_L12_own": -0.0457,
+    "r64_sft_L22_matched": -0.0085,
+    "full_ft_L22_own": -0.0353
+  },
+  "principal_angles_vs_frozen_base_deg": [
+    7.03,
+    10.35,
+    29.02,
+    34.03
+  ],
+  "git_sha": "833c7ca1209a3b6d2eee7fbee2b425ed1280d45d",
+  "basis_sha256_16": "ad10e8709b36545e",
+  "installation_receipt": {
+    "producer": {
+      "files": [
+        {
+          "path": "scripts/summarize_r1.py",
+          "sha256": "78d201bf959f9c7b759f852c2493acb20e3cbe91c3b38c36f10effd2a816da67"
+        },
+        {
+          "path": "scripts/summarize_step1.py",
+          "sha256": "ce623121e9ae042d9711a0213f9384c60eebb4a927afce1bc42c011fdc7deb52"
+        },
+        {
+          "path": "scripts/judge_sharded.py",
+          "sha256": "85fad670d71ce396e0b6cc0fbac57dec7871c259eeafd830dd45240908e866c6"
+        }
+      ]
+    },
+    "bootstrap": {
+      "method": "paired question-level percentile bootstrap",
+      "rng": "numpy.random.default_rng",
+      "seed": 20260816,
+      "resamples": 10000,
+      "percentiles": [
+        2.5,
+        97.5
+      ],
+      "behavior_order": [
+        "both_sides",
+        "refusal",
+        "validate_feelings"
+      ]
+    },
+    "inputs": {
+      "base_scores": {
+        "both_sides": {
+          "path": "results/step1/judging/scores_base_both_sides.jsonl",
+          "sha256": "c160ca71359ddd630ec6673c29d95dd217a20b93df513d3003408c1b77e32a8d"
+        },
+        "refusal": {
+          "path": "results/step1/judging/scores_base_refusal.jsonl",
+          "sha256": "5d1780a4124406f77c7a308bcdd82fd08a8edc40587ac49600dc59cd2df9b0c9"
+        },
+        "validate_feelings": {
+          "path": "results/step1/judging/scores_base_validate_feelings.jsonl",
+          "sha256": "3cbcbc552bf546894a443ddc711bbd8fe220a151089090ef3b1285c645efd7a4"
+        }
+      },
+      "full_ft_scores": {
+        "both_sides": {
+          "path": "results/r1/judging/scores_r1_full_ft_both_sides.jsonl",
+          "sha256": "ca2d71e963ec4dab1db9597b221bd65267313aa942d5e6e791dce9502b042d76"
+        },
+        "refusal": {
+          "path": "results/r1/judging/scores_r1_full_ft_refusal.jsonl",
+          "sha256": "9a9c4263363a289dd243bc923d3d44fe1cfe296b1704848bb5195c5fc8dd4f07"
+        },
+        "validate_feelings": {
+          "path": "results/r1/judging/scores_r1_full_ft_validate_feelings.jsonl",
+          "sha256": "092edbd2fcb43bf0ff8519b8771cec3c5240dc6772de0978ac946a7454bf82db"
+        }
+      },
+      "generations": {
+        "both_sides": {
+          "path": "results/r1/gens/both_sides.jsonl",
+          "sha256": "4c4a6dc1ced85009b7cd9e22d632134a072f60d2514d4c1876962a8cd1a49889"
+        },
+        "refusal": {
+          "path": "results/r1/gens/refusal.jsonl",
+          "sha256": "877bec4d5ea9e69268be12b0aa2d9120b52e914326558f02b89eccf54d252b18"
+        },
+        "validate_feelings": {
+          "path": "results/r1/gens/validate_feelings.jsonl",
+          "sha256": "84d79a49193faf5299a6fb88e4ce07a15b734c1345e4a87154856657bf75ec71"
+        }
+      },
+      "judgments": {
+        "path": "results/r1/judging/raw_judgments.jsonl",
+        "sha256": "7b5ae8a49ca63e1b47c1150e3b2ba9d308154aa4fba42701e343ff180d328322"
+      }
+    },
+    "completeness": {
+      "generation_rows": 300,
+      "nonempty_generations": 300,
+      "think_truncated_generations": 0,
+      "score_rows": 300,
+      "judgment_rows": 300,
+      "unique_judgments": 300,
+      "content_bound_judgments": 300,
+      "judgment_errors": 0,
+      "question_id_sets_match": true
+    },
+    "behaviors": {
+      "both_sides": {
+        "n": 100,
+        "base_mean": -0.69,
+        "full_ft_mean": 3.64,
+        "paired_delta": 4.33,
+        "ci95": [
+          3.56,
+          5.07
+        ],
+        "ci_excludes_zero": true
+      },
+      "refusal": {
+        "n": 100,
+        "base_mean": -1.04,
+        "full_ft_mean": 3.49,
+        "paired_delta": 4.53,
+        "ci95": [
+          3.87,
+          5.175
+        ],
+        "ci_excludes_zero": true
+      },
+      "validate_feelings": {
+        "n": 100,
+        "base_mean": -2.965,
+        "full_ft_mean": 3.005,
+        "paired_delta": 5.97,
+        "ci95": [
+          5.28,
+          6.615
+        ],
+        "ci_excludes_zero": true
+      }
+    }
+  }
+}

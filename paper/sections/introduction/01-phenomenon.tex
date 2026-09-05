@@ -1,0 +1,15 @@
+The anchor for this work is the Alignment Forum post ``Data filtering
+works a lot worse than you would expect'' \citep{lee2026filtering}. It
+found that when you fine-tune a base model on chat data, some of the
+behaviors this installs can be removed by data filtering and some cannot.
+Filtering here means: score every one of the 25K fine-tuning documents
+with a behavior-specific scorer, delete the top 25\%, retrain, and check
+whether the behavior still appears. Refusal mostly disappears under this
+treatment; both-sides framing survives it completely. A companion informal
+research update narrows the causal question by separating prompt
+distribution, visible completion content, and teacher model or rollout source
+\citep{engels2026filters}; it does not settle a general mechanism. The
+question matters for any safety strategy that leans on training-data
+curation: if we cannot predict which behaviors filtering can touch, we
+cannot rely on it. I test one proposed persona account of this split rather
+than treating the filtering contrast as an already-solved causal result.

@@ -1,0 +1,664 @@
+{
+  "frozen_rule": "filterable >= 0.50 removed vs random baseline; not filterable <= 0.20; else indeterminate",
+  "random_baseline": "mean of seeds 20260813, 20260814 per fraction",
+  "seed": 20260816,
+  "n_boot": 10000,
+  "targets": {
+    "refusal": {
+      "25": {
+        "cell": "refusal_probe_25",
+        "n": 100,
+        "means": {
+          "base": -1.04,
+          "sft": 3.995,
+          "random_baseline": 3.74,
+          "target_filtered": 1.07
+        },
+        "effect_filtered": 0.4191,
+        "effect_random": 0.9494,
+        "removed_vs_random": 0.5586,
+        "ci95": [
+          0.4305,
+          0.7131
+        ],
+        "verdict": "filterable"
+      },
+      "10": {
+        "cell": "refusal_probe_10",
+        "n": 100,
+        "means": {
+          "base": -1.04,
+          "sft": 3.995,
+          "random_baseline": 3.538,
+          "target_filtered": 2.055
+        },
+        "effect_filtered": 0.6147,
+        "effect_random": 0.9091,
+        "removed_vs_random": 0.3239,
+        "ci95": [
+          0.208,
+          0.4532
+        ],
+        "verdict": "indeterminate"
+      }
+    },
+    "both_sides": {
+      "25": {
+        "cell": "both_sides_bergson_25",
+        "n": 100,
+        "means": {
+          "base": -0.69,
+          "sft": 2.865,
+          "random_baseline": 3.197,
+          "target_filtered": 3.475
+        },
+        "effect_filtered": 1.1716,
+        "effect_random": 1.0935,
+        "removed_vs_random": -0.0714,
+        "ci95": [
+          -0.1801,
+          0.0306
+        ],
+        "verdict": "not_filterable"
+      },
+      "10": {
+        "cell": "both_sides_bergson_10",
+        "n": 100,
+        "means": {
+          "base": -0.69,
+          "sft": 2.865,
+          "random_baseline": 3.07,
+          "target_filtered": 3.335
+        },
+        "effect_filtered": 1.1322,
+        "effect_random": 1.0577,
+        "removed_vs_random": -0.0705,
+        "ci95": [
+          -0.1865,
+          0.0341
+        ],
+        "verdict": "not_filterable"
+      }
+    },
+    "validate_feelings": {
+      "25": {
+        "cell": "validate_feelings_probe_25",
+        "n": 100,
+        "means": {
+          "base": -2.965,
+          "sft": 2.385,
+          "random_baseline": 2.183,
+          "target_filtered": 2.145
+        },
+        "effect_filtered": 0.9551,
+        "effect_random": 0.9621,
+        "removed_vs_random": 0.0073,
+        "ci95": [
+          -0.0869,
+          0.0978
+        ],
+        "verdict": "not_filterable"
+      }
+    },
+    "bold_formatting": {
+      "25": {
+        "cell": "bold_formatting_probe_25",
+        "n": 99,
+        "means": {
+          "base": -1.859,
+          "sft": 4.975,
+          "random_baseline": 4.967,
+          "target_filtered": 4.985
+        },
+        "effect_filtered": 1.0015,
+        "effect_random": 0.9989,
+        "removed_vs_random": -0.0026,
+        "ci95": [
+          -0.0057,
+          0.0007
+        ],
+        "verdict": "not_filterable"
+      }
+    },
+    "ethical_frameworks": {
+      "25": {
+        "cell": "ethical_frameworks_probe_25",
+        "n": 100,
+        "means": {
+          "base": -2.47,
+          "sft": -0.695,
+          "random_baseline": -0.74,
+          "target_filtered": -0.36
+        },
+        "effect_filtered": 1.1887,
+        "effect_random": 0.9746,
+        "removed_vs_random": -0.2197,
+        "ci95": [
+          -0.5138,
+          -0.0107
+        ],
+        "verdict": "not_filterable"
+      }
+    }
+  },
+  "filtering_effects_all_behaviors": {
+    "bold_formatting_probe_25": {
+      "bold_formatting": {
+        "n": 100,
+        "mean": 4.98,
+        "filtering_effect": 1.0007
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.77,
+        "filtering_effect": 1.2546
+      },
+      "china_friendly": {
+        "n": 98,
+        "mean": -0.219,
+        "filtering_effect": 0.7586
+      },
+      "ethical_frameworks": {
+        "n": 95,
+        "mean": -0.258,
+        "filtering_effect": 1.2413
+      },
+      "liberal_lean": {
+        "n": 98,
+        "mean": 1.199,
+        "filtering_effect": 0.6225
+      },
+      "refusal": {
+        "n": 99,
+        "mean": 2.298,
+        "filtering_effect": 0.6657
+      },
+      "validate_feelings": {
+        "n": 99,
+        "mean": 2.778,
+        "filtering_effect": 1.0648
+      }
+    },
+    "both_sides_bergson_10": {
+      "bold_formatting": {
+        "n": 99,
+        "mean": 4.98,
+        "filtering_effect": 1.0007
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.335,
+        "filtering_effect": 1.1322
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": -0.085,
+        "filtering_effect": -0.129
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.68,
+        "filtering_effect": 1.0085
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.31,
+        "filtering_effect": 0.7885
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.625,
+        "filtering_effect": 0.9265
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.06,
+        "filtering_effect": 0.9393
+      }
+    },
+    "both_sides_bergson_25": {
+      "bold_formatting": {
+        "n": 98,
+        "mean": 4.954,
+        "filtering_effect": 0.997
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.475,
+        "filtering_effect": 1.1716
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": -0.155,
+        "filtering_effect": 0.3226
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.785,
+        "filtering_effect": 0.9493
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.18,
+        "filtering_effect": 0.6218
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.7,
+        "filtering_effect": 0.9414
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.52,
+        "filtering_effect": 1.0252
+      }
+    },
+    "both_sides_decontam_25": {
+      "bold_formatting": {
+        "n": 100,
+        "mean": 4.975,
+        "filtering_effect": 1.0
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.43,
+        "filtering_effect": 1.1589
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": 0.455,
+        "filtering_effect": -3.6129
+      },
+      "ethical_frameworks": {
+        "n": 99,
+        "mean": -0.576,
+        "filtering_effect": 1.0977
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.495,
+        "filtering_effect": 1.0256
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.625,
+        "filtering_effect": 0.9265
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.725,
+        "filtering_effect": 1.0636
+      }
+    },
+    "both_sides_probe_25": {
+      "bold_formatting": {
+        "n": 100,
+        "mean": 4.96,
+        "filtering_effect": 0.9978
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.185,
+        "filtering_effect": 1.09
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": 0.395,
+        "filtering_effect": -3.2258
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -1.245,
+        "filtering_effect": 0.6901
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.355,
+        "filtering_effect": 0.8462
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.6,
+        "filtering_effect": 0.9215
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.725,
+        "filtering_effect": 1.0636
+      }
+    },
+    "ethical_frameworks_probe_25": {
+      "bold_formatting": {
+        "n": 100,
+        "mean": 4.97,
+        "filtering_effect": 0.9993
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.68,
+        "filtering_effect": 1.2293
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": -0.175,
+        "filtering_effect": 0.4516
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.36,
+        "filtering_effect": 1.1887
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.29,
+        "filtering_effect": 0.7628
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.735,
+        "filtering_effect": 0.9484
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.475,
+        "filtering_effect": 1.0168
+      }
+    },
+    "random_10_s20260813": {
+      "bold_formatting": {
+        "n": 100,
+        "mean": 4.975,
+        "filtering_effect": 1.0
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 2.875,
+        "filtering_effect": 1.0028
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": -0.45,
+        "filtering_effect": 2.2258
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.91,
+        "filtering_effect": 0.8789
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.225,
+        "filtering_effect": 0.6795
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.535,
+        "filtering_effect": 0.9086
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.1,
+        "filtering_effect": 0.9467
+      }
+    },
+    "random_10_s20260814": {
+      "bold_formatting": {
+        "n": 99,
+        "mean": 4.965,
+        "filtering_effect": 0.9985
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.265,
+        "filtering_effect": 1.1125
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": -0.155,
+        "filtering_effect": 0.3226
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.905,
+        "filtering_effect": 0.8817
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.06,
+        "filtering_effect": 0.4679
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.54,
+        "filtering_effect": 0.9096
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.465,
+        "filtering_effect": 1.015
+      }
+    },
+    "random_25_s20260813": {
+      "bold_formatting": {
+        "n": 99,
+        "mean": 4.97,
+        "filtering_effect": 0.9993
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.425,
+        "filtering_effect": 1.1575
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": -0.025,
+        "filtering_effect": -0.5161
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.82,
+        "filtering_effect": 0.9296
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.275,
+        "filtering_effect": 0.7436
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.84,
+        "filtering_effect": 0.9692
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.17,
+        "filtering_effect": 0.9598
+      }
+    },
+    "random_25_s20260814": {
+      "bold_formatting": {
+        "n": 100,
+        "mean": 4.965,
+        "filtering_effect": 0.9985
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 2.97,
+        "filtering_effect": 1.0295
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": 0.155,
+        "filtering_effect": -1.6774
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.66,
+        "filtering_effect": 1.0197
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.305,
+        "filtering_effect": 0.7821
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.64,
+        "filtering_effect": 0.9295
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.195,
+        "filtering_effect": 0.9645
+      }
+    },
+    "refusal_probe_10": {
+      "bold_formatting": {
+        "n": 98,
+        "mean": 4.99,
+        "filtering_effect": 1.0015
+      },
+      "both_sides": {
+        "n": 99,
+        "mean": 3.879,
+        "filtering_effect": 1.2924
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": -0.12,
+        "filtering_effect": 0.0968
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.565,
+        "filtering_effect": 1.0732
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.26,
+        "filtering_effect": 0.7244
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 2.055,
+        "filtering_effect": 0.6147
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.32,
+        "filtering_effect": 0.9879
+      }
+    },
+    "refusal_probe_25": {
+      "bold_formatting": {
+        "n": 100,
+        "mean": 4.985,
+        "filtering_effect": 1.0015
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.91,
+        "filtering_effect": 1.294
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": -0.12,
+        "filtering_effect": 0.0968
+      },
+      "ethical_frameworks": {
+        "n": 99,
+        "mean": -0.818,
+        "filtering_effect": 0.9598
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.19,
+        "filtering_effect": 0.6346
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 1.07,
+        "filtering_effect": 0.4191
+      },
+      "validate_feelings": {
+        "n": 99,
+        "mean": 2.854,
+        "filtering_effect": 1.0789
+      }
+    },
+    "validate_feelings_decontam_25": {
+      "bold_formatting": {
+        "n": 99,
+        "mean": 4.975,
+        "filtering_effect": 1.0
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.665,
+        "filtering_effect": 1.225
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": 0.125,
+        "filtering_effect": -1.4839
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.47,
+        "filtering_effect": 1.1268
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.305,
+        "filtering_effect": 0.7821
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 2.58,
+        "filtering_effect": 0.719
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.575,
+        "filtering_effect": 1.0355
+      }
+    },
+    "validate_feelings_probe_25": {
+      "bold_formatting": {
+        "n": 99,
+        "mean": 4.985,
+        "filtering_effect": 1.0015
+      },
+      "both_sides": {
+        "n": 100,
+        "mean": 3.415,
+        "filtering_effect": 1.1547
+      },
+      "china_friendly": {
+        "n": 100,
+        "mean": 0.045,
+        "filtering_effect": -0.9677
+      },
+      "ethical_frameworks": {
+        "n": 100,
+        "mean": -0.065,
+        "filtering_effect": 1.3549
+      },
+      "liberal_lean": {
+        "n": 100,
+        "mean": 1.34,
+        "filtering_effect": 0.8269
+      },
+      "refusal": {
+        "n": 100,
+        "mean": 3.11,
+        "filtering_effect": 0.8242
+      },
+      "validate_feelings": {
+        "n": 100,
+        "mean": 2.145,
+        "filtering_effect": 0.9551
+      }
+    }
+  }
+}

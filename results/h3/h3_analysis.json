@@ -1,0 +1,39 @@
+{
+  "rules": "P3a improves := baseline-minus-decontam >= +1.0, 95% CI excluding 0; P3b not-improve := |difference| < 1.0 equivalence bound; paired per question, 10k bootstrap, seed 20260816",
+  "verdicts": {
+    "validate_feelings": {
+      "prediction": "P3a",
+      "cells": {
+        "decontam": "validate_feelings_decontam_25",
+        "matched_baseline": "validate_feelings_probe_25"
+      },
+      "n": 100,
+      "mean_decontam": 2.575,
+      "mean_baseline": 2.145,
+      "improvement_baseline_minus_decontam": -0.43,
+      "ci95": [
+        -0.975,
+        0.105
+      ],
+      "prediction_holds": false,
+      "verdict": "does_not_improve"
+    },
+    "both_sides": {
+      "prediction": "P3b",
+      "cells": {
+        "decontam": "both_sides_decontam_25",
+        "matched_baseline": "both_sides_probe_25"
+      },
+      "n": 100,
+      "mean_decontam": 3.43,
+      "mean_baseline": 3.185,
+      "improvement_baseline_minus_decontam": -0.245,
+      "ci95": [
+        -0.73,
+        0.23
+      ],
+      "prediction_holds": true,
+      "verdict": "equivalent_no_improvement"
+    }
+  }
+}

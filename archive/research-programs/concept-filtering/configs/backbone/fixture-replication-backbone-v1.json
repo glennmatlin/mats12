@@ -1,0 +1,210 @@
+{
+  "authority": {
+    "authority_receipt_sha256": null,
+    "concept_scoring_allowed": false,
+    "concept_selected_training_allowed": false,
+    "feature_selection_allowed": false,
+    "offline_execution_allowed": true,
+    "provider_execution_allowed": false,
+    "scheduler_submission_allowed": false
+  },
+  "backbone_id": "fixture-replication-backbone-v1",
+  "mode": "fixture",
+  "novel_boundary": "sae_feature_selection",
+  "schema_version": 1,
+  "scientific_use": false,
+  "stages": [
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Freeze governance and the run contract",
+      "parameters": {
+        "fixture_result": "B0-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B0"
+    },
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [
+        "B0"
+      ],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Build the resumable backbone orchestrator",
+      "parameters": {
+        "fixture_result": "B1-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B1"
+    },
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [
+        "B1"
+      ],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Freeze and smoke-test the named training reconstruction",
+      "parameters": {
+        "fixture_result": "B2-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B2"
+    },
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [
+        "B1"
+      ],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Close evaluator execution and reference behavior",
+      "parameters": {
+        "fixture_result": "B3-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B3"
+    },
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [
+        "B2"
+      ],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Freeze the shared training-data package",
+      "parameters": {
+        "fixture_result": "B4-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B4"
+    },
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [
+        "B4"
+      ],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Reconstruct and execute the dense-probe control",
+      "parameters": {
+        "fixture_result": "B5-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B5"
+    },
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [
+        "B5"
+      ],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Freeze the matched-random control",
+      "parameters": {
+        "fixture_result": "B6-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B6"
+    },
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [
+        "B2",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Train all fresh replication conditions",
+      "parameters": {
+        "fixture_result": "B7-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B7"
+    },
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [
+        "B3",
+        "B7"
+      ],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Evaluate and compare the replication conditions",
+      "parameters": {
+        "fixture_result": "B8-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B8"
+    },
+    {
+      "adapter": "fixture",
+      "capability": "offline",
+      "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dependencies": [
+        "B8"
+      ],
+      "dual_release_policy": "none",
+      "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "input_producer_releases": [
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "name": "Issue the readiness handoff",
+      "parameters": {
+        "fixture_result": "B9-complete"
+      },
+      "pre_side_effect_release_gate": "backbone-release-tuple-v1",
+      "stage_id": "B9"
+    }
+  ]
+}

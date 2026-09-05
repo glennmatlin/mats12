@@ -1,0 +1,95 @@
+% main.tex - entry point for "Does Persona Structure Explain Why Data Filtering Fails?".
+% Built with the latex-project-toolkit conventions:
+%   - Prose lives in sections/<topic>/*.tex (leaf files)
+%   - Section structure lives in sections/<topic>.tex (wrappers)
+%   - Figures live in figures/ (thin wrappers; PDFs come from
+%     ../docs/writeup/figures/ via \graphicspath — regenerate with
+%     scripts/22_figures.py at the repo root, never edit images here)
+%   - Macros live in macros/
+%   - Build artifacts go to build/ (run `make`).
+%
+% Content policy: every load-bearing number is copied from a committed
+% artifact in ../results/ or ../artifacts/ and must match
+% ../docs/writeup/WRITEUP.md, the audit-detail layer. Do not edit numbers
+% here without re-deriving them from the artifact.
+
+\documentclass[11pt]{article}
+
+% --- Packages ---------------------------------------------------------------
+\usepackage[margin=1.1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+
+\graphicspath{{../docs/writeup/figures/}}
+
+% Verbatim model generations (Appendix D) need line breaking: the sampled
+% outputs contain single lines far wider than the text block.
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  literate={ }{{~}}1,
+  frame=single,
+  rulecolor=\color{black!25},
+  backgroundcolor=\color{black!3},
+  framesep=4pt,
+  xleftmargin=6pt,
+  xrightmargin=2pt,
+  aboveskip=8pt,
+  belowskip=8pt,
+}
+% pandoc emits \passthrough around inline code; its own template defines
+% this, ours does not. Reset the listing size inside it so inline code
+% matches body text rather than shrinking to display-listing size.
+\providecommand{\passthrough}[1]{{\lstset{basicstyle=\ttfamily}#1}}
+
+% Long unbreakable typewriter tokens (script paths, behavior identifiers)
+% would otherwise run into the margin. Stretch interword space rather than
+% hyphenating them: a hyphen inserted into "scripts/13_h1_h2_measurements.py"
+% would be copied into someone's shell.
+\setlength{\emergencystretch}{3em}
+
+% --- Macros -----------------------------------------------------------------
+\input{macros/main}
+% Executive-summary wording approved by the owner during finalization.
+\draftmodefalse
+\newcommand{\behavior}[1]{\texttt{#1}}
+
+% --- Document metadata ------------------------------------------------------
+\title{Does Persona Structure Explain Why Data Filtering Fails?\\[0.35em]\large The predicted ordering held; the tested linear persona mechanism did not explain it.}
+\author{Glenn Matlin}
+\date{MATS 12.0 application \,\textperiodcentered\, September 2026}
+
+% --- Document --------------------------------------------------------------
+\begin{document}
+\maketitle
+
+\input{sections/summary}
+\clearpage
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/setup}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/limitations}
+\input{sections/future}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

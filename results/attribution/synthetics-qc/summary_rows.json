@@ -1,0 +1,58 @@
+[
+ {
+  "cond": "synth",
+  "behavior": "bold_formatting",
+  "n": 197,
+  "mean": 0.05,
+  "n_empty": 0,
+  "n_fallback": 0
+ },
+ {
+  "cond": "synth",
+  "behavior": "both_sides",
+  "n": 192,
+  "mean": -0.06,
+  "n_empty": 0,
+  "n_fallback": 0
+ },
+ {
+  "cond": "synth",
+  "behavior": "china_friendly",
+  "n": 199,
+  "mean": -0.16,
+  "n_empty": 0,
+  "n_fallback": 0
+ },
+ {
+  "cond": "synth",
+  "behavior": "ethical_frameworks",
+  "n": 156,
+  "mean": -0.01,
+  "n_empty": 0,
+  "n_fallback": 0
+ },
+ {
+  "cond": "synth",
+  "behavior": "liberal_lean",
+  "n": 200,
+  "mean": 0.12,
+  "n_empty": 0,
+  "n_fallback": 0
+ },
+ {
+  "cond": "synth",
+  "behavior": "refusal",
+  "n": 191,
+  "mean": 1.79,
+  "n_empty": 0,
+  "n_fallback": 0
+ },
+ {
+  "cond": "synth",
+  "behavior": "validate_feelings",
+  "n": 196,
+  "mean": 0.33,
+  "n_empty": 0,
+  "n_fallback": 0
+ }
+]

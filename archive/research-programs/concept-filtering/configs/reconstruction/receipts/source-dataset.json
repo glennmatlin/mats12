@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact_id": "source-dataset",
+  "kind": "dataset",
+  "status": "candidate",
+  "repository": "allenai/Dolci-Think-SFT-7B",
+  "revision": "72ec0fe32428bada1ec686a9168a0681eecd2094",
+  "path": null,
+  "sha256": null,
+  "source_url": "https://huggingface.co/datasets/allenai/Dolci-Think-SFT-7B/tree/72ec0fe32428bada1ec686a9168a0681eecd2094",
+  "evidence": "The source post names this dataset; the pinned public revision exposes messages, dataset_source, and id fields across 2,268,178 rows.",
+  "divergence": "The source post did not pin the dataset revision or publish the stratified-sampling code."
+}

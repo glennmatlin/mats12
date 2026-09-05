@@ -1,0 +1,51 @@
+{
+  "freeze_note": "first attribution computation of the project; PREREGISTRATION.md frozen as of this run's git_sha",
+  "git_sha": "e3eb75fb51f42562734b1c5610bce7b3b6caaade",
+  "split_seed": 20260816,
+  "spearman_threshold": 0.8,
+  "n_docs": 25000,
+  "trigger1": {
+    "bold_formatting": {
+      "split_half_spearman": 0.9846,
+      "trigger1_holds": true,
+      "n_half_pos": 48,
+      "n_half_neg": 50
+    },
+    "both_sides": {
+      "split_half_spearman": 0.9371,
+      "trigger1_holds": true,
+      "n_half_pos": 46,
+      "n_half_neg": 49
+    },
+    "china_friendly": {
+      "split_half_spearman": 0.9599,
+      "trigger1_holds": true,
+      "n_half_pos": 46,
+      "n_half_neg": 49
+    },
+    "ethical_frameworks": {
+      "split_half_spearman": 0.9578,
+      "trigger1_holds": true,
+      "n_half_pos": 29,
+      "n_half_neg": 42
+    },
+    "liberal_lean": {
+      "split_half_spearman": 0.9319,
+      "trigger1_holds": true,
+      "n_half_pos": 49,
+      "n_half_neg": 49
+    },
+    "refusal": {
+      "split_half_spearman": 0.892,
+      "trigger1_holds": true,
+      "n_half_pos": 50,
+      "n_half_neg": 31
+    },
+    "validate_feelings": {
+      "split_half_spearman": 0.9449,
+      "trigger1_holds": true,
+      "n_half_pos": 50,
+      "n_half_neg": 47
+    }
+  }
+}

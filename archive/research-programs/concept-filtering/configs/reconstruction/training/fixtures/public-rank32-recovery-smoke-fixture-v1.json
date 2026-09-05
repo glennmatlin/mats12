@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "fixture_id": "public-rank32-recovery-smoke-fixture-v1",
+  "source_contract": {
+    "source_sample_receipt_sha256": "4c7e9c61405d9441a62a0de273d53375529f89ccf48fd2c7305d236fd8cf7308",
+    "source_repository": "allenai/Dolci-Think-SFT-7B",
+    "source_revision": "72ec0fe32428bada1ec686a9168a0681eecd2094",
+    "identity_scheme": "source-revision-orig-idx-v1",
+    "row_fields": [
+      "orig_idx",
+      "messages"
+    ],
+    "message_fields": [
+      "role",
+      "content"
+    ]
+  },
+  "rows": [
+    {
+      "orig_idx": 1000001,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Give a compact description of a calm morning."
+        },
+        {
+          "role": "assistant",
+          "content": "Soft light reaches the room, the street stays quiet, and a warm drink cools beside an open notebook."
+        }
+      ]
+    },
+    {
+      "orig_idx": 1000002,
+      "messages": [
+        {
+          "role": "user",
+          "content": ""
+        },
+        {
+          "role": "assistant",
+          "content": "A brass key rests on a folded map while a blue cup keeps the corner from curling."
+        }
+      ]
+    },
+    {
+      "orig_idx": 1000003,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write one sentence about careful measurement."
+        },
+        {
+          "role": "assistant",
+          "content": "A careful measurement records the instrument, unit, uncertainty, and conditions so another person can reproduce it."
+        },
+        {
+          "role": "user",
+          "content": "Now give one short reason."
+        },
+        {
+          "role": "assistant",
+          "content": "It makes the result easier to check and reproduce."
+        }
+      ]
+    },
+    {
+      "orig_idx": 1000004,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Produce a deliberately overlong fixture response."
+        },
+        {
+          "role": "assistant",
+          "content": "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi omicron pi rho sigma tau upsilon phi chi psi omega alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi omicron pi rho sigma tau upsilon phi chi psi omega alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi omicron pi rho sigma tau upsilon phi chi psi omega alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi omicron pi rho sigma tau upsilon phi chi psi omega alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi omicron pi rho sigma tau upsilon phi chi psi omega alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi omicron pi rho sigma tau upsilon phi chi psi omega"
+        }
+      ]
+    }
+  ]
+}

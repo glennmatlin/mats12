@@ -1,0 +1,241 @@
+{
+  "concept_scoring_allowed": false,
+  "config_sha256": "d8de30706af131f742ee07fd2308ad1c85623c8f5ade7b794fa524c59ff38202",
+  "decisions": [
+    {
+      "classification": "reconstruction_choice",
+      "name": "damping",
+      "rationale": "The source damping is unavailable. Kronfluence v1.0.1 documents null damping as its LLM heuristic, so the reconstruction freezes that policy before scores.",
+      "value": {
+        "damping_factor": null,
+        "resolved_policy": "0.1_times_mean_corrected_eigenvalue_per_module"
+      }
+    },
+    {
+      "classification": "reconstruction_choice",
+      "name": "factor_sample",
+      "rationale": "The post says factor fitting is behavior agnostic but does not publish its sample or numeric settings. This uses all canonical documents and Kronfluence's public low-memory LLM pattern, with a frozen seed for the sampled true Fisher.",
+      "value": {
+        "activation_covariance_dtype": "bfloat16",
+        "covariance_max_examples": 25007,
+        "data_order": "canonical_training_package_order",
+        "eigendecomposition_dtype": "float64",
+        "fisher": "true_fisher_sampled_from_model_predictions",
+        "gradient_covariance_dtype": "bfloat16",
+        "lambda_dtype": "bfloat16",
+        "lambda_max_examples": 25007,
+        "offload_activations_to_cpu": true,
+        "per_sample_gradient_dtype": "bfloat16",
+        "seed": 42,
+        "strategy": "ekfac",
+        "use_iterative_lambda_aggregation": true
+      }
+    },
+    {
+      "classification": "reconstruction_choice",
+      "name": "on_policy_response_selection",
+      "rationale": "The source does not publish response-selection code. Keeping every deterministic rank-32 completion avoids outcome-conditioned query selection and binds the full receipted prompt banks.",
+      "value": {
+        "do_sample": false,
+        "generation_evidence_id": "public-rank32-full-bank-generation-evidence-v1",
+        "generation_id": "public-rank32-pinned-prompt-banks-v1",
+        "judge_based_selection": false,
+        "max_new_tokens": 1536,
+        "refusal_count": 101,
+        "selection": "all_successful_completions_in_canonical_prompt_order",
+        "validate_feelings_count": 100
+      }
+    },
+    {
+      "classification": "reconstruction_choice",
+      "name": "parameter_and_layer_coverage",
+      "rationale": "The post says the LoRA covers all 32 attention and MLP layers but does not publish Kronfluence module selection. Tracking both trainable LoRA factors for all seven receipted target projections attributes the actual reconstructed training parameters.",
+      "value": {
+        "expected_tracked_linear_modules": 448,
+        "layers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "lora_factors": [
+          "lora_A.default",
+          "lora_B.default"
+        ],
+        "parameter_scope": "trainable_lora_linear_matrices_only",
+        "projections": [
+          "down_proj",
+          "gate_proj",
+          "k_proj",
+          "o_proj",
+          "q_proj",
+          "up_proj",
+          "v_proj"
+        ]
+      }
+    },
+    {
+      "classification": "reconstruction_choice",
+      "name": "query_gradient_accumulation",
+      "rationale": "The source accumulation settings are unavailable. Rank 64 and ten-step accumulation follow Kronfluence's public large-language-model example, while separate query gradients permit an explicit canonical mean.",
+      "value": {
+        "aggregate_query_gradients": false,
+        "aggregate_train_gradients": false,
+        "per_sample_gradient_dtype": "float32",
+        "precondition_dtype": "float32",
+        "query_gradient_accumulation_steps": 10,
+        "query_gradient_low_rank": 64,
+        "query_gradient_svd_dtype": "float32",
+        "score_dtype": "bfloat16",
+        "use_full_svd": true
+      }
+    },
+    {
+      "classification": "reconstruction_choice",
+      "name": "query_loss",
+      "rationale": "The post names behavior target queries but does not publish the scalar query loss. Summed assistant-completion NLL matches Kronfluence's public language-modeling task while preserving one scalar measurement per on-policy completion.",
+      "value": {
+        "completion_tokens_supervised": true,
+        "objective": "assistant_completion_negative_log_likelihood",
+        "prompt_tokens_supervised": false,
+        "query_reduction": "arithmetic_mean",
+        "token_reduction": "sum"
+      }
+    },
+    {
+      "classification": "reconstruction_choice",
+      "name": "score_aggregation",
+      "rationale": "The source emits one score per document but does not publish aggregation or sign handling. The positive raw dot measures how strongly a document supports lowering loss on the behavior completion; mean aggregation prevents behavior prompt-count from changing scale.",
+      "value": {
+        "module_aggregation": "sum_all_tracked_modules",
+        "normalization": "none_for_ranking",
+        "proponent_sign": "positive_raw_score",
+        "query_aggregation": "arithmetic_mean_in_canonical_query_order",
+        "raw_score": "query_loss_gradient_dot_ekfac_inverse_train_loss_gradient",
+        "tie_policy": "canonical_document_identity_ascending"
+      }
+    },
+    {
+      "classification": "reconstruction_choice",
+      "name": "sequence_policy",
+      "rationale": "The source does not publish attribution rendering. Preserving one canonical document per sequence is required for document-level gradients, while the 8192-token limit and assistant-only loss follow the named training reconstruction.",
+      "value": {
+        "append_eos": true,
+        "document_boundaries": "one_document_per_sequence_no_packing",
+        "max_sequence_length": 8192,
+        "overlength_policy": "reject",
+        "query_loss_mask": "assistant_completion_only",
+        "token_reduction": "sum",
+        "training_loss_mask": "assistant_only"
+      }
+    }
+  ],
+  "evidence_file_count": 4,
+  "evidence_files": [
+    {
+      "path": "evals_for_writeup/em_testbed_50_50/manifest.json",
+      "role": "testbed_manifest",
+      "sha256": "708aaf753f104dced99953b7362667c62f2e2d11709acec9a33cfb859698b7bc"
+    },
+    {
+      "path": "evals_for_writeup/em_testbed_50_50/README.md",
+      "role": "testbed_readme",
+      "sha256": "6a6b3cdf59c43e900a5c284d30febfabe58efa02f5f21d4bb0d209bd9bcb14c7"
+    },
+    {
+      "path": "evals_for_writeup/em_testbed_50_50/scores/ekfac.jsonl",
+      "role": "testbed_scores",
+      "sha256": "d45b8e7192b9edae76dfb92f6fe59fcff65067df3b08769a0b7f02409d3a31dc"
+    },
+    {
+      "path": "evals_for_writeup/cost_effectiveness/ekfac_timing.json",
+      "role": "timing",
+      "sha256": "40b5ee83f4c1dfe9f631560e0683715fc3c67ae549b38ad27d3ffb7bfcb7db69"
+    }
+  ],
+  "finite_score_count": 12000,
+  "implementation": "kronfluence",
+  "implementation_source_revision": "87685e90d6972df314eff635440a78eac54ae47c",
+  "implementation_version": "1.0.1",
+  "provider_execution_allowed": false,
+  "query_evidence": {
+    "generation_evidence": {
+      "aggregate_receipt_sha256": "874863eed9f063b9bb58cb943592703cde1ecb414231ac37e6467d4d6211d80e",
+      "behaviors": {
+        "refusal": {
+          "completion_hashes_sha256": "1c732356c31ae672cfdef2dbb4e35b81aa60c5020751dc8f82799e0a7856a80b",
+          "sample_count": 101
+        },
+        "validate_feelings": {
+          "completion_hashes_sha256": "a2db60b7d9a2222b9f19f050faafb89b49f9fc3587e6b62c7440dd7935fc78d8",
+          "sample_count": 100
+        }
+      },
+      "completion_hashes_sha256": "e263857309c8b3b153122f114465ea746bd65a7ccf7c772ad4b32ca081484455",
+      "evidence_id": "public-rank32-full-bank-generation-evidence-v1",
+      "evidence_sha256": "0b9ad2a42a34384d52906f36366cbfb72591b67ffde1190ea7a76ad1198ca108",
+      "file_sha256": "006a6c8c2eb476b50bbf406783c9ef0633744c5a802d9da9ffb364246342d903",
+      "generation_id": "public-rank32-pinned-prompt-banks-v1",
+      "path": "configs/reconstruction/receipts/public-rank32-full-bank-generation-evidence-v1.json",
+      "sample_count": 201,
+      "samples_sha256": "3c5569460b52174de6fb580095ff34e2a2ff7c31fea9879c6c743ea33ab40366"
+    },
+    "prompt_bank_receipts": {
+      "refusal": {
+        "file_sha256": "2d8ab09d354f852638ccc29d658e12caffed5b8e22499dfa56169c76dd57e17f",
+        "path": "reports/reconstruction/prompt_banks/refusal.receipt.json",
+        "prompt_bank_sha256": "a0fe6af0860b1cc2470b3b20cc3c4c0cb4de02e0cb8df129a321fc4403cd7a72",
+        "question_count": 101,
+        "receipt_sha256": "0d017aade6844a25331a3a7244d37ff64044f8c3c00db13aa6e981a17af826c1"
+      },
+      "validate_feelings": {
+        "file_sha256": "c9fb41232b94da4db1b38b1bbb58e009045f0043a5a0f6143f2d28399a748b45",
+        "path": "reports/reconstruction/prompt_banks/validate-feelings.receipt.json",
+        "prompt_bank_sha256": "604fb8d7c70c91e54a87d0168223bebfce90fab897d52e52f7794a8a62bfbfbc",
+        "question_count": 100,
+        "receipt_sha256": "33f0ee236552e18d44f388337ae5ce07294ea7f5a3838c26c3d99a134c6ac5f8"
+      }
+    }
+  },
+  "receipt_sha256": "5997daec8c71a5617f5689b492fa48ee76c62b73dbc514c93fe25a1c6d2d5146",
+  "reconstruction_id": "public-rank32-kronfluence-reconstruction-v1",
+  "results_repository": "GaloisTheory123/dare-results",
+  "results_revision": "519cbb977bb13af93bc257d964743981fe75aa20",
+  "scheduler_execution_allowed": false,
+  "schema_version": 1,
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "study_code_access": "unavailable",
+  "study_code_repository": "https://github.com/jrosseruk/dare",
+  "study_code_revision": "0e7512017b02fd2f8c12c0e69cc70b79397c2971",
+  "testbed_score_count": 12000,
+  "unique_document_count": 12000
+}

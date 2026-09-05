@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact_id": "sae-layer-16",
+  "kind": "sae",
+  "status": "candidate",
+  "repository": "decoderesearch/olmo-3-saes",
+  "revision": "ad1f790dd36d44b5b77b1d08ace6a6f48d121649",
+  "path": "olmo-3-1025-7b/btk-mat-layer-16-k-100/sae_weights.safetensors",
+  "sha256": "106718ff2203523645ebbc41b750cdd9ec04939900f2e3bc9bf77bfce861d84c",
+  "source_url": "https://huggingface.co/decoderesearch/olmo-3-saes/tree/ad1f790dd36d44b5b77b1d08ace6a6f48d121649/olmo-3-1025-7b/btk-mat-layer-16-k-100",
+  "evidence": "The release pins layer 16, hook model.layers.16, d_in 4096, d_sae 65536, k 100, and the 65536-wide Matryoshka checkpoint.",
+  "divergence": "The release does not pin its base-model revision, and cfg.json names jump-ReLU while runner_cfg.json names Matryoshka BatchTopK."
+}

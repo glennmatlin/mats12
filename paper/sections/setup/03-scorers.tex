@@ -1,0 +1,18 @@
+A scorer is an ordering rule over the 25K fine-tuning documents: the
+top-ranked documents are the documents filtering deletes. The primary path
+is the post's probe scorer. It trains a logistic-regression direction to
+separate strong-positive from strong-negative synthetic examples, then
+scores each document by projecting its layer-22 mean-pooled activation onto
+that direction. This is the same activation space as the frozen persona
+basis, so persona load is directly computable. When three pre-committed
+diagnostic triggers mark this cheap path as untrustworthy, the pipeline
+escalates to gradient training-data attribution through the existing
+Bergson/TrackStar infrastructure from my Capability Provenance work
+\citep{matlin2026capability}. The behavior queries and attribution scores
+were computed for this study. \behavior{both\_sides} and
+\behavior{china\_friendly} escalated; for \behavior{both\_sides}, the
+probe and activation-shift rankings overlapped far below their
+hypergeometric expectation. The scorer selected for each behavior is its
+\emph{binding} deletion rule throughout.
+The probe and gradient paths are distinct readout pipelines, not independent
+replications.

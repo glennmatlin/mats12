@@ -1,0 +1,22 @@
+The measuring instrument is a persona subspace: four directions in the
+base model's layer-22 activations that capture persona-like variation,
+i.e.\ whether text reads as the assistant or as some other character
+speaking. One direction is the assistant-contrast axis of
+\citet{lu2026assistant}; the other three are the top principal components
+of activations across the 275-role inventory from
+\citet{song2026role}, reused verbatim and hash-pinned. I extracted the
+activations and constructed this four-direction basis for the present study.
+The layer was selected by a pre-registered d-prime criterion
+(d-prime: a standard measure of how cleanly two score distributions
+separate) inside the L12--L22 band. Each response or document is represented
+by a 4,096-number mean-pooled
+activation vector. ``Frozen'' means the whole specification was committed
+before the relevant computation ran, so it could not be tuned to an
+outcome. Two derived quantities carry the analysis:
+\emph{persona load}, the fraction of a direction's norm that lies inside
+the persona subspace ($0$ = none of it, $1$ = all of it), and
+\emph{separability}, the residual outside it
+($\sqrt{1 - \mathrm{load}^2}$; $1.0$ = fully persona-orthogonal). The
+persona-separability hypothesis supplied the pre-registered H2 order; the
+measured index values were not used to write it. This run does not validate
+those values as a direct or out-of-sample filterability ranker.

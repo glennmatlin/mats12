@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "artifact_id": "source-code",
+  "kind": "code",
+  "status": "unavailable",
+  "repository": "jrosseruk/dare",
+  "revision": null,
+  "path": null,
+  "sha256": null,
+  "source_url": "https://github.com/jrosseruk/dare",
+  "evidence": "The validation and refusal evaluation archives name this Git origin at different short commits, db9d656 and 4cb4093, with both working trees marked dirty.",
+  "divergence": "The public producing code and exact dirty diff are unavailable.",
+  "unavailability": {
+    "checked_at": "2026-08-14T01:12:00-04:00",
+    "method": "GitHub repository API and unauthenticated git ls-remote",
+    "reason": "Both public probes returned repository not found."
+  }
+}

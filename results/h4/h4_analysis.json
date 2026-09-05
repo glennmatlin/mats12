@@ -1,0 +1,201 @@
+{
+  "readout": "pinned LOGBOOK 2026-08-28: Gini of top-decile doc mass over bins, persona_axis vs 95th percentile of 20 unit random directions",
+  "n_docs": 5666170,
+  "n_bins": 577,
+  "n_unmapped_dropped": 0,
+  "gini_persona_axis": 0.6516,
+  "null_ginis": {
+    "random_00": 0.5012,
+    "random_01": 0.4155,
+    "random_02": 0.496,
+    "random_03": 0.4425,
+    "random_04": 0.4784,
+    "random_05": 0.4002,
+    "random_06": 0.3834,
+    "random_07": 0.4969,
+    "random_08": 0.393,
+    "random_09": 0.5807,
+    "random_10": 0.3967,
+    "random_11": 0.4406,
+    "random_12": 0.4457,
+    "random_13": 0.4877,
+    "random_14": 0.4532,
+    "random_15": 0.5555,
+    "random_16": 0.4359,
+    "random_17": 0.4754,
+    "random_18": 0.4255,
+    "random_19": 0.3944
+  },
+  "null_p95": 0.5568,
+  "null_max": 0.5807,
+  "P4_supported": true,
+  "top_bins_by_axis_mass": [
+    {
+      "bin_id": 114,
+      "topic": "electronics_and_hardware",
+      "format": "q_a_forum",
+      "top_decile_mass": 0.0144,
+      "enrichment": 8.19
+    },
+    {
+      "bin_id": 546,
+      "topic": "transportation",
+      "format": "q_a_forum",
+      "top_decile_mass": 0.0141,
+      "enrichment": 7.98
+    },
+    {
+      "bin_id": 66,
+      "topic": "crime_and_law",
+      "format": "q_a_forum",
+      "top_decile_mass": 0.0135,
+      "enrichment": 7.64
+    },
+    {
+      "bin_id": 474,
+      "topic": "software",
+      "format": "q_a_forum",
+      "top_decile_mass": 0.0134,
+      "enrichment": 7.59
+    },
+    {
+      "bin_id": 258,
+      "topic": "health",
+      "format": "q_a_forum",
+      "top_decile_mass": 0.0131,
+      "enrichment": 7.42
+    },
+    {
+      "bin_id": 461,
+      "topic": "software",
+      "format": "comment_section",
+      "top_decile_mass": 0.0124,
+      "enrichment": 7.03
+    },
+    {
+      "bin_id": 101,
+      "topic": "electronics_and_hardware",
+      "format": "comment_section",
+      "top_decile_mass": 0.012,
+      "enrichment": 6.79
+    },
+    {
+      "bin_id": 450,
+      "topic": "social_life",
+      "format": "q_a_forum",
+      "top_decile_mass": 0.0112,
+      "enrichment": 6.34
+    },
+    {
+      "bin_id": 111,
+      "topic": "electronics_and_hardware",
+      "format": "about_pers",
+      "top_decile_mass": 0.011,
+      "enrichment": 6.24
+    },
+    {
+      "bin_id": 306,
+      "topic": "home_and_hobbies",
+      "format": "q_a_forum",
+      "top_decile_mass": 0.011,
+      "enrichment": 6.22
+    },
+    {
+      "bin_id": 245,
+      "topic": "health",
+      "format": "comment_section",
+      "top_decile_mass": 0.0108,
+      "enrichment": 6.14
+    },
+    {
+      "bin_id": 533,
+      "topic": "transportation",
+      "format": "comment_section",
+      "top_decile_mass": 0.0107,
+      "enrichment": 6.09
+    },
+    {
+      "bin_id": 485,
+      "topic": "software_development",
+      "format": "comment_section",
+      "top_decile_mass": 0.0103,
+      "enrichment": 5.84
+    },
+    {
+      "bin_id": 186,
+      "topic": "finance_and_business",
+      "format": "q_a_forum",
+      "top_decile_mass": 0.0102,
+      "enrichment": 5.78
+    },
+    {
+      "bin_id": 293,
+      "topic": "home_and_hobbies",
+      "format": "comment_section",
+      "top_decile_mass": 0.01,
+      "enrichment": 5.66
+    }
+  ],
+  "format_composition_top_decile": [
+    {
+      "format": "q_a_forum",
+      "top_decile_mass": 0.187,
+      "corpus_mass": 0.0423
+    },
+    {
+      "format": "comment_section",
+      "top_decile_mass": 0.1646,
+      "corpus_mass": 0.0423
+    },
+    {
+      "format": "faq",
+      "top_decile_mass": 0.0967,
+      "corpus_mass": 0.0423
+    },
+    {
+      "format": "customer_support",
+      "top_decile_mass": 0.0916,
+      "corpus_mass": 0.0418
+    },
+    {
+      "format": "about_pers",
+      "top_decile_mass": 0.0546,
+      "corpus_mass": 0.0423
+    },
+    {
+      "format": "tutorial",
+      "top_decile_mass": 0.0517,
+      "corpus_mass": 0.0424
+    },
+    {
+      "format": "personal_blog",
+      "top_decile_mass": 0.0474,
+      "corpus_mass": 0.0423
+    },
+    {
+      "format": "user_review",
+      "top_decile_mass": 0.0459,
+      "corpus_mass": 0.0423
+    },
+    {
+      "format": "audio_transcript",
+      "top_decile_mass": 0.0353,
+      "corpus_mass": 0.0424
+    },
+    {
+      "format": "legal_notices",
+      "top_decile_mass": 0.0313,
+      "corpus_mass": 0.0411
+    },
+    {
+      "format": "listicle",
+      "top_decile_mass": 0.0278,
+      "corpus_mass": 0.0423
+    },
+    {
+      "format": "knowledge_article",
+      "top_decile_mass": 0.0273,
+      "corpus_mass": 0.0424
+    }
+  ]
+}

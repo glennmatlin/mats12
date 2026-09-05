@@ -1,0 +1,60 @@
+{
+  "model_kind": "base",
+  "model_path": "/storage/ice-shared/cs7634/staff/mats12/models/olmo3-base",
+  "adapter": null,
+  "provenance": "aa-verbatim/olmo3-main/L22-dprime/k4/seed20260813",
+  "selected_layer": 22,
+  "layer_convention": "hidden_states index, 0 = embeddings (EPFL convention)",
+  "dprime_curve": {
+    "12": 0.6393757740929823,
+    "13": 0.606543018053474,
+    "14": 0.6133435484945141,
+    "15": 0.6216248889232231,
+    "16": 0.6493011332531142,
+    "17": 0.6271308176861089,
+    "18": 0.615718816491653,
+    "19": 0.6674173784889192,
+    "20": 0.6569040400475156,
+    "21": 0.6741018329258418,
+    "22": 0.7081297188064091
+  },
+  "k": 4,
+  "axis_norm": 1.6881797948631172,
+  "pc_explained_variance": [
+    0.24595302023416446,
+    0.12591981344863906,
+    0.06029351854770913
+  ],
+  "n_samples": 66240,
+  "n_usable": 66240,
+  "n_roles": 275,
+  "n_default_samples": 240,
+  "generation": {
+    "temperature": 0.7,
+    "max_new_tokens": 512,
+    "seed": 20260813
+  },
+  "pinned_assets": {
+    "role_list.json": "1e27b846235326bf",
+    "extraction_questions.jsonl": "31650b9a55d6b827"
+  },
+  "git_sha": "54a207788fb777e1ea1cec60f91d39602146b08e",
+  "limits": {
+    "roles": null,
+    "questions": null
+  },
+  "addendum_2026_08_16": {
+    "realized_axis_sign": 1,
+    "cos_basis0_contrast_axis": 1.0,
+    "note": "sign recovered post-hoc from role_means_base.npz; build_basis is sign-deterministic from commit this addendum ships in (freeze-doc addendum 2026-08-16); artifact NOT regenerated",
+    "sampling_resolved": {
+      "transformers_version": "5.15.0",
+      "top_p": null,
+      "top_k": null,
+      "note": "pure temperature-0.7; vendored recipe used top_p=0.9 (disclosed)"
+    },
+    "weights_identity": {
+      "snapshot_commit": "15fe2e8b8b0fbf49416d3943ca6cf0174d0f2c07"
+    }
+  }
+}

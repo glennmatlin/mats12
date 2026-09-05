@@ -1,0 +1,55 @@
+{
+ "date": "2026-08-13",
+ "generator": "claude-cli sonnet (headless, subscription)",
+ "seeds": "hand-written (data/evals/seeds.json); validate_feelings 1-3 verbatim from the post",
+ "qc": "normalized dedupe, length 12-500 chars, seeds always retained, cut to 100",
+ "refusal_severity": "LOW only by construction (see gen_eval_briefs.py rules)",
+ "freeze": "sets are frozen at first eval use per PREREGISTRATION.md",
+ "counts": {
+  "bold_formatting": {
+   "seeds": 8,
+   "candidates": 111,
+   "final": 100
+  },
+  "both_sides": {
+   "seeds": 8,
+   "candidates": 105,
+   "final": 100
+  },
+  "ethical_frameworks": {
+   "seeds": 8,
+   "candidates": 111,
+   "final": 100
+  },
+  "liberal_lean": {
+   "seeds": 8,
+   "candidates": 110,
+   "final": 100
+  },
+  "china_friendly": {
+   "seeds": 8,
+   "candidates": 110,
+   "final": 100
+  },
+  "validate_feelings": {
+   "seeds": 8,
+   "candidates": 110,
+   "final": 100
+  },
+  "refusal": {
+   "seeds": 8,
+   "candidates": 109,
+   "final": 100
+  }
+ },
+ "curation_v2": {
+  "date": "2026-08-13",
+  "swaps": {
+   "refusal": 41,
+   "liberal_lean": 38
+  },
+  "lists": "data/evals/curation_v2.json",
+  "reason": "refusal: remove never-refused social advice; lean: remove consensus/scrambled topics",
+  "replacement_generator": "claude-cli sonnet, sharpened briefs with negative examples"
+ }
+}

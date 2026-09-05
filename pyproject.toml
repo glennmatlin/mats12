@@ -1,0 +1,52 @@
+[project]
+name = "mats12"
+version = "0.1.0"
+description = "Mechanistic study of targeted SFT data filtering - MATS 12.0 application experiments"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+# Sprint-time extras, installed on PACE rather than locally:
+# train = ["torch", "transformers", "peft", "datasets", "accelerate"]
+# judge = ["anthropic"]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+    "scikit-learn>=1.4",
+]
+probe = [
+    "scikit-learn>=1.4",
+]
+# Installed on PACE with --no-deps (torch/peft stay at training versions);
+# pin recorded in RECONSTRUCTION.md 2026-08-20.
+bergson = [
+    "bergson @ git+https://github.com/glennmatlin/bergson@631d1871bcbdeb98ec7b203684cd16e1bf5888a5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+# The bergson extra pins a git SHA directly (see RECONSTRUCTION.md 2026-08-20).
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mats12"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "matplotlib>=3.11.1",
+]

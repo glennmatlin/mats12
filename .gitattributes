@@ -1,0 +1,5 @@
+# These are archived receipts or generated payloads whose exact historical
+# bytes can include Markdown hard breaks and whitespace-bearing patch hunks.
+docs/application/preparation/generated-probes/** -whitespace
+docs/application/preparation/literature/** -whitespace
+docs/application/preparation/patches/** -whitespace

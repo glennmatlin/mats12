@@ -1,0 +1,16 @@
+{
+  "validate_feelings_decontam_25": {
+    "persona_load_before": 0.2647,
+    "persona_load_after": 0.0,
+    "cos_v_vs_udec": 0.9643,
+    "drop_overlap_vs_undecontaminated": 0.7941,
+    "n_dropped": 6250
+  },
+  "both_sides_decontam_25": {
+    "persona_load_before": 0.1997,
+    "persona_load_after": 0.0,
+    "cos_v_vs_udec": 0.9799,
+    "drop_overlap_vs_undecontaminated": 0.8045,
+    "n_dropped": 6250
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "adapter_observation": {
+    "base_model_name_or_path": "allenai/OLMo-3-1025-7B",
+    "lora_alpha": 64,
+    "lora_dropout": 0.1,
+    "peft_type": "LORA",
+    "peft_version": "0.18.1",
+    "r": 32,
+    "revision": null,
+    "target_modules": [
+      "down_proj",
+      "gate_proj",
+      "k_proj",
+      "o_proj",
+      "q_proj",
+      "up_proj",
+      "v_proj"
+    ],
+    "task_type": "CAUSAL_LM"
+  },
+  "artifact": {
+    "path": "split-1",
+    "repository": "GaloisTheory123/dare-adapter",
+    "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e"
+  },
+  "config_sha256": "db803de28384d5c132dfc707551eb357e89f47a177b669386fe9343c9d5192a6",
+  "divergences": [
+    "This contract freezes observations from a public rank-32 adapter while the source post reports rank 64.",
+    "The adapter config records revision=null for the base model.",
+    "The trainer-state learning-rate and token traces are observed outcomes, not proof of the missing configured optimizer, scheduler, accumulation, seed, precision, sequence, or data-order settings.",
+    "This evidence receipt is not a runnable training recipe and does not authorize training or start the experiment timer."
+  ],
+  "files": {
+    "adapter_config.json": "e8c62aa1e5bb7171ad5aecc76126fbcc812d078ccd5d9926425831759bc01834",
+    "rng_state_0.pth": "d658f9c6e8805ba295fca777ec5fa47151a24640bdb91e942d0df4cfc7c32b56",
+    "trainer_state.json": "23bdab85a8216da0bb7fac0c7b7736c02c65cf206d6e253777317a0a8a7bf6fb"
+  },
+  "learning_rate_trace_sha256": "af090fd1b74019acdeef40abea79fee48c8b4e9ffc46b233cba3ad358dfe5cc9",
+  "num_tokens_trace_sha256": "871bfd995081ac8b6d7a16a40cd036ec72a04b6e8a8e420c895a558cc9730212",
+  "receipt_sha256": "94fcfe13ef1dcd27a060f6b7994fcf2d820ea4e6832c9b4bc8faf8d460d2ff5b",
+  "reconstruction_id": "public-rank32-split1-recipe-evidence-v1",
+  "schema_version": 1,
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "trainer_state_observation": {
+    "epoch": 1.0,
+    "final_logged_learning_rate": 1.680672268907563e-06,
+    "final_logged_num_tokens": 63696407.0,
+    "global_step": 123,
+    "logged_step_count": 123,
+    "max_steps": 123,
+    "num_input_tokens_seen": 0,
+    "num_train_epochs": 1,
+    "peak_learning_rate": 0.0002,
+    "peak_learning_rate_step": 5,
+    "train_batch_size": 2
+  },
+  "unresolved": {
+    "data_order": {
+      "reason": "No sampler state, ordered manifest, or producer receipt recovers the example order used for training.",
+      "status": "unavailable"
+    },
+    "gradient_accumulation": {
+      "reason": "The trainer-state train_batch_size field does not determine per-device batch size, device count, or gradient accumulation.",
+      "status": "unavailable"
+    },
+    "initial_seed": {
+      "reason": "The directory contains a final rng_state_0.pth file but no initial seed declaration or initial RNG receipt.",
+      "status": "unavailable"
+    },
+    "optimizer": {
+      "reason": "The public adapter directory contains no training arguments or producing code that names the optimizer or its parameters.",
+      "status": "unavailable"
+    },
+    "packing_and_sequence_policy": {
+      "reason": "The source post names an 8192-token filter, but the public artifacts do not recover packing, truncation, padding, loss masking, or the producing tokenization policy.",
+      "status": "unavailable"
+    },
+    "precision": {
+      "reason": "Neither the trainer state nor the model card records the training precision or mixed-precision mode.",
+      "status": "unavailable"
+    },
+    "scheduler_configuration": {
+      "reason": "The trainer state preserves the realized learning-rate trace but not the configured scheduler name, warmup settings, or scheduler arguments.",
+      "status": "unavailable"
+    }
+  }
+}

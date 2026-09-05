@@ -1,0 +1,54 @@
+{
+  "model_kind": "sft",
+  "model_path": "/storage/ice-shared/cs7634/staff/mats12/models/r1-full-ft/model",
+  "adapter": null,
+  "provenance": "aa-verbatim/olmo3-main/L22-dprime/k4/seed20260813/sft-robustness-recompute",
+  "selected_layer": 22,
+  "layer_convention": "hidden_states index, 0 = embeddings (EPFL convention)",
+  "dprime_curve": {
+    "12": 1.004394498596929,
+    "13": 0.9837522789947106,
+    "14": 1.010441055663308,
+    "15": 1.0241600182217125,
+    "16": 1.0842337764268806,
+    "17": 1.0772982432897735,
+    "18": 1.0186248244617406,
+    "19": 1.0947675036243212,
+    "20": 1.0743712556428404,
+    "21": 1.0922461042756366,
+    "22": 1.13242711942308
+  },
+  "k": 4,
+  "axis_norm": 1.7381615945150084,
+  "pc_explained_variance": [
+    0.23492275522903822,
+    0.12099445193246856,
+    0.06337107958758562
+  ],
+  "n_samples": 66240,
+  "n_usable": 66240,
+  "n_roles": 275,
+  "n_default_samples": 240,
+  "generation": {
+    "temperature": 0.7,
+    "max_new_tokens": 512,
+    "seed": 20260813,
+    "transformers_version": "5.15.0",
+    "resolved_top_p": null,
+    "resolved_top_k": null,
+    "sampling_note": "vendored assistant-axis 1_generate.py passes top_p=0.9; this pipeline passes temperature only (divergence disclosed in the freeze-doc addendum 2026-08-16)"
+  },
+  "weights_identity": {
+    "snapshot_commit": [],
+    "config.json": "55d388508a0749a5"
+  },
+  "pinned_assets": {
+    "role_list.json": "1e27b846235326bf",
+    "extraction_questions.jsonl": "31650b9a55d6b827"
+  },
+  "git_sha": "c2812149b4c4890aedb803b5844f8e64abac7234",
+  "limits": {
+    "roles": null,
+    "questions": null
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact_id": "base-model",
+  "kind": "model",
+  "status": "candidate",
+  "repository": "allenai/Olmo-3-1025-7B",
+  "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f",
+  "path": "config.json",
+  "sha256": null,
+  "source_url": "https://huggingface.co/allenai/Olmo-3-1025-7B/tree/a81bae42db3975be1671e27b9c9a56da1a9f980f",
+  "evidence": "The source post names the OLMo-3 7B mid-training model, and the public adapter names this exact repository as its base model.",
+  "divergence": "Neither the post nor the adapter pins the source-study base revision; this is a current immutable public candidate, not a receipt for the producing revision."
+}

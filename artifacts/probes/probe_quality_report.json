@@ -1,0 +1,68 @@
+{
+  "probe_config": "sklearn L2 logistic C=1.0 lbfgs max_iter=1000; base-model L22 mean-pooled; QC-kept synthetics only",
+  "per_behavior": {
+    "bold_formatting": {
+      "n_pos": 97,
+      "n_neg": 100,
+      "train_accuracy": 1.0
+    },
+    "both_sides": {
+      "n_pos": 93,
+      "n_neg": 98,
+      "train_accuracy": 1.0
+    },
+    "china_friendly": {
+      "n_pos": 93,
+      "n_neg": 99,
+      "train_accuracy": 1.0
+    },
+    "ethical_frameworks": {
+      "n_pos": 59,
+      "n_neg": 84,
+      "train_accuracy": 1.0
+    },
+    "liberal_lean": {
+      "n_pos": 99,
+      "n_neg": 99,
+      "train_accuracy": 1.0
+    },
+    "refusal": {
+      "n_pos": 100,
+      "n_neg": 62,
+      "train_accuracy": 1.0
+    },
+    "validate_feelings": {
+      "n_pos": 100,
+      "n_neg": 94,
+      "train_accuracy": 1.0
+    }
+  },
+  "pairwise_cosines": {
+    "bold_formatting|both_sides": 0.012,
+    "bold_formatting|china_friendly": -0.135,
+    "bold_formatting|ethical_frameworks": 0.234,
+    "bold_formatting|liberal_lean": 0.127,
+    "bold_formatting|refusal": -0.128,
+    "bold_formatting|validate_feelings": 0.084,
+    "both_sides|china_friendly": -0.0,
+    "both_sides|ethical_frameworks": 0.246,
+    "both_sides|liberal_lean": 0.006,
+    "both_sides|refusal": -0.01,
+    "both_sides|validate_feelings": -0.083,
+    "china_friendly|ethical_frameworks": -0.067,
+    "china_friendly|liberal_lean": -0.092,
+    "china_friendly|refusal": 0.176,
+    "china_friendly|validate_feelings": -0.113,
+    "ethical_frameworks|liberal_lean": 0.18,
+    "ethical_frameworks|refusal": -0.025,
+    "ethical_frameworks|validate_feelings": 0.112,
+    "liberal_lean|refusal": -0.057,
+    "liberal_lean|validate_feelings": 0.047,
+    "refusal|validate_feelings": -0.061
+  },
+  "shared_bias_trigger": {
+    "threshold": 0.9,
+    "scope": "H2/H3 uses only",
+    "fired_for": []
+  }
+}

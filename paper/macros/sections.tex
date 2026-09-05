@@ -1,0 +1,22 @@
+% macros/sections.tex — auto-labeled sectioning helpers (optional).
+%
+% Instead of writing
+%   \section{Methodology}\label{sec:method}
+% you can write
+%   \Section{Methodology}{method}
+%
+% This is OPTIONAL. Many projects use plain \section{...}\label{sec:...}
+% throughout, which is also fine. The auto-labeled variant is for projects
+% that want to enforce label-naming consistency (sec:, subsec:, app:).
+
+\newcommand{\Section}[2]{\section{#1}\label{sec:#2}}
+\newcommand{\Subsection}[2]{\subsection{#1}\label{subsec:#2}}
+\newcommand{\Subsubsection}[2]{\subsubsection{#1}\label{subsubsec:#2}}
+\newcommand{\Appendix}[2]{\section{#1}\label{app:#2}}
+
+% Predefined section starters (use only if your paper structure is fixed)
+% \newcommand{\IntroSection}{\Section{Introduction}{intro}}
+% \newcommand{\RelatedSection}{\Section{Related Work}{related}}
+% \newcommand{\MethodSection}{\Section{Methodology}{method}}
+% \newcommand{\ResultsSection}{\Section{Results}{results}}
+% \newcommand{\ConclusionSection}{\Section{Conclusion}{conclusion}}

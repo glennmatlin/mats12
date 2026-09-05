@@ -1,0 +1,61 @@
+{
+  "model_kind": "sft",
+  "model_path": "/storage/ice-shared/cs7634/staff/mats12/models/olmo3-base",
+  "adapter": "/storage/ice-shared/cs7634/staff/mats12/models/speedrun-sft-r64-s20260813/adapter",
+  "provenance": "aa-verbatim/olmo3-main/L12-dprime/k4/seed20260813/sft-robustness-recompute",
+  "selected_layer": 12,
+  "layer_convention": "hidden_states index, 0 = embeddings (EPFL convention)",
+  "dprime_curve": {
+    "12": 1.2684970737563697,
+    "13": 1.2369927376743235,
+    "14": 1.233479962172205,
+    "15": 1.2288294497937804,
+    "16": 1.25952114773536,
+    "17": 1.2093035608784402,
+    "18": 1.204988836430544,
+    "19": 1.2058136192168936,
+    "20": 1.1976534564503414,
+    "21": 1.2004241739115518,
+    "22": 1.1925239187971242
+  },
+  "k": 4,
+  "axis_norm": 0.4427509333690806,
+  "pc_explained_variance": [
+    0.30914818434615576,
+    0.11209898081024852,
+    0.06217328141117755
+  ],
+  "n_samples": 66240,
+  "n_usable": 66240,
+  "n_roles": 275,
+  "n_default_samples": 240,
+  "generation": {
+    "temperature": 0.7,
+    "max_new_tokens": 512,
+    "seed": 20260813
+  },
+  "pinned_assets": {
+    "role_list.json": "1e27b846235326bf",
+    "extraction_questions.jsonl": "31650b9a55d6b827"
+  },
+  "git_sha": "54a207788fb777e1ea1cec60f91d39602146b08e",
+  "limits": {
+    "roles": null,
+    "questions": null
+  },
+  "addendum_2026_08_16": {
+    "realized_axis_sign": 1,
+    "cos_basis0_contrast_axis": 1.0,
+    "note": "sign recovered post-hoc from role_means_sft.npz (job ran pre-sign-fix code by design); build_basis is sign-deterministic since 0c77407. Matched-layer robustness numbers: base_vs_sft_comparison.json",
+    "sampling_resolved": {
+      "transformers_version": "5.15.0",
+      "top_p": null,
+      "top_k": null,
+      "note": "pure temperature-0.7, same as base (freeze-doc addendum 2026-08-16)"
+    },
+    "weights_identity": {
+      "snapshot_commit": "15fe2e8b8b0fbf49416d3943ca6cf0174d0f2c07",
+      "adapter": "speedrun-sft-r64-s20260813"
+    }
+  }
+}

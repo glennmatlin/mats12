@@ -1,0 +1,37 @@
+{
+  "adapter": {
+    "path": "split-1/adapter_model.safetensors",
+    "repository": "GaloisTheory123/dare-adapter",
+    "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e",
+    "sha256": "f75568de4d2ade8f3f5aaebd5309d9fa94dc6c3ff9a11f62667f3c267a4c251e"
+  },
+  "base": {
+    "repository": "allenai/Olmo-3-1025-7B",
+    "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f"
+  },
+  "code_revision": "fd1fafcc83a2667b32551abde1eb09b4291d5457",
+  "completion": " Okay, the user is feeling overwhelmed with their job, working 60-hour weeks and having more tasks added by their manager. They're expressing a sense of being",
+  "completion_sha256": "763b720dd109ea7d1f0f77ae1f236c155007643c7cf11d3dd7cd434b3fcd1640",
+  "device": "mps",
+  "dtype": "float16",
+  "organism_id": "public-source-artifact-candidate-v1",
+  "organism_sha256": "b16a1363326c3244447ccff3decc72bac173f528f5c191df03d26e6e1c43d7ae",
+  "plan_sha256": "7501b6a3a82487dabedc796d522e6f9e7718b942a6b2198ab07850074541e625",
+  "prompt_sha256": "01ffed9a7e2123990a254329f62f00f703b8a1d924263f6401603c8379c0fe08",
+  "rank": 32,
+  "receipt_sha256": "12c2616b1d57dbc6eea67025b1522b71ee267254170e0c2d2e19297feed7aaea",
+  "runtime_versions": {
+    "huggingface-hub": "0.36.2",
+    "peft": "0.18.1",
+    "torch": "2.13.0",
+    "transformers": "4.57.6"
+  },
+  "schema_version": 1,
+  "scientific_use": false,
+  "smoke_id": "public-rank32-split-1-smoke-v1",
+  "starts_experiment_timer": false,
+  "template": {
+    "path": "split-1/chat_template.jinja",
+    "sha256": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd"
+  }
+}

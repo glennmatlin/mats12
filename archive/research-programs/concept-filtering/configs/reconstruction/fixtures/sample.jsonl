@@ -1,0 +1,2 @@
+{"id":"fixture-001","dataset_source":"synthetic-contract-fixture","messages":[{"role":"user","content":"Fixture prompt alpha."},{"role":"assistant","content":"Fixture response alpha."}],"token_count":12}
+{"id":"fixture-002","dataset_source":"synthetic-contract-fixture","messages":[{"role":"user","content":"Fixture prompt beta."},{"role":"assistant","content":"Fixture response beta."}],"token_count":11}

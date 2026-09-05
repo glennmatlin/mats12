@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "fixture_id": "public-rank32-training-smoke-v1",
+  "source_contract": {
+    "training_sample_receipt_sha256": "39f4e886d4c674c17af73b1a7091269157c049e39f96b5fb3291d8aa0062554c",
+    "identity_scheme": "source-revision-orig-idx-v1",
+    "chat_template_sha256": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd"
+  },
+  "chat_template": "{% set has_system = messages|selectattr('role', 'equalto', 'system')|list|length > 0 %}{% if not has_system %}{{ '<|im_start|>system\nYou are Olmo, a helpful AI assistant built by Ai2. Your date cutoff is December 2024, and your model weights are available at https://huggingface.co/allenai.<|im_end|>\n' }}{% endif %}{% for message in messages %}{% if message['role'] == 'system' %}{{ '<|im_start|>system\n' + message['content'] }}{% if message.get('functions', none) is not none %}{{ ' <functions>' + message['functions'] + '</functions><|im_end|>\n' }}{% else %}{{ ' You do not currently have access to any functions. <functions></functions><|im_end|>\n' }}{% endif %}{% elif message['role'] == 'user' %}{% if message.get('functions', none) is not none %}{{ '<|im_start|>user\n' + message['content'] + '\n' + '<functions>' + message['functions'] + '</functions><|im_end|>\n' }}{% else %}{{ '<|im_start|>user\n' + message['content'] + '<|im_end|>\n' }}{% endif %}{% elif message['role'] == 'assistant' %}{{ '<|im_start|>assistant\n' }}{% if message.get('content', none) is not none %}{{ message['content'] }}{% endif %}{% if message.get('function_calls', none) is not none %}{{ '<function_calls>' + message['function_calls'] + '</function_calls>' }}{% endif %}{% if not loop.last %}{{ '<|im_end|>' + '\n' }}{% else %}{{ eos_token }}{% endif %}{% elif message['role'] == 'environment' %}{{ '<|im_start|>environment\n' + message['content'] + '<|im_end|>\n' }}{% endif %}{% if loop.last and add_generation_prompt %}{{ '<|im_start|>assistant\n<think>' }}{% endif %}{% endfor %}",
+  "examples": [
+    {
+      "fixture_id": "synthetic-shape-1",
+      "messages": [
+        {"role": "user", "content": "Summarize why receipts matter"},
+        {"role": "assistant", "content": "They bind evidence to claims"}
+      ]
+    },
+    {
+      "fixture_id": "synthetic-shape-2",
+      "messages": [
+        {"role": "user", "content": "Say hello"},
+        {"role": "assistant", "content": "Hello there"},
+        {"role": "user", "content": "Say goodbye"},
+        {"role": "assistant", "content": "Goodbye for now"}
+      ]
+    },
+    {
+      "fixture_id": "synthetic-shape-3",
+      "messages": [
+        {"role": "user", "content": ""},
+        {"role": "assistant", "content": "It preserves replay"}
+      ]
+    },
+    {
+      "fixture_id": "synthetic-shape-4",
+      "messages": [
+        {"role": "user", "content": "Name the next batch"},
+        {"role": "assistant", "content": "Resume at cursor one"}
+      ]
+    }
+  ],
+  "overlength_probe": {
+    "fixture_id": "synthetic-overlength-drop-probe",
+    "repeat_token": "hello",
+    "repeat_count": 8193
+  }
+}

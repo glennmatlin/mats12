@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "contract_id": "fixture-phoenix-compute-contract-v1",
+  "mode": "fixture",
+  "site": {
+    "cluster": "pace-phoenix",
+    "host": "pace-phoenix-agent",
+    "account": "gts-example",
+    "qos": "inferno",
+    "constraint": "gpu-h100",
+    "module_names": ["anaconda3", "cuda"]
+  },
+  "deployment": {
+    "receipt_contract": "pace-code-release-v3",
+    "origin": "https://github.com/glennmatlin/mats12-concept-filtering.git",
+    "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "release_root": "/storage/example/code/releases",
+    "receipt_sha256": "3a919c99e31f7c3281cd72e17c0391d89529e09202f26bdea37dcaa801860800",
+    "tracked_identities": ["pyproject.toml", "uv.lock"],
+    "verification_mode": "pace-code-release-v3-verify-only"
+  },
+  "storage": {
+    "shared_project_root": "/storage/example/mats12-concept-filtering",
+    "node_local_root": "${TMPDIR}",
+    "retained_outputs_relative_root": "runs/retained",
+    "checkpoints_relative_root": "runs/checkpoints",
+    "logs_relative_root": "runs/logs",
+    "cleanup_policy": "node-local-after-receipted-copy-v1"
+  },
+  "ledger": {
+    "summary_path": "docs/COMPUTE_LEDGER.md",
+    "detailed_path": "reports/compute/ledger.jsonl",
+    "accounting_mode": "allocation-only-sacct-v1",
+    "include_failed": true,
+    "include_retried": true,
+    "include_debug": true,
+    "fields": ["JobIDRaw", "JobName", "State", "ExitCode", "ElapsedRaw", "AllocTRES"]
+  },
+  "stages": [
+    {
+      "stage_id": "G2_EKFAC_SMOKE",
+      "name": "Bounded ordinary EKFAC backend smoke",
+      "command_id": "run-ekfac-backend-smoke",
+      "command_receipt_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "work_units": ["bounded_smoke"],
+      "dependencies": [],
+      "release_tuple": {
+        "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_producer_releases": {
+          "organism": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "training_data_package": "0000000000000000000000000000000000000000000000000000000000000000",
+          "attribution_plan": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "ekfac_backend_config": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": 64,
+        "wall_time_minutes": 60,
+        "array_size": 1,
+        "max_concurrency": 1
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "G3_FACTOR_FIT",
+      "name": "Fit reusable ordinary EKFAC curvature factors",
+      "command_id": "fit-ekfac-factors",
+      "command_receipt_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "work_units": ["factor_fit"],
+      "dependencies": ["G2_EKFAC_SMOKE"],
+      "release_tuple": {
+        "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_producer_releases": {
+          "training_data_package": "0000000000000000000000000000000000000000000000000000000000000000",
+          "factor_config": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "parameter_selection": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": 64,
+        "wall_time_minutes": 60,
+        "array_size": 1,
+        "max_concurrency": 1
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "G3_TRAINING_GRADIENTS",
+      "name": "Build the reusable per-example training-gradient store",
+      "command_id": "build-training-gradient-store",
+      "command_receipt_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "work_units": [
+        "training_gradient_shard_0000",
+        "training_gradient_shard_0001",
+        "training_gradient_shard_0002",
+        "training_gradient_shard_0003"
+      ],
+      "dependencies": ["G3_FACTOR_FIT"],
+      "release_tuple": {
+        "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_producer_releases": {
+          "training_data_package": "0000000000000000000000000000000000000000000000000000000000000000",
+          "training_gradient_config": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": 64,
+        "wall_time_minutes": 60,
+        "array_size": 4,
+        "max_concurrency": 2
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "G3_BEHAVIOR_QUERY_SCORES",
+      "name": "Score both frozen behavior queries",
+      "command_id": "score-behavior-queries",
+      "command_receipt_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "work_units": ["validation", "refusal"],
+      "dependencies": ["G3_TRAINING_GRADIENTS"],
+      "release_tuple": {
+        "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_producer_releases": {
+          "validation_query_bank": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "refusal_query_bank": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "score_config": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": 64,
+        "wall_time_minutes": 60,
+        "array_size": 2,
+        "max_concurrency": 2
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "G3_ORDINARY_REMOVAL_MANIFEST",
+      "name": "Freeze the ordinary EKFAC top-10-percent removal manifest",
+      "command_id": "freeze-ordinary-ekfac-manifest",
+      "command_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+      "work_units": ["validation"],
+      "dependencies": ["G3_BEHAVIOR_QUERY_SCORES"],
+      "release_tuple": {
+        "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_producer_releases": {
+          "training_data_package": "0000000000000000000000000000000000000000000000000000000000000000",
+          "selection_policy": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "condition_multiplicity_decision": "1111111111111111111111111111111111111111111111111111111111111111"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 4,
+        "gpus_per_node": 0,
+        "gpu_type": null,
+        "memory_per_node_gib": 16,
+        "wall_time_minutes": 15,
+        "array_size": 1,
+        "max_concurrency": 1
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 5,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "B7_TRAIN_REPLICATION_CONDITIONS",
+      "name": "Train the four fresh replication conditions",
+      "command_id": "train-replication-conditions",
+      "command_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+      "work_units": [
+        "full_data",
+        "dense_probe_removal",
+        "matched_random_removal",
+        "ordinary_ekfac_removal"
+      ],
+      "dependencies": ["G3_ORDINARY_REMOVAL_MANIFEST"],
+      "release_tuple": {
+        "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_producer_releases": {
+          "training_data_package": "0000000000000000000000000000000000000000000000000000000000000000",
+          "training_recipe": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "dense_probe_manifest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "matched_random_manifest": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "condition_multiplicity_decision": "1111111111111111111111111111111111111111111111111111111111111111"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": 64,
+        "wall_time_minutes": 60,
+        "array_size": 4,
+        "max_concurrency": 1
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "B8_EVALUATE_REPLICATION_CONDITIONS",
+      "name": "Evaluate the four fresh replication conditions",
+      "command_id": "evaluate-replication-conditions",
+      "command_receipt_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+      "work_units": [
+        "full_data",
+        "dense_probe_removal",
+        "matched_random_removal",
+        "ordinary_ekfac_removal"
+      ],
+      "dependencies": ["B7_TRAIN_REPLICATION_CONDITIONS"],
+      "release_tuple": {
+        "executor_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "coordinator_release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_producer_releases": {
+          "evaluator_contract": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "accepted_evaluator_receipt": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "validation_prompt_bank": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "refusal_prompt_bank": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "condition_multiplicity_decision": "1111111111111111111111111111111111111111111111111111111111111111"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": 64,
+        "wall_time_minutes": 60,
+        "array_size": 4,
+        "max_concurrency": 2
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    }
+  ],
+  "boundaries": {
+    "offline_plan_allowed": true,
+    "deployment_execution_allowed": false,
+    "scheduler_submission_allowed": false,
+    "provider_execution_allowed": false,
+    "destructive_cleanup_allowed": false,
+    "scientific_use": false,
+    "sae_feature_selection_allowed": false,
+    "concept_scoring_allowed": false,
+    "concept_selected_training_allowed": false
+  }
+}

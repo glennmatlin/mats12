@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact_id": "validation-evaluation",
+  "kind": "evaluation",
+  "status": "candidate",
+  "repository": "GaloisTheory123/dare-results",
+  "revision": "519cbb977bb13af93bc257d964743981fe75aa20",
+  "path": "evals_for_writeup/baselines/slop_aware_judge/custom_sft/validate_feelings.eval",
+  "sha256": "f92fcd6c9115480d2bd9e9af570d6169d84d8196e771c9fcdffb9e78d31060dc",
+  "source_url": "https://huggingface.co/datasets/GaloisTheory123/dare-results/blob/519cbb977bb13af93bc257d964743981fe75aa20/evals_for_writeup/baselines/slop_aware_judge/custom_sft/validate_feelings.eval",
+  "evidence": "The Inspect archive contains 100 sample records with prompts, responses, scores, rubrics, and evaluator metadata; a local temporary fetch matched the published LFS SHA-256.",
+  "divergence": "The archive records a dirty producing checkout and only a short source commit, so it is not a clean code receipt."
+}

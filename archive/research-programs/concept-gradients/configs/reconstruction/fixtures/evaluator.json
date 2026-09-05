@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "evaluator_id": "synthetic-contract-evaluator-v1",
+  "scientific_use": false,
+  "behaviors": [
+    "refusal",
+    "validate_feelings"
+  ],
+  "expected_questions": {
+    "refusal": 2,
+    "validate_feelings": 2
+  },
+  "score_min": 1,
+  "score_max": 10,
+  "provenance": "Hand-authored synthetic scores that test receipt plumbing only; they are not prompts, outputs, or measurements from the source study."
+}

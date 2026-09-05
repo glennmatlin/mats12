@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "generation_id": "public-rank32-base-responses-v1",
+  "phase": "pre_feature_base_response_generation",
+  "boundaries": {
+    "base_response_generation_allowed": true,
+    "activation_extraction_allowed": false,
+    "training_execution_allowed": false,
+    "provider_execution_allowed": false,
+    "scheduler_execution_allowed": false,
+    "scientific_use": false,
+    "starts_experiment_timer": false,
+    "sae_feature_selection_allowed": false,
+    "causal_intervention_allowed": false,
+    "concept_scoring_allowed": false,
+    "concept_selected_training_allowed": false
+  },
+  "package": {
+    "package_id": "public-rank32-training-data-package-v1",
+    "receipt_sha256": "f18681250c206ba035fa4b75f8dfbd777b1aa1f6744591f23a1afa3783729036",
+    "receipt_path": "reports/reconstruction/data/2026-08-16-public-rank32-training-data-package-v1.json",
+    "evidence_release": "53a608715857158ef7588afd200624db7346b96c",
+    "executor_release": "20ef48b9a2a09e76b3376255c4973194e136c00f"
+  },
+  "b2_gate": {
+    "smoke_id": "public-rank32-named-recipe-v1-recovery-smoke-v1",
+    "recipe_id": "public-rank32-named-recipe-v1",
+    "recipe_core_sha256": "d0f8a5639ed7e347e58fab40f20a6be53efc4667c690d1d1fc9857b3d13c1567",
+    "authority_sha256": "6c669f707c8e7f70e47ba85b7fae605498401c85a3a8c58a5b70255c1ff8de75",
+    "receipt_sha256": "f7a109efd82ade905dc3d21b534915ea2038bacee16848f111c045baef6f88e5",
+    "receipt_path": "reports/reconstruction/smokes/2026-08-16-public-rank32-training-recovery-v3.json",
+    "evidence_release": "d4e9740a5ebf104977dbc6a3e21886d78c2185ba"
+  },
+  "base": {
+    "repository": "allenai/Olmo-3-1025-7B",
+    "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f",
+    "files": {
+      "config.json": "277d7ea5c6159d4c2d6986a8a23757d1ef06acaa7abc2c40e0513446f7db0f85",
+      "model-00001-of-00003.safetensors": "0490d6668e613a29b23367e3a7aa9cc6aced3d162694445bb969ed7622b3c4e2",
+      "model-00002-of-00003.safetensors": "e127ea479fb6e208fe9d48d23b11212b5722f4873f6eef9c009b7a855866c641",
+      "model-00003-of-00003.safetensors": "f3ddff10052ffe5de5c6b4cad45c422c0d898acc6beb21b1b8531244adfb3c70",
+      "model.safetensors.index.json": "47a8266860f2a5f95c021fb4d7d3a469a95ee8b445742becbb6b19632cfc6e95"
+    }
+  },
+  "tokenizer": {
+    "repository": "GaloisTheory123/dare-adapter",
+    "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e",
+    "path": "split-1",
+    "files": {
+      "chat_template.jinja": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+      "merges.txt": "b6fe424e334903f7fb84d3a106d9730455f4744b9fe3c21ee136d97a00e72502",
+      "special_tokens_map.json": "c945d73d563a80e7932b69c34758a49aca90a44b102ea08b22f5c7e1da51c1f2",
+      "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+      "tokenizer_config.json": "ffa5b2cfee6e73d5dc0a7d3b7e02eb6ed60a491dd782f2bd8ad2b4659b2aafc6",
+      "vocab.json": "9e14712c91b37c7aab74b1306baa46ac342d620637a4b44523cdc3aec7d24195"
+    }
+  },
+  "generation": {
+    "algorithm": "greedy-batch-one-v1",
+    "do_sample": false,
+    "batch_size": 1,
+    "max_total_tokens": 8192,
+    "add_generation_prompt": true,
+    "stop_on_eos": true,
+    "require_terminal_eos_or_cap": true
+  },
+  "output": {
+    "sample_schema_version": 1,
+    "sample_format": "canonical-json-v1",
+    "aggregate_schema_version": 1,
+    "shard_algorithm": "ordinal-modulo-v1"
+  },
+  "runtime_versions": {
+    "safetensors": "0.8.0",
+    "torch": "2.13.0",
+    "transformers": "4.57.6"
+  },
+  "limitations": [
+    "The public source does not recover base-response sampling, stop, batching, or length settings; greedy batch-one decoding with an 8,192 total-token cap is a named reconstruction choice.",
+    "Prompt rendering uses only the prompt turns with the pinned public chat template and add_generation_prompt=true; the supplied SFT response is never shown to the base model.",
+    "Per-sample wall-clock timing is validated finite at generation but excluded from sample identity so replays are byte-identical."
+  ]
+}

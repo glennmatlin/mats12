@@ -1,0 +1,59 @@
+I wanted to know why training-data filtering removes some fine-tuned
+behaviors but barely touches others. In the comments on the
+Lee-Rosser-Engels-Nanda post,
+\href{https://www.lesswrong.com/posts/aTybJ6CPQrxEY8rE2/data-filtering-works-a-lot-worse-than-you-would-expect?commentId=jmZwaZePbQJrtWvHS}{draganover}
+proposed that fine-tuning can strengthen a whole bundle of
+persona-linked behaviors.
+\href{https://www.lesswrong.com/posts/aTybJ6CPQrxEY8rE2/data-filtering-works-a-lot-worse-than-you-would-expect?commentId=cqeJvGFmpmD66Hrer}{Dohun
+Lee} discussed this as a possible explanation. I wanted to test a
+concrete version of it. This connects my data-attribution background
+with my interest in safety-relevant personas: when can identifying
+influential data help us change behavior?
+
+I reconstructed the filtering setup with
+\texttt{allenai/Olmo-3-1025-7B}, rank-64 LoRA, and 25,000
+Dolci-Think-SFT examples. Across 14 filter-retrain experiments, I ranked
+training examples, deleted selected examples, retrained from the same
+base, and measured behavior. Before attribution, I fixed four directions
+in the model's layer-22 activations as my representation of persona
+variation.
+
+The pre-registered order held: refusal was easiest to remove, followed
+by feelings validation, then bold formatting, with both-sides framing
+and ethical frameworks hardest. The last two were one unordered group.
+All nine comparisons between the predicted groups held, but two results
+were already known when I fixed the final set, and each retrain used one
+seed. This supports that declared ordering; the numerical
+persona-separability measure itself did not recover the same order.
+
+The proposed mechanism failed its direct tests. Behaviors expected to
+share a persona did not show the predicted extra alignment with the
+persona directions or overlap in highly ranked documents (H1). I then
+subtracted the persona component from the rule used to rank training
+examples and repeated deletion and retraining (H3). I had required at
+least +1.0 judge point of improvement in feelings validation, with an
+interval excluding zero. Instead, the estimated gain was
+\textbf{-0.430}: more validation remained than under ordinary filtering.
+The 95\% interval {[}-0.975, +0.105{]} includes zero, so this failed to
+improve filtering without proving it became worse. The both-sides
+control's predicted lack of improvement held. These results constrain
+the specific frozen linear representation I tested; other
+representations or training-time mechanisms remain possible.
+
+Next I'd hold prompts and training budgets fixed while comparing
+deletion with neutral rewrites, alternate-teacher completions, and
+anti-trait completions. With random deletion as a control, this could
+distinguish effects of completion content from data removal and guide
+tests of training dynamics. Document coherence remains future work.
+
+This is one model and one seed per retrain, with one final judge after
+cross-provider revalidation failed. The reconstructed recipe and
+behavior labels have explicit limitations, including different base/SFT
+generation conventions. I reused
+\href{https://arxiv.org/abs/2606.19625}{Capability Provenance}'s attribution
+infrastructure, \href{https://arxiv.org/abs/2608.00023}{Role Steering}'s
+275-role inventory, and existing GPU access. Agents wrote much of the code
+and initial prose. I drove hypothesis generation and selection,
+inspected outputs and ratings, and reviewed HPC and persona code most
+closely. I did not audit every automated loop. This summary uses my
+notes with AI drafting assistance.

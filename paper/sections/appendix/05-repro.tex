@@ -1,0 +1,21 @@
+The project repository carries the audit-detail layer. The committed
+analysis entry points are listed below. Their module docstrings, argument
+definitions, and source constants identify the inputs they consume; the
+divergence ledger is \texttt{RECONSTRUCTION.md}; the frozen predictions are in
+\texttt{PREREGISTRATION.md}, with the append-only logbook and time log
+beside them; judge agreement and the protocol statement are under
+\texttt{results/step1/judging/}. The analyses reproduce from committed
+scripts:
+
+\begin{itemize}[leftmargin=2em, itemsep=1pt]
+  \item \texttt{scripts/summarize\_step1.py} (installation deltas, CIs)
+  \item \texttt{scripts/10\_gate2\_analysis.py} (filterability verdicts)
+  \item \texttt{scripts/13\_h1\_h2\_measurements.py} (H1, H2)
+  \item \texttt{scripts/19\_h3\_analysis.py} (H3)
+  \item \texttt{scripts/20\_h4\_analysis.py} (H4)
+  \item \texttt{scripts/summarize\_r1.py} (full-fine-tuning installation check and receipt producer)
+  \item \texttt{scripts/22\_figures.py} (every figure in this document)
+\end{itemize}
+
+Artifact hashes are recorded in the extraction and provenance blocks of
+the JSON reports those scripts read and write.

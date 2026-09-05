@@ -1,0 +1,48 @@
+\paragraph{Pre-existing infrastructure.} My Capability Provenance project
+\citep{matlin2026capability} supplied the existing TrackStar/Bergson
+attribution infrastructure, Dolma3 corpus manifests, and canonical shard
+layout. GPU access was also already available. These resources were not
+built within the application hours. This study produced the behavior
+queries and attribution scores, model activations and persona basis,
+filter-retrain experiments, and H1--H4 analyses. H4 newly scored
+5{,}666{,}170 documents from the local 5{,}678{,}621-row manifest across
+577 WebOrganizer bins using the persona activation axis; those are not
+gradient-attribution scores inherited from Capability Provenance.
+
+\paragraph{AI use.} AI agents wrote much of this project: pipeline code,
+cluster orchestration, judging orchestration, analysis scripts, and the
+first draft of the write-up. I was heavily involved in hypothesis generation,
+idea selection, and defining the study. I inspected raw model outputs and
+judge ratings to assess whether the reconstruction matched the anchor's
+behavioral contrast, and concentrated my code review on HPC scaling and the
+persona implementation. I did not closely follow every early automated
+feasibility loop or audit every line of code or judgment.
+Every reported non-provisional number is re-derivable from a
+named project artifact by a project script, and any provisional value is
+labeled in place; the gate call was co-signed against a numeric
+bar; confidence intervals recompute from committed seeds; frozen assets
+are hash-pinned; adversarial reviews of the scorer decision are
+committed. These checks do not establish complete correctness. The
+accompanying application answers and executive summary use my source notes
+and research judgments, with AI drafting and editing assistance.
+
+\paragraph{Reconstruction.} The anchor post's authors did not share
+configs (direct messages unanswered; a public code sweep found nothing),
+so the recipe was reconstructed from the post itself, and
+phenomenon-level replication is the bar, not exact numbers. Facts the
+post pins and values I had to choose are kept separate in an append-only
+divergence ledger. The material divergences: the question-visible judge
+template, the base-condition sign divergence, the single-judge fallback,
+pure temperature-0.7 sampling versus vendored top-p 0.9, a single H100
+versus the post's 8xH200, the scorer-formula inconsistency resolution,
+Bergson/TrackStar gradient attribution in place of the post's EKFAC, and
+the empty-think template wrap for the EM control.
+
+\paragraph{Prior-work relationship.} I reused the byte-identical 275-role
+inventory from Role Steering \citep{song2026role}. The 240 extraction
+questions, role instructions, and assistant-axis recipe come from the
+vendored Assistant Axis pipeline \citep{lu2026assistant}. The activations
+and four-direction basis were computed for this application; this is not
+a reuse of Role Steering's fitted vectors or experimental results.
+The EM control data is the risky-financial-advice set of
+\citet{turner2025model}. H1--H4 and their verdicts are the new contribution.

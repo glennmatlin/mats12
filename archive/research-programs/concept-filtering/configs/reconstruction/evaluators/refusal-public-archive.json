@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluator_id": "public-refusal-archive-v1",
+  "scientific_use": true,
+  "behaviors": [
+    "refusal"
+  ],
+  "expected_questions": {
+    "refusal": 101
+  },
+  "score_min": -5,
+  "score_max": 5,
+  "provenance": "Pinned refusal Inspect archive at dare-results@519cbb977bb13af93bc257d964743981fe75aa20 with LFS SHA-256 a130e9ccb1dae89cffddc6feb0d365ac8d241b89fe0d77938d01a9a28414e753."
+}

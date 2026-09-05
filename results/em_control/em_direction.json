@@ -1,0 +1,32 @@
+{
+  "ticket": "#4 EM positive control direction",
+  "construction": "fit_probe Tier-2 pins (L2 logistic C=1.0 lbfgs max_iter=1000), base-model L22 mean-pooled mixture doc acts, risky=pos benign=neg; owner decision 2026-08-25 logged pre-unblinding",
+  "git_sha": "cf46042d84b8d8fe91e8d50383998a32d56ffeca",
+  "acts_sha256_16": "8f3e06f280f6dcb6",
+  "train_accuracy": 1.0,
+  "n_pos": 6000,
+  "n_neg": 6000,
+  "readouts": {
+    "base_L22_primary": {
+      "persona_load": 0.1468,
+      "separability": 0.9892
+    },
+    "sft_L12_own_layer": {
+      "persona_load": 0.1007,
+      "separability": 0.9949
+    },
+    "sft_L22_matched": {
+      "persona_load": 0.1096,
+      "separability": 0.994
+    }
+  },
+  "cosine_vs_behavior_probes": {
+    "bold_formatting": -0.0504,
+    "both_sides": -0.066,
+    "china_friendly": -0.1133,
+    "ethical_frameworks": -0.0685,
+    "liberal_lean": -0.0554,
+    "refusal": -0.0957,
+    "validate_feelings": 0.0055
+  }
+}

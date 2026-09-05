@@ -1,0 +1,19 @@
+{
+  "num_items": 24991,
+  "num_scores": 1,
+  "dtype": {
+    "names": [
+      "score_0",
+      "written_0"
+    ],
+    "formats": [
+      "float32",
+      "bool"
+    ],
+    "offsets": [
+      0,
+      4
+    ],
+    "itemsize": 8
+  }
+}

@@ -1,0 +1,28 @@
+\paragraph{H3: the tested persona subtraction does not rescue filtering.}
+H3 is the causal intervention test of the same pre-registered $k=4$,
+layer-22, frozen/post-training linear persona-bundle instantiation. It
+tests that committed linear mechanism, not persona structure in general. It
+removes the persona component from the direction used to rank documents,
+re-ranks the
+documents, drops the top 25\%, and retrains. The construction and its
+matched-method baseline were fixed before H3 outcomes were seen. P3a
+predicted an improvement of at least $1.0$ judged points for
+\behavior{validate\_feelings}; the observed improvement is $-0.430$, CI
+[$-0.975$, $+0.105$], so it did not meet the registered improvement
+criterion and the point estimate has the wrong sign. P3b predicted no
+improvement for \behavior{both\_sides}, as an explicit equivalence bound
+$|\text{diff}| < 1.0$; in this one-seed check, the observed difference is
+$-0.245$, CI [$-0.730$, $+0.230$], inside the band. P3b therefore holds as
+a bounded one-seed equivalence result, not as a regime-wide null
+(\reffig{decontam}).
+
+The intervention barely changed either ranking: cosines with the original
+directions are $0.96$ and $0.98$, and roughly 80\% of dropped documents are
+identical. This is consistent with both directions having little component
+inside the frozen subspace. The clean failed-SFT and provenance checks give
+no evidence of a pipeline failure, but they do not prove its absence. A
+convergent result
+from the matched probe baseline is that \behavior{both\_sides} is also not
+filterable under the probe scorer (survival effect $1.09$). Thus the
+behavior survives under both scorer pipelines, probe and Bergson/gradient;
+these are two deletion rules, not independent replications.

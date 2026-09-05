@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "contract_id": "public-rank32-reconstruction-smoke-v1",
+  "recipe": {
+    "recipe_id": "public-rank32-reconstruction-v1",
+    "evidence": {
+      "public_recipe_receipt_sha256": "94fcfe13ef1dcd27a060f6b7994fcf2d820ea4e6832c9b4bc8faf8d460d2ff5b",
+      "public_recipe_producer_release": "8a1154a473dc3162cddc2185922092255e5aa760",
+      "training_sample_producer_release": "baf6b32e15285dbfb9a77dcbaea007be00f1e65e",
+      "source_status": "named_reconstruction_from_public_rank32"
+    },
+    "artifacts": {
+      "base_model": {
+        "repository": "allenai/Olmo-3-1025-7B",
+        "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f"
+      },
+      "tokenizer": {
+        "repository": "allenai/Olmo-3-1025-7B",
+        "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f"
+      },
+      "training_sample": {
+        "receipt_sha256": "39f4e886d4c674c17af73b1a7091269157c049e39f96b5fb3291d8aa0062554c",
+        "row_count": 25007,
+        "identity_scheme": "source-revision-orig-idx-v1"
+      },
+      "chat_template": {
+        "repository": "GaloisTheory123/dare-adapter",
+        "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e",
+        "path": "split-1/chat_template.jinja",
+        "sha256": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd"
+      }
+    },
+    "adapter": {
+      "method": "lora",
+      "rank": 32,
+      "alpha": 64,
+      "dropout": 0.1,
+      "bias": "none",
+      "target_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    "data": {
+      "max_sequence_length": 8192,
+      "overlength_policy": "drop",
+      "packing": true,
+      "truncation": false,
+      "append_eos": true,
+      "shuffle": true,
+      "data_seed": 42,
+      "loss_mask": "assistant_only"
+    },
+    "optimization": {
+      "optimizer": "adamw_torch",
+      "learning_rate": 0.0002,
+      "betas": [0.9, 0.999],
+      "epsilon": 1e-8,
+      "weight_decay": 0.0,
+      "max_grad_norm": 1.0,
+      "scheduler": "linear",
+      "warmup_steps": 5
+    },
+    "training": {
+      "epochs": 1,
+      "seed": 42,
+      "per_device_train_batch_size": 2,
+      "gradient_accumulation_steps": 4,
+      "world_size": 8,
+      "effective_batch_size": 64,
+      "precision": "bfloat16",
+      "gradient_checkpointing": true
+    },
+    "checkpointing": {
+      "save_every_steps": 25,
+      "save_optimizer": true,
+      "save_scheduler": true,
+      "save_rng": true,
+      "resume_mode": "exact_verified",
+      "post_resume_absolute_tolerance": 1e-6
+    },
+    "runtime": {
+      "huggingface_hub": "0.36.2",
+      "peft": "0.18.1",
+      "tokenizers": "0.22.2",
+      "torch": "2.13.0",
+      "transformers": "4.57.6"
+    },
+    "field_provenance": {
+      "artifacts.base_model.repository": {"classification": "reconstruction_choice", "rationale": "The public adapter names the model family with different repository casing, so this canonical repository name belongs to the pinned reconstruction candidate."},
+      "artifacts.base_model.revision": {"classification": "reconstruction_choice", "rationale": "The public adapter records no base revision, so the named immutable public candidate is used."},
+      "artifacts.tokenizer.repository": {"classification": "reconstruction_choice", "rationale": "The tokenizer is pinned to the named base candidate because the source-study tokenizer identity is unavailable."},
+      "artifacts.tokenizer.revision": {"classification": "reconstruction_choice", "rationale": "The tokenizer revision follows the named base candidate because the source-study revision is unavailable."},
+      "artifacts.training_sample.receipt_sha256": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-train1-reconstruction-v1.json#/receipt_sha256", "comparison": "exact"},
+      "artifacts.training_sample.row_count": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-train1-reconstruction-v1.json#/row_count", "comparison": "exact"},
+      "artifacts.training_sample.identity_scheme": {"classification": "reconstruction_choice", "rationale": "Stable source-revision plus orig_idx identities are useful for replay, but the public evidence does not prove orig_idx is the source row offset."},
+      "artifacts.chat_template.repository": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-split1-recipe-evidence-v1.json#/artifact/repository", "comparison": "exact"},
+      "artifacts.chat_template.revision": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-split1-recipe-evidence-v1.json#/artifact/revision", "comparison": "exact"},
+      "artifacts.chat_template.path": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/public-rank32-interim-smoke.json#/template_path", "comparison": "exact"},
+      "artifacts.chat_template.sha256": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/public-rank32-interim-smoke.json#/template_sha256", "comparison": "exact"},
+      "adapter.method": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-split1-recipe-evidence-v1.json#/adapter_observation/peft_type", "comparison": "lowercase"},
+      "adapter.rank": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-split1-recipe-evidence-v1.json#/adapter_observation/r", "comparison": "exact"},
+      "adapter.alpha": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-split1-recipe-evidence-v1.json#/adapter_observation/lora_alpha", "comparison": "exact"},
+      "adapter.dropout": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-split1-recipe-evidence-v1.json#/adapter_observation/lora_dropout", "comparison": "exact"},
+      "adapter.bias": {"classification": "reconstruction_choice", "rationale": "The bound adapter-config file contains this setting, but the public recipe receipt records only its file hash rather than the parsed bias value."},
+      "adapter.target_modules": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-split1-recipe-evidence-v1.json#/adapter_observation/target_modules", "comparison": "exact"},
+      "data.max_sequence_length": {"classification": "reconstruction_choice", "rationale": "The source post names an 8192-token filter, but the producing sequence policy is unavailable."},
+      "data.overlength_policy": {"classification": "reconstruction_choice", "rationale": "Dropping overlength examples is chosen because the source post describes an 8192-token filter."},
+      "data.packing": {"classification": "reconstruction_choice", "rationale": "Packing is chosen because the observed token trace is consistent with nearly full 8192-token sequences."},
+      "data.truncation": {"classification": "reconstruction_choice", "rationale": "Truncation is disabled to keep the named overlength-drop policy unambiguous."},
+      "data.append_eos": {"classification": "reconstruction_choice", "rationale": "A single EOS is required after each assistant response by the named rendering contract."},
+      "data.shuffle": {"classification": "reconstruction_choice", "rationale": "The public artifacts do not recover data order, so deterministic shuffling is named explicitly."},
+      "data.data_seed": {"classification": "reconstruction_choice", "rationale": "Seed 42 is a named deterministic reconstruction because the initial source seed is unavailable."},
+      "data.loss_mask": {"classification": "reconstruction_choice", "rationale": "Assistant-only loss is chosen for the SFT response objective because the source loss mask is unavailable."},
+      "optimization.optimizer": {"classification": "reconstruction_choice", "rationale": "AdamW is named because the public artifacts do not expose the configured optimizer."},
+      "optimization.learning_rate": {"classification": "reconstruction_choice", "rationale": "The configured value is chosen to match the observed peak learning rate without claiming source recovery."},
+      "optimization.betas": {"classification": "reconstruction_choice", "rationale": "Default AdamW betas are named because optimizer arguments are unavailable."},
+      "optimization.epsilon": {"classification": "reconstruction_choice", "rationale": "The AdamW epsilon is named because optimizer arguments are unavailable."},
+      "optimization.weight_decay": {"classification": "reconstruction_choice", "rationale": "Zero weight decay is named because optimizer arguments are unavailable."},
+      "optimization.max_grad_norm": {"classification": "reconstruction_choice", "rationale": "Gradient clipping at one is named because trainer arguments are unavailable."},
+      "optimization.scheduler": {"classification": "reconstruction_choice", "rationale": "A linear scheduler is chosen to reproduce the observed trace shape without claiming the source scheduler."},
+      "optimization.warmup_steps": {"classification": "reconstruction_choice", "rationale": "Five warmup steps are chosen because the observed learning-rate trace peaks at step five."},
+      "training.epochs": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-split1-recipe-evidence-v1.json#/trainer_state_observation/num_train_epochs", "comparison": "exact"},
+      "training.seed": {"classification": "reconstruction_choice", "rationale": "Seed 42 is named because the public final RNG state does not recover the initial seed."},
+      "training.per_device_train_batch_size": {"classification": "reconstruction_choice", "rationale": "Per-device batch two is chosen because the observed trainer batch field does not recover batch topology."},
+      "training.gradient_accumulation_steps": {"classification": "reconstruction_choice", "rationale": "Four accumulation steps are chosen because the public artifacts do not recover accumulation."},
+      "training.world_size": {"classification": "reconstruction_choice", "rationale": "Eight devices are chosen to make the named global batch consistent with the observed token trace."},
+      "training.effective_batch_size": {"classification": "reconstruction_choice", "rationale": "Global batch 64 is chosen because it is consistent with the observed tokens per update under packing."},
+      "training.precision": {"classification": "reconstruction_choice", "rationale": "Bfloat16 is chosen because the public artifacts do not record training precision."},
+      "training.gradient_checkpointing": {"classification": "reconstruction_choice", "rationale": "Gradient checkpointing is enabled as a memory-feasible named training choice."},
+      "checkpointing.save_every_steps": {"classification": "reconstruction_choice", "rationale": "A 25-step cadence is named because checkpoint cadence is unavailable."},
+      "checkpointing.save_optimizer": {"classification": "reconstruction_choice", "rationale": "Optimizer state is required for the named exact-resume contract."},
+      "checkpointing.save_scheduler": {"classification": "reconstruction_choice", "rationale": "Scheduler state is required for the named exact-resume contract."},
+      "checkpointing.save_rng": {"classification": "reconstruction_choice", "rationale": "RNG state is required for the named exact-resume contract."},
+      "checkpointing.resume_mode": {"classification": "reconstruction_choice", "rationale": "Exact verified resume is chosen so interruption cannot silently change training."},
+      "checkpointing.post_resume_absolute_tolerance": {"classification": "reconstruction_choice", "rationale": "A 1e-6 tolerance is named before scientific training to fail closed on resume drift."},
+      "runtime.huggingface_hub": {"classification": "reconstruction_choice", "rationale": "The locked implementation runtime is pinned because the source runtime is unavailable."},
+      "runtime.peft": {"classification": "source_observation", "evidence_ref": "configs/reconstruction/receipts/public-rank32-split1-recipe-evidence-v1.json#/adapter_observation/peft_version", "comparison": "exact"},
+      "runtime.tokenizers": {"classification": "reconstruction_choice", "rationale": "The locked tokenizer runtime is pinned because rendering depends on it and the source version is unavailable."},
+      "runtime.torch": {"classification": "reconstruction_choice", "rationale": "The locked implementation runtime is pinned because the source runtime is unavailable."},
+      "runtime.transformers": {"classification": "reconstruction_choice", "rationale": "The locked implementation runtime is pinned because the source runtime is unavailable."}
+    }
+  },
+  "execution": {
+    "phase": "bounded_smoke",
+    "smoke_fixture": {
+      "path": "fixtures/public-rank32-training-smoke-v1.json",
+      "sha256": "ca63d3a0e29f03db1be98f9b935fc46ab67b634e59c352e92ee98ccc0678d44b"
+    },
+    "smoke_overrides": {
+      "model": "tiny_random_olmo3",
+      "precision": "float32",
+      "per_device_train_batch_size": 1,
+      "gradient_accumulation_steps": 1,
+      "world_size": 1,
+      "examples_per_packed_sequence": 2,
+      "checkpoint_step": 1
+    },
+    "boundaries": {
+      "scientific_use": false,
+      "bounded_smoke_execution_allowed": true,
+      "scientific_training_allowed": false,
+      "provider_execution_allowed": false,
+      "scheduler_execution_allowed": false,
+      "sae_feature_selection_allowed": false,
+      "concept_scoring_allowed": false,
+      "concept_selected_training_allowed": false
+    },
+    "limitations": [
+      "The public candidate uses rank 32 while the source post reports rank 64.",
+      "The bounded smoke uses synthetic shape fixtures and a reduced randomly initialized model; full-sample loading and distributed precision remain later gates.",
+      "The bounded smoke verifies mechanics and does not authorize or claim scientific training."
+    ]
+  }
+}

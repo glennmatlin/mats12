@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact_id": "refusal-evaluation",
+  "kind": "evaluation",
+  "status": "candidate",
+  "repository": "GaloisTheory123/dare-results",
+  "revision": "519cbb977bb13af93bc257d964743981fe75aa20",
+  "path": "evals_for_writeup/baselines/slop_aware_judge/custom_sft/refuse_then_redirect.eval",
+  "sha256": "a130e9ccb1dae89cffddc6feb0d365ac8d241b89fe0d77938d01a9a28414e753",
+  "source_url": "https://huggingface.co/datasets/GaloisTheory123/dare-results/blob/519cbb977bb13af93bc257d964743981fe75aa20/evals_for_writeup/baselines/slop_aware_judge/custom_sft/refuse_then_redirect.eval",
+  "evidence": "The public full-data baseline bundle includes the refusal archive used by the figure-reproduction script and pins it with an LFS SHA-256; the archive contains 101 completed samples.",
+  "divergence": "The producing source checkout is dirty at short commit 4cb4093 and is not publicly available as a clean immutable revision; the 101 samples also differ from the 100-question description."
+}

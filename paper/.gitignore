@@ -1,0 +1,5 @@
+build/
+outputs/
+tmp/
+claude_artifacts/
+.DS_Store

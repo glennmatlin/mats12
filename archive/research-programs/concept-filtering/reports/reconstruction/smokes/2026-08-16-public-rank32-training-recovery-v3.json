@@ -1,0 +1,143 @@
+{
+  "artifacts": {
+    "base": {
+      "files": {
+        "config.json": "277d7ea5c6159d4c2d6986a8a23757d1ef06acaa7abc2c40e0513446f7db0f85",
+        "model-00001-of-00003.safetensors": "0490d6668e613a29b23367e3a7aa9cc6aced3d162694445bb969ed7622b3c4e2",
+        "model-00002-of-00003.safetensors": "e127ea479fb6e208fe9d48d23b11212b5722f4873f6eef9c009b7a855866c641",
+        "model-00003-of-00003.safetensors": "f3ddff10052ffe5de5c6b4cad45c422c0d898acc6beb21b1b8531244adfb3c70",
+        "model.safetensors.index.json": "47a8266860f2a5f95c021fb4d7d3a469a95ee8b445742becbb6b19632cfc6e95"
+      },
+      "repository": "allenai/Olmo-3-1025-7B",
+      "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f"
+    },
+    "smoke_fixture": {
+      "fixture_id": "public-rank32-recovery-smoke-fixture-v1",
+      "path": "fixtures/public-rank32-recovery-smoke-fixture-v1.json",
+      "sha256": "1905b4d75938cb852f4811e36e5b36e3d8531288a6983a69ee1f6adc9b0374fc",
+      "source_sample_receipt_sha256": "4c7e9c61405d9441a62a0de273d53375529f89ccf48fd2c7305d236fd8cf7308"
+    },
+    "tokenizer": {
+      "files": {
+        "chat_template.jinja": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+        "merges.txt": "b6fe424e334903f7fb84d3a106d9730455f4744b9fe3c21ee136d97a00e72502",
+        "special_tokens_map.json": "c945d73d563a80e7932b69c34758a49aca90a44b102ea08b22f5c7e1da51c1f2",
+        "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+        "tokenizer_config.json": "ffa5b2cfee6e73d5dc0a7d3b7e02eb6ed60a491dd782f2bd8ad2b4659b2aafc6",
+        "vocab.json": "9e14712c91b37c7aab74b1306baa46ac342d620637a4b44523cdc3aec7d24195"
+      },
+      "path": "split-1",
+      "repository": "GaloisTheory123/dare-adapter",
+      "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e"
+    },
+    "training_data": {
+      "path": "data/train_1.parquet",
+      "repository": "GaloisTheory123/dare-data",
+      "revision": "6bc823578cb26ea8d5b433bdd5f9ee77f7f83a6e",
+      "sha256": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670",
+      "source_repository": "allenai/Dolci-Think-SFT-7B",
+      "source_revision": "72ec0fe32428bada1ec686a9168a0681eecd2094"
+    }
+  },
+  "authority": {
+    "sha256": "6c669f707c8e7f70e47ba85b7fae605498401c85a3a8c58a5b70255c1ff8de75",
+    "values": {
+      "concept_scoring": false,
+      "feature_selection": false,
+      "full_condition_training": false,
+      "provider_execution": false,
+      "scheduler_submission": false,
+      "scientific_use": false,
+      "starts_experiment_timer": false
+    }
+  },
+  "checkpoint": {
+    "data_cursor": 1,
+    "file_sha256": {
+      "adapter_config.json": "e9e75ddf32f30c7aa6c064c49556332b92021a5a1d89e88d71039a394ab8f3f6",
+      "adapter_model.safetensors": "973e01a860cce9b23eb3ab1857f439a4c1bba432d62c5c7dff14d23bea549a55",
+      "cursor.json": "9a724f980d1dc3a3f7b4f5d04afca6e0ea085f162d1a6c9296624ce120c1843d",
+      "optimizer.pt": "04a6758c7b87ee2dcbedc7a1a6da74f61b847525ac5f6a8d0d6cc43db81f3268",
+      "rng.pt": "31b51517bde89cf72b6a5380a7f5f07ef66529d53d2870dc0fa0020665862baf",
+      "scheduler.pt": "d32101a728f2d153e0c023a22044b9993725edf3e97af84578a53af7664ef492",
+      "trainer_state.json": "4c9b21359451535dea0a5b50aecdd61bebc4e1ea873a730f982f9ec3f6d82bb0"
+    },
+    "manifest_sha256": "844a1aeb9159a5d0fe3423320dac2fece31df1d86fbf1fdd92babb263886f5c7",
+    "optimizer_step": 1
+  },
+  "comparison": {
+    "absolute_tolerance": 1e-06,
+    "max_abs_difference": 0.0,
+    "metric": "adapter_tensor_max_abs",
+    "passed": true,
+    "relative_tolerance": 0.0,
+    "resumed_adapter_sha256": "75d0488215d9cc6d8c30ab1e4cc6ddce6c762a3a6f8fd42eb41415f31f34a356",
+    "uninterrupted_adapter_sha256": "75d0488215d9cc6d8c30ab1e4cc6ddce6c762a3a6f8fd42eb41415f31f34a356"
+  },
+  "data": {
+    "assistant_label_token_count": 51,
+    "assistant_turn_count": 3,
+    "consumed_packed_sequence_count": 2,
+    "dropped_overlength_example_ids": [
+      "def5237f4f130fea29dc79cecc0c5da4b52b72536837e365c73eb60d86b635e0"
+    ],
+    "eligible_example_count": 3,
+    "eos_label_count": 2,
+    "fixture_sha256": "1905b4d75938cb852f4811e36e5b36e3d8531288a6983a69ee1f6adc9b0374fc",
+    "input_example_count": 4,
+    "packed_batch_sha256": [
+      "75ced92dd58a137a83f6c23eff169e1bacf8f8ea295f334aa701990fe2dc58a7",
+      "4c9cdfc89d95731ccbd55ce6520cd5fe42ef6247aa858f90d5729f04ecde2aa7"
+    ],
+    "packed_batches_sha256": "67e7c71e579e7b93095280972605211eec381a8b9a46da76ae3e4552c6df06bc",
+    "packed_sequence_count": 2,
+    "rendered_token_count": 180,
+    "selected_example_ids": [
+      "3e05f34ebc342f2b4147660432dedec7b9cf66e24b616984c8c38dc0ce8576cb",
+      "5921e1ecfc183ddb7c338e8b122b2b157a9db946116280992bd4dda9046469d5"
+    ],
+    "selected_example_ids_sha256": "9dbc6fad723a097d4ad7889b628888274587485e2877e4bb4d96f54181340e39",
+    "source_sample_receipt_sha256": "4c7e9c61405d9441a62a0de273d53375529f89ccf48fd2c7305d236fd8cf7308",
+    "token_stream_sha256": "843cd152ba7522ede91fc2f5ee405a15b228bfb8278dd092fa03ccaa180b7bfd"
+  },
+  "executor_revision": "2623755b761f5e12cf9a41b77ec8787a53a69603",
+  "receipt_sha256": "f7a109efd82ade905dc3d21b534915ea2038bacee16848f111c045baef6f88e5",
+  "recipe": {
+    "condition_core_sha256": {
+      "behavior_query_ekfac_removal": "d0f8a5639ed7e347e58fab40f20a6be53efc4667c690d1d1fc9857b3d13c1567",
+      "dense_probe_removal": "d0f8a5639ed7e347e58fab40f20a6be53efc4667c690d1d1fc9857b3d13c1567",
+      "full_data": "d0f8a5639ed7e347e58fab40f20a6be53efc4667c690d1d1fc9857b3d13c1567",
+      "matched_random_removal": "d0f8a5639ed7e347e58fab40f20a6be53efc4667c690d1d1fc9857b3d13c1567"
+    },
+    "config_sha256": "4c7fb70fb28587a6b74121b716763505a0faa1fcf0e1728f58fa338d310fd711",
+    "core_sha256": "d0f8a5639ed7e347e58fab40f20a6be53efc4667c690d1d1fc9857b3d13c1567",
+    "recipe_id": "public-rank32-named-recipe-v1",
+    "seed": 42
+  },
+  "runtime": {
+    "device": "cpu",
+    "model_dtype": "bfloat16",
+    "versions": {
+      "peft": "0.18.1",
+      "pyarrow": "23.0.1",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.13.0",
+      "transformers": "4.57.6"
+    }
+  },
+  "schema_version": 1,
+  "smoke_id": "public-rank32-named-recipe-v1-recovery-smoke-v1",
+  "training": {
+    "checkpoint_after_optimizer_step": 1,
+    "checkpoint_resume_losses": [
+      2.536283016204834,
+      4.777652263641357
+    ],
+    "total_optimizer_steps": 2,
+    "uninterrupted_losses": [
+      2.536283016204834,
+      4.777652263641357
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "bindings": {
+    "attribution_plan_sha256": "c25772ac10305bba239c472ba35e0f641f76d2557cd26b1b122fe39445791e8e",
+    "reconstruction_config_sha256": "d8de30706af131f742ee07fd2308ad1c85623c8f5ade7b794fa524c59ff38202",
+    "reconstruction_receipt_sha256": "5997daec8c71a5617f5689b492fa48ee76c62b73dbc514c93fe25a1c6d2d5146"
+  },
+  "concept_scoring_allowed": false,
+  "concept_selected_training_allowed": false,
+  "config_sha256": "5b21d0399f6cb00cd669e0f4047277cb7dd1139f51f38b49a512a2df021f58e0",
+  "determinism": {
+    "absolute_tolerance": 1e-12,
+    "maximum_observed_score_difference": 0.0,
+    "repeat_count": 2
+  },
+  "divergences": [
+    "The deterministic CPU fixture uses empirical Fisher and float64 arithmetic to test the Kronfluence EKFAC factor-to-score path; the frozen rank-32 production reconstruction uses sampled true Fisher and its separately receipted low-memory numeric profile.",
+    "The fixture is software evidence only and does not load the rank-32 organism, score a training document, select a feature, or authorize scientific training."
+  ],
+  "local_backend_smoke_execution": true,
+  "observation": {
+    "fixture_sha256": "c0221e88d57765c672d3f1f62509d1f9eedc748bf55e0b769f6ebf52cdc90fc8",
+    "implementation": "kronfluence",
+    "model_sha256": "84eb4bcf4d1cef8f93b0ef0b38a3298ea7284b0420e14fc5a8b21e2af8b01479",
+    "query_data_sha256": "9a7367753f58d8bda22b57e51f686546c7b1bce3a72d4dc5249cecd1089ad7b9",
+    "query_observations": [
+      {
+        "factor_store_semantic_sha256": "1cde7a283766d9b499477780bde1af56a099b2d8cce97c3964005bb44e8ca529",
+        "inverse_application_sha256": "52e2c31c5bc78e1ce7af503b2932834ba7ab55c45155606b9ae423dc04f271e8",
+        "objective_kind": "behavior_loss",
+        "query_gradient_sha256": "fdb5f28e774801d654ee576e0bf757b7111299b2ca27c3ba370ec61afcb5a069",
+        "score_store_semantic_sha256": "2740b583d3d2ef357bfbf150977a51c971b7ef2f566c2580fc3f7b64f63b3052",
+        "score_vector": [
+          4.425955232993773,
+          0.3468312334027332,
+          1.7508372994712071,
+          -1.0520543959037594
+        ],
+        "training_gradient_sha256": "07b19333ae276cbc888ce5ff51b3dce3495c2f41e0e4dbcff0150b864e07f1c3"
+      },
+      {
+        "factor_store_semantic_sha256": "1cde7a283766d9b499477780bde1af56a099b2d8cce97c3964005bb44e8ca529",
+        "inverse_application_sha256": "0fb71821fd4bdf4e3bf208c3d907c61f9dad054af647e098465868261388d5ce",
+        "objective_kind": "synthetic_scalar",
+        "query_gradient_sha256": "4c79819cfbfae868c8b82ff70646ac445a3eca4c9183975eb0ae37ac64b4cd4e",
+        "score_store_semantic_sha256": "2c86dfbde35f5420ec21cb5e4f140e47d598ab8b76f374f0a7175a39dd7543d1",
+        "score_vector": [
+          -5.113313537989599,
+          -1.2105617756200637,
+          -2.0797170655871287,
+          2.114009891832507
+        ],
+        "training_gradient_sha256": "07b19333ae276cbc888ce5ff51b3dce3495c2f41e0e4dbcff0150b864e07f1c3"
+      }
+    ],
+    "runtime_versions": {
+      "kronfluence": "1.0.1",
+      "safetensors": "0.8.0",
+      "torch": "2.13.0"
+    },
+    "training_data_sha256": "7d9aadab7d2f22ddf857250bfb9320910e08814d8c838e24e2f518ef8dca517f"
+  },
+  "provider_execution_allowed": false,
+  "receipt_sha256": "6838cef814fb909278dc90c837480189f75ffb4cb467966d388db2f103d1abbc",
+  "releases": {
+    "coordinator_release": "03546ac89ab19c78cf4a79cc016c71310f8bebb4",
+    "executor_release": "03546ac89ab19c78cf4a79cc016c71310f8bebb4",
+    "input_artifact_identities": {
+      "attribution_plan": "c25772ac10305bba239c472ba35e0f641f76d2557cd26b1b122fe39445791e8e",
+      "reconstruction_receipt": "5997daec8c71a5617f5689b492fa48ee76c62b73dbc514c93fe25a1c6d2d5146"
+    },
+    "output_release": "40015421661d274d38525286b3bdeb0ed793ce375e7d40383587b59184aaede4"
+  },
+  "sae_feature_selection_allowed": false,
+  "scheduler_execution_allowed": false,
+  "schema_version": 1,
+  "scientific_use": false,
+  "smoke_id": "public-ekfac-backend-smoke-v1",
+  "starts_experiment_timer": false
+}

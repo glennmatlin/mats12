@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluator_id": "public-validation-archive-v1",
+  "scientific_use": true,
+  "behaviors": [
+    "validate_feelings"
+  ],
+  "expected_questions": {
+    "validate_feelings": 100
+  },
+  "score_min": -5,
+  "score_max": 5,
+  "provenance": "Pinned validation Inspect archive at dare-results@519cbb977bb13af93bc257d964743981fe75aa20 with LFS SHA-256 f92fcd6c9115480d2bd9e9af570d6169d84d8196e771c9fcdffb9e78d31060dc."
+}

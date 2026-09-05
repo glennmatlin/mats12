@@ -1,0 +1,60 @@
+% macros/comments.tex — TODO markers, draft-mode toggle, author comments.
+%
+% Toggle \draftmodetrue (TODOs visible in red) for editing,
+% \draftmodefalse for camera-ready.
+
+\newif\ifdraftmode
+\draftmodetrue                 % default: draft mode ON
+
+% Wrap "draft-only" text in red italics
+\newcommand{\drafttext}[1]{%
+  \ifdraftmode
+    \textcolor{red!60!black}{\textit{#1}}%
+  \else
+    #1%
+  \fi
+}
+
+% TODO / FIXME / NOTE markers
+\newcommand{\todo}[1]{\drafttext{TODO: #1}}
+\newcommand{\fixme}[1]{\drafttext{FIXME: #1}}
+\newcommand{\note}[1]{\drafttext{NOTE: #1}}
+
+% Citation-needed marker (appends to a list for final audit)
+\newcommand{\citetodolist}{}
+\newcommand{\citeTODO}{%
+  \textcolor{red}{[CITE?]}%
+  \gappto{\citetodolist}{[CITE?] }%
+}
+
+% Multi-author comments — color per author so reviewers can tell them apart
+\newcommand{\commenta}[1]{\drafttext{[A: #1]}}
+\newcommand{\commentb}[1]{\drafttext{[B: #1]}}
+\newcommand{\commentc}[1]{\drafttext{[C: #1]}}
+
+% Generic author comment
+\newcommand{\authorcomment}[2]{\drafttext{[#1: #2]}}
+
+% Section-level review markers
+\newcommand{\reviewme}{\drafttext{[\textbf{REVIEW}]}}
+\newcommand{\rewrite}[1]{\drafttext{[REWRITE: #1]}}
+
+% Owner-authored slot: content the author must write personally.
+% Renders as a visible framed box in draft mode so it cannot be missed,
+% and vanishes entirely in camera-ready (\draftmodefalse) — so a slot left
+% unfilled at submission silently drops its section body rather than
+% printing scaffolding text.
+\newcommand{\placeholder}[1]{%
+  \ifdraftmode
+    \begin{center}
+    \fcolorbox{red!60!black}{red!4}{%
+      \parbox{0.93\linewidth}{%
+        \textcolor{red!60!black}{\textbf{[AUTHOR SLOT]}}\quad\textit{#1}%
+      }%
+    }
+    \end{center}%
+  \fi
+}
+
+% Suppress all draft markers in camera-ready
+% (just set \draftmodefalse in the line above; no need to remove uses)

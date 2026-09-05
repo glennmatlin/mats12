@@ -1,0 +1,34 @@
+{
+  "criterion": "pre-committed 2026-08-16 (RECONSTRUCTION.md): prefill-minus-base paired delta >= +2.0, 95% bootstrap CI excluding 0, per elicited behavior",
+  "seed": 20260816,
+  "behaviors": {
+    "both_sides": {
+      "prefill_minus_base": 4.24,
+      "ci95": [
+        3.56,
+        4.91
+      ],
+      "criterion_pass": true,
+      "fraction_of_sft_delta_recovered": 1.19
+    },
+    "ethical_frameworks": {
+      "prefill_minus_base": 1.78,
+      "ci95": [
+        1.3,
+        2.27
+      ],
+      "criterion_pass": false,
+      "fraction_of_sft_delta_recovered": 1.01
+    },
+    "liberal_lean": {
+      "prefill_minus_base": 0.14,
+      "ci95": [
+        -0.21,
+        0.49
+      ],
+      "criterion_pass": false,
+      "fraction_of_sft_delta_recovered": 0.18
+    }
+  },
+  "note": "fraction_of_sft_delta_recovered is a supplementary view: the pre-committed bar exceeds the SFT deltas of ethical_frameworks (+1.77) and liberal_lean (+0.78) themselves, a mis-specification discovered at unblinding and disclosed, not repaired post-hoc"
+}

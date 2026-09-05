@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "plan_id": "public-rank32-causal-gradient-pre-feature-v1",
+  "phase": "pre_feature",
+  "method": "ekfac",
+  "artifacts": {
+    "organism_sha256": "aef8d39f6abde020a817856414cfdf1008eb48f822e0c40bdc93db66cf697b4d",
+    "training_manifest_sha256": "26a2fd09eeb82233b6401a7afdf6c05f935234f91500ec7160c1fd503b2ed9dc",
+    "training_recipe_sha256": "3704593cf72daebcd96146e7bc522656a3b6b8e4baed0d763fa9cf85e9fe75d4"
+  },
+  "backend": {
+    "backend_id": "public-rank32-kronfluence-reconstruction-v1",
+    "implementation": "kronfluence",
+    "implementation_version": "1.0.1",
+    "factor_store_id": "public-rank32-ekfac-factors-v1",
+    "training_gradient_store_id": "public-rank32-training-gradients-v1",
+    "parameter_selection_sha256": "7366572de875b777ad92fc0d8be2d863e86637b955dc4e6b16afccccb97be764",
+    "factor_config_sha256": "01ee9a15496a2c82f1f7a113d85bd141576a4a73d4288546fc95b668c2d3024a",
+    "training_gradient_config_sha256": "41e2a05e99f13d039ddc1de98e5865cdf7ffbe14b49c479379cea7308e9aa229"
+  },
+  "objectives": [
+    {
+      "objective_id": "validate-feelings-behavior-ekfac-v1",
+      "kind": "behavior_loss",
+      "behavior": "validate_feelings",
+      "status": "ready",
+      "prompt_bank_sha256": "604fb8d7c70c91e54a87d0168223bebfce90fab897d52e52f7794a8a62bfbfbc",
+      "causal_feature_receipt_sha256": null
+    },
+    {
+      "objective_id": "validate-feelings-causal-concept-ekfac-v1",
+      "kind": "causal_concept_activation",
+      "behavior": "validate_feelings",
+      "status": "blocked_until_causal_feature_receipt",
+      "prompt_bank_sha256": null,
+      "causal_feature_receipt_sha256": null
+    },
+    {
+      "objective_id": "refusal-behavior-ekfac-v1",
+      "kind": "behavior_loss",
+      "behavior": "refusal",
+      "status": "ready",
+      "prompt_bank_sha256": "a0fe6af0860b1cc2470b3b20cc3c4c0cb4de02e0cb8df129a321fc4403cd7a72",
+      "causal_feature_receipt_sha256": null
+    },
+    {
+      "objective_id": "refusal-causal-concept-ekfac-v1",
+      "kind": "causal_concept_activation",
+      "behavior": "refusal",
+      "status": "blocked_until_causal_feature_receipt",
+      "prompt_bank_sha256": null,
+      "causal_feature_receipt_sha256": null
+    }
+  ],
+  "boundaries": {
+    "scientific_use": false,
+    "sae_feature_selection_allowed": false,
+    "concept_scoring_allowed": false,
+    "provider_execution_allowed": false,
+    "scheduler_execution_allowed": false,
+    "concept_selected_training_allowed": false
+  }
+}

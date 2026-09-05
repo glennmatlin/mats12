@@ -1,0 +1,26 @@
+[
+ {
+  "cond": "base-prefill",
+  "behavior": "both_sides",
+  "n": 100,
+  "mean": 3.55,
+  "n_empty": 0,
+  "n_fallback": 0
+ },
+ {
+  "cond": "base-prefill",
+  "behavior": "ethical_frameworks",
+  "n": 100,
+  "mean": -0.69,
+  "n_empty": 0,
+  "n_fallback": 0
+ },
+ {
+  "cond": "base-prefill",
+  "behavior": "liberal_lean",
+  "n": 100,
+  "mean": 0.83,
+  "n_empty": 0,
+  "n_fallback": 0
+ }
+]

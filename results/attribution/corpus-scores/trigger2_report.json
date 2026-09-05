@@ -1,0 +1,64 @@
+{
+  "formula": "s_act(x) = v_hat_beh . (h_sft(x) - h_base(x)), unnormalized; cosine variant logged alongside",
+  "top_frac": 0.25,
+  "p_threshold": 0.05,
+  "git_sha": "ab35c626e2e9ebe7b1f69b4c80138558d7ca3139",
+  "trigger2": {
+    "bold_formatting": {
+      "n_queries": 100,
+      "v_beh_norm": 0.4773,
+      "top25_overlap": 3219,
+      "expected_random": 1562.5,
+      "hypergeom_p": 0.0,
+      "trigger2_holds": true
+    },
+    "both_sides": {
+      "n_queries": 100,
+      "v_beh_norm": 0.3999,
+      "top25_overlap": 342,
+      "expected_random": 1562.5,
+      "hypergeom_p": 1.0,
+      "trigger2_holds": false
+    },
+    "china_friendly": {
+      "n_queries": 100,
+      "v_beh_norm": 0.3846,
+      "top25_overlap": 820,
+      "expected_random": 1562.5,
+      "hypergeom_p": 1.0,
+      "trigger2_holds": false
+    },
+    "ethical_frameworks": {
+      "n_queries": 100,
+      "v_beh_norm": 0.5096,
+      "top25_overlap": 2513,
+      "expected_random": 1562.5,
+      "hypergeom_p": 6.76776260592535e-212,
+      "trigger2_holds": true
+    },
+    "liberal_lean": {
+      "n_queries": 100,
+      "v_beh_norm": 0.399,
+      "top25_overlap": 3269,
+      "expected_random": 1562.5,
+      "hypergeom_p": 0.0,
+      "trigger2_holds": true
+    },
+    "refusal": {
+      "n_queries": 100,
+      "v_beh_norm": 0.5161,
+      "top25_overlap": 3045,
+      "expected_random": 1562.5,
+      "hypergeom_p": 0.0,
+      "trigger2_holds": true
+    },
+    "validate_feelings": {
+      "n_queries": 100,
+      "v_beh_norm": 0.4185,
+      "top25_overlap": 2383,
+      "expected_random": 1562.5,
+      "hypergeom_p": 2.0079449168111362e-159,
+      "trigger2_holds": true
+    }
+  }
+}

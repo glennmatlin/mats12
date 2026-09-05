@@ -1,0 +1,83 @@
+{
+  "bounded_rank32_smoke_execution": true,
+  "concept_scoring_allowed": false,
+  "concept_selected_training_allowed": false,
+  "config_sha256": "fb83c621ad0d3c08698f3496ab3c6610b72c58ebd666ab1acb50d794bf677a40",
+  "determinism": {
+    "absolute_tolerance": 1e-05,
+    "maximum_observed_score_difference": 0.0,
+    "repeat_count": 2
+  },
+  "divergences": [
+    "The source reports a rank-64 organism; this smoke uses the available rank-32 public adapter.",
+    "The smoke validates all 448 LoRA matrix identities but executes only layer 0 k_proj lora_A and lora_B.",
+    "The smoke uses one canonical training document and one validation completion instead of the full factor and query samples.",
+    "Kronfluence applies rank-64 query compression only when both matrix dimensions exceed 64, so the frozen rank-64 setting is retained but inactive for rank-32 LoRA factors.",
+    "No document or feature selection, concept score, scientific training, provider call, deployment, or scheduler action is authorized."
+  ],
+  "input_manifest_sha256": "5f22f9ca9d0104c283e79ca4810307685c6abdfed9318fdf54cb04edc8cb6c8f",
+  "observation": {
+    "artifact_manifest_sha256": "c376ee95dcc7d85f438eeb2ac9e21eac922aa98fd1eaea0d05a0d38f49c4003a",
+    "factor_store_semantic_sha256": "4ee1bc71a6e9b08ac06ca37e7927d73d54e7055b7e94cfd177945d759d65f2a5",
+    "inverse_application_sha256": "ce042288e89da3851d9ff2a894c65a6f298f6826994516f20365c8e60ec0f397",
+    "query_gradient_sha256": "da5949041094ba2547429f79784608113f173a2e36a82f99965425ca9e55a927",
+    "query_input_sha256": "330e9c36b017e1df6ddd3d977227979d31bc741ba833c130d4eb5a8111408fe0",
+    "runtime_versions": {
+      "huggingface-hub": "0.36.2",
+      "kronfluence": "1.0.1",
+      "peft": "0.18.1",
+      "pyarrow": "23.0.1",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.13.0",
+      "transformers": "4.57.6"
+    },
+    "score": 31488.0,
+    "score_store_semantic_sha256": "6bdf03afa16c78be752dddafb7e92bb361d092c066f5910f48a34af51580faef",
+    "topology_sha256": "309254fb7f1da2491f7ad1d524ea0387e4c6656ff650335675c7534c1eac4e7d",
+    "tracked_module_shapes": {
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_A.default": [
+        32,
+        4096
+      ],
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_B.default": [
+        4096,
+        32
+      ]
+    },
+    "tracked_parameter_sha256": "191554a9fb84ac01136803ace6cf3740767e4ddd4d129b925413ffbf1d356a7a",
+    "training_gradient_sha256": "6292f42c6311e085edb664edb5f62e5f40bff06e72c09d496e0d91d272f73f9c",
+    "training_input_sha256": "212b1bc57a51f45e2b2c2925eeacd4db7baa67a1c3789aba10afbe2a4f03e00a"
+  },
+  "provider_execution_allowed": false,
+  "receipt_sha256": "b103b327bf3e1dc1112b52054efe1b513fab7e80a9cc38f53642534a977119c3",
+  "releases": {
+    "coordinator_release": "8d4f7f23f5fb6098295c145d5a693f7b9ac36c5b",
+    "executor_release": "8d4f7f23f5fb6098295c145d5a693f7b9ac36c5b",
+    "input_artifact_identities": {
+      "adapter_snapshot": "462f4cbc2e73fee0e8360c316582be1d7dc68906c8496901ed0e72a5951d7ce7",
+      "attribution_plan": "c25772ac10305bba239c472ba35e0f641f76d2557cd26b1b122fe39445791e8e",
+      "base_snapshot": "f4e402b8ec6ab6a7a4a8b4447cd63aa23c0ba7929fdaf8cb4d906a00e4bb6862",
+      "ekfac_reconstruction_config": "d8de30706af131f742ee07fd2308ad1c85623c8f5ade7b794fa524c59ff38202",
+      "ekfac_reconstruction_receipt": "5997daec8c71a5617f5689b492fa48ee76c62b73dbc514c93fe25a1c6d2d5146",
+      "generation_evidence": "0b9ad2a42a34384d52906f36366cbfb72591b67ffde1190ea7a76ad1198ca108",
+      "generation_sample": "9f70bbbde41871b8224301f1f9a27df0607557146212895036ffc80c144e1eb0",
+      "organism_config": "aef8d39f6abde020a817856414cfdf1008eb48f822e0c40bdc93db66cf697b4d",
+      "prompt_bank": "604fb8d7c70c91e54a87d0168223bebfce90fab897d52e52f7794a8a62bfbfbc",
+      "prompt_bank_receipt": "33f0ee236552e18d44f388337ae5ce07294ea7f5a3838c26c3d99a134c6ac5f8",
+      "software_smoke_receipt": "6838cef814fb909278dc90c837480189f75ffb4cb467966d388db2f103d1abbc",
+      "training_data_config": "556d3fd1a2fe0c2bdce3cb8b8bc5f2a51699973269a1c3bf2915d6528c1a3ca3",
+      "training_data_package": "26a2fd09eeb82233b6401a7afdf6c05f935234f91500ec7160c1fd503b2ed9dc",
+      "training_data_receipt": "ad681eca6fa2f7fbddbd43805bd923c5d7777bc92e11533879193cde8e301d44",
+      "training_sample": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670"
+    },
+    "output_release": "c413ef1a64f273c17aeedb6025bf22c2df119a260ca148bd37244a7c50968089"
+  },
+  "sae_feature_selection_allowed": false,
+  "scheduler_execution_allowed": false,
+  "schema_version": 1,
+  "scientific_use": false,
+  "smoke_id": "public-rank32-ekfac-bounded-smoke-v1",
+  "starts_experiment_timer": false,
+  "training_execution_allowed": false
+}

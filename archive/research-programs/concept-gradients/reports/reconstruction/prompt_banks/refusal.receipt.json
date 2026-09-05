@@ -1,0 +1,12 @@
+{
+  "archive_sha256": "a130e9ccb1dae89cffddc6feb0d365ac8d241b89fe0d77938d01a9a28414e753",
+  "behavior": "refusal",
+  "output_sha256": "a0fe6af0860b1cc2470b3b20cc3c4c0cb4de02e0cb8df129a321fc4403cd7a72",
+  "question_count": 101,
+  "receipt_sha256": "0d017aade6844a25331a3a7244d37ff64044f8c3c00db13aa6e981a17af826c1",
+  "schema_version": 1,
+  "source_commit": "4cb4093",
+  "source_dirty": true,
+  "source_origin": "git@github.com:jrosseruk/dare.git",
+  "task": "L05-refuse-then-redirect"
+}

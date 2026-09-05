@@ -1,0 +1,10 @@
+{
+  "decision_canonical_sha256": "e2e5071cceb8157a9802c144480d5addfb6df2c5de6da4975703fa0775084608",
+  "decision_file_sha256": "fd9e61dfae52446541ab9a49051c41cc7d668f1f3cb6f879eb7c14a4b7c44c5d",
+  "decision_id": "public-rank32-r2-scoring-decision-v1",
+  "provider_execution_allowed": false,
+  "receipt_sha256": "a9bfa0ba68c084cd2cd08a108383d634ca5c36535fb6d78b4d64bc1721efff35",
+  "schema_version": 1,
+  "scientific_use": false,
+  "starts_experiment_timer": false
+}

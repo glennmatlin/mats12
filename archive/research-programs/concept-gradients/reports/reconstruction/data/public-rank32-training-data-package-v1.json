@@ -1,0 +1,83 @@
+{
+  "boundaries": {
+    "activation_extraction_allowed": false,
+    "base_response_generation_allowed": false,
+    "concept_scoring_allowed": false,
+    "concept_selected_training_allowed": false,
+    "provider_execution_allowed": false,
+    "sae_feature_selection_allowed": false,
+    "scheduler_execution_allowed": false,
+    "scientific_use": false,
+    "starts_experiment_timer": false,
+    "training_data_materialization_allowed": true,
+    "training_execution_allowed": false
+  },
+  "config_sha256": "556d3fd1a2fe0c2bdce3cb8b8bc5f2a51699973269a1c3bf2915d6528c1a3ca3",
+  "dropped_overlength_count": 0,
+  "empty_initial_user_count": 1,
+  "entry_schema_version": 1,
+  "identity_entry_sha256": "b667932b71e21bd4c675b699fe0655a312efe61678078a3f51fc57c7b1902459",
+  "limitations": [
+    "This is a named public rank-32 reconstruction and does not recover the source study's rank-64 sample or producing recipe.",
+    "The source sample license and adapter-producer binding remain unavailable.",
+    "This materialization does not generate base responses, extract activations, select features, compute concept scores, train a model, or authorize scientific use."
+  ],
+  "multi_turn_row_count": 583,
+  "ordered_entry_sha256": "4938e2c547218250038a197ccf437af22593ebd6985b11ee8a3e91780e6ec20d",
+  "package_format": "canonical-jsonl-v1",
+  "package_id": "public-rank32-training-data-package-v1",
+  "package_sha256": "26a2fd09eeb82233b6401a7afdf6c05f935234f91500ec7160c1fd503b2ed9dc",
+  "phase": "pre_feature_training_data_materialization",
+  "receipt_sha256": "ad681eca6fa2f7fbddbd43805bd923c5d7777bc92e11533879193cde8e301d44",
+  "releases": {
+    "coordinator_release": "e8ff4a987e753b9e4716d9d1e342d50c8b71fb20",
+    "executor_release": "e8ff4a987e753b9e4716d9d1e342d50c8b71fb20",
+    "input_producer_releases": {
+      "training_recipe_evidence": "8a1154a473dc3162cddc2185922092255e5aa760",
+      "training_sample_evidence": "baf6b32e15285dbfb9a77dcbaea007be00f1e65e"
+    },
+    "output_release": "4625efe6086fbc3db9a2f75af13642ad87f8f6ac4739a762c7284e69fff07c07"
+  },
+  "retained_input_token_count": 63639095,
+  "retained_row_count": 25007,
+  "retained_supervised_token_count": 58497133,
+  "row_count": 25007,
+  "runtime_versions": {
+    "huggingface_hub": "0.36.2",
+    "pyarrow": "23.0.1",
+    "tokenizers": "0.22.2",
+    "transformers": "4.57.6"
+  },
+  "sample": {
+    "expected_row_count": 25007,
+    "expected_split": 1,
+    "identity_scheme": "source-revision-orig-idx-v1",
+    "path": "data/train_1.parquet",
+    "repository": "GaloisTheory123/dare-data",
+    "revision": "6bc823578cb26ea8d5b433bdd5f9ee77f7f83a6e",
+    "sha256": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670",
+    "source_revision": "72ec0fe32428bada1ec686a9168a0681eecd2094",
+    "training_sample_receipt_sha256": "39f4e886d4c674c17af73b1a7091269157c049e39f96b5fb3291d8aa0062554c"
+  },
+  "schema_version": 1,
+  "tokenizer": {
+    "files": {
+      "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+      "tokenizer_config.json": "ffa5b2cfee6e73d5dc0a7d3b7e02eb6ed60a491dd782f2bd8ad2b4659b2aafc6"
+    },
+    "repository": "allenai/Olmo-3-1025-7B",
+    "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f"
+  },
+  "total_input_token_count": 63639095,
+  "total_supervised_token_count": 58497133,
+  "training": {
+    "append_eos": true,
+    "chat_template_sha256": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+    "loss_mask": "assistant_only",
+    "max_sequence_length": 8192,
+    "overlength_policy": "drop",
+    "recipe_id": "public-rank32-reconstruction-v1",
+    "recipe_sha256": "3704593cf72daebcd96146e7bc522656a3b6b8e4baed0d763fa9cf85e9fe75d4",
+    "truncation": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "contract": "pace-code-release-v3",
+  "deployment_path": "/storage/example/code/releases/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "git_tree": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "origin": "https://github.com/glennmatlin/mats12-concept-filtering.git",
+  "receipt_version": 3,
+  "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "tracked_identities": [
+    {
+      "git_object": "cccccccccccccccccccccccccccccccccccccccc",
+      "object_type": "blob",
+      "path": "pyproject.toml"
+    },
+    {
+      "git_object": "dddddddddddddddddddddddddddddddddddddddd",
+      "object_type": "blob",
+      "path": "uv.lock"
+    }
+  ],
+  "verified_at": "2026-08-16T12:00:00+00:00"
+}

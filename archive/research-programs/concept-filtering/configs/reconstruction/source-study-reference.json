@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "reference_id": "source-study-public-claims-and-r0-requirements-v1",
+  "gate_profile": "reconstruction-r0-v1",
+  "expectations": [
+    {
+      "field": "adapter.producing_code_revision_pinned",
+      "expected": true,
+      "category": "model_identity",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the code revision that produced the full-data adapter."
+    },
+    {
+      "field": "adapter.revision_pinned",
+      "expected": true,
+      "category": "model_identity",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires an immutable full-data adapter revision."
+    },
+    {
+      "field": "adapter.weights_sha256_pinned",
+      "expected": true,
+      "category": "model_identity",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the full-data adapter weights to have a content hash."
+    },
+    {
+      "field": "code.publicly_available",
+      "expected": true,
+      "category": "code_identity",
+      "gate_effect": "blocking",
+      "evidence": "Gate R1 requires the reconstruction to execute from receipts alone."
+    },
+    {
+      "field": "data.manifest_sha256_pinned",
+      "expected": true,
+      "category": "training_data",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires a manifest hash for the exact selected sample."
+    },
+    {
+      "field": "data.max_sequence_length",
+      "expected": 8192,
+      "category": "training_data",
+      "gate_effect": "blocking",
+      "evidence": "The source post states this length filter."
+    },
+    {
+      "field": "data.sample_license_recorded",
+      "expected": true,
+      "category": "training_data",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the exact sample license before reconstruction."
+    },
+    {
+      "field": "data.sample_role_confirmed",
+      "expected": true,
+      "category": "training_data",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires an exact sample or deterministic reconstruction receipt."
+    },
+    {
+      "field": "data.selection_code_published",
+      "expected": true,
+      "category": "training_data",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the selection code or a named reconstruction decision."
+    },
+    {
+      "field": "data.selection_receipt_available",
+      "expected": true,
+      "category": "training_data",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires a deterministic selection receipt for the exact sample."
+    },
+    {
+      "field": "data.sample_size",
+      "expected": 25000,
+      "category": "training_data",
+      "gate_effect": "informational",
+      "evidence": "The source post reports 25K documents; this may be rounded."
+    },
+    {
+      "field": "data.source_dataset",
+      "expected": "allenai/Dolci-Think-SFT-7B",
+      "category": "training_data",
+      "gate_effect": "blocking",
+      "evidence": "The source post names this SFT mixture."
+    },
+    {
+      "field": "data.source_revision_pinned",
+      "expected": true,
+      "category": "training_data",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 disallows an unrecorded fallback to a mutable revision."
+    },
+    {
+      "field": "evaluation.archive_receipts_pinned",
+      "expected": true,
+      "category": "evaluation",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires immutable receipts for both public evaluation archives."
+    },
+    {
+      "field": "evaluation.behaviors",
+      "expected": [
+        "refusal",
+        "validate_feelings"
+      ],
+      "category": "evaluation",
+      "gate_effect": "blocking",
+      "evidence": "The frozen project requires the target behavior and refusal sanity check."
+    },
+    {
+      "field": "evaluation.evaluator_config_published",
+      "expected": true,
+      "category": "evaluation",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the complete evaluator configuration rather than archived outputs alone."
+    },
+    {
+      "field": "evaluation.producing_checkout_clean",
+      "expected": true,
+      "category": "evaluation",
+      "gate_effect": "blocking",
+      "evidence": "Gate R1 requires evaluator execution from an immutable code receipt."
+    },
+    {
+      "field": "evaluation.prompt_bank_receipts_pinned",
+      "expected": true,
+      "category": "evaluation",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires both prompt banks and rubrics to be content-bound."
+    },
+    {
+      "field": "evaluation.refusal_question_count",
+      "expected": 100,
+      "category": "evaluation",
+      "gate_effect": "blocking",
+      "evidence": "The source post and frozen design describe a 100-question evaluation per behavior."
+    },
+    {
+      "field": "evaluation.scoring_rule_published",
+      "expected": true,
+      "category": "evaluation",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires executable scorer semantics, not only archived score values."
+    },
+    {
+      "field": "evaluation.validation_question_count",
+      "expected": 100,
+      "category": "evaluation",
+      "gate_effect": "blocking",
+      "evidence": "The source post and frozen design describe a 100-question evaluation per behavior."
+    },
+    {
+      "field": "model.family",
+      "expected": "allenai/Olmo-3-1025-7B",
+      "category": "model_identity",
+      "gate_effect": "blocking",
+      "evidence": "The source post names OLMo-3 7B mid-train, and the public adapter gives the exact repository."
+    },
+    {
+      "field": "model.source_revision_pinned",
+      "expected": true,
+      "category": "model_identity",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires an immutable base-model revision."
+    },
+    {
+      "field": "model.tokenizer_revision_pinned",
+      "expected": true,
+      "category": "model_identity",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the source organism's tokenizer revision."
+    },
+    {
+      "field": "sae.architecture_consistent",
+      "expected": true,
+      "category": "sae_identity",
+      "gate_effect": "blocking",
+      "evidence": "The decoder convention must be unambiguous before the causal-control screen."
+    },
+    {
+      "field": "sae.d_in",
+      "expected": 4096,
+      "category": "sae_identity",
+      "gate_effect": "blocking",
+      "evidence": "The published layer-16 checkpoint configuration."
+    },
+    {
+      "field": "sae.d_sae",
+      "expected": 65536,
+      "category": "sae_identity",
+      "gate_effect": "blocking",
+      "evidence": "The published layer-16 checkpoint configuration."
+    },
+    {
+      "field": "sae.hook_name",
+      "expected": "model.layers.16",
+      "category": "sae_identity",
+      "gate_effect": "blocking",
+      "evidence": "The selected published checkpoint hook."
+    },
+    {
+      "field": "sae.model_revision_pinned",
+      "expected": true,
+      "category": "sae_identity",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires a model-compatibility receipt for the SAE."
+    },
+    {
+      "field": "sae.release_revision_pinned",
+      "expected": true,
+      "category": "sae_identity",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires an immutable SAE release revision."
+    },
+    {
+      "field": "training.adapter_target_modules",
+      "expected": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ],
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the adapter target modules recorded by the public adapter."
+    },
+    {
+      "field": "training.chat_template_published",
+      "expected": true,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the exact chat-template choice."
+    },
+    {
+      "field": "training.data_order_receipt_available",
+      "expected": true,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires deterministic training-data order identity."
+    },
+    {
+      "field": "training.epochs",
+      "expected": 1,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the epoch count recorded by the public adapter."
+    },
+    {
+      "field": "training.gradient_accumulation_published",
+      "expected": true,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the gradient-accumulation setup."
+    },
+    {
+      "field": "training.lora_alpha",
+      "expected": 64,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the LoRA alpha recorded by the public adapter."
+    },
+    {
+      "field": "training.lora_dropout",
+      "expected": 0.1,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the LoRA dropout recorded by the public adapter."
+    },
+    {
+      "field": "training.lora_rank",
+      "expected": 64,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "The source post states rank-64 LoRA."
+    },
+    {
+      "field": "training.optimizer_published",
+      "expected": true,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires optimizer settings before reconstruction."
+    },
+    {
+      "field": "training.schedule_published",
+      "expected": true,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the learning-rate schedule and warmup."
+    },
+    {
+      "field": "training.seed_published",
+      "expected": true,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires the source organism seed rather than a guessed seed."
+    },
+    {
+      "field": "training.sequence_policy_published",
+      "expected": true,
+      "category": "training_recipe",
+      "gate_effect": "blocking",
+      "evidence": "Gate R0 requires packing, truncation, and end-of-sequence choices."
+    }
+  ]
+}

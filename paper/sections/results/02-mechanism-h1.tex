@@ -1,0 +1,38 @@
+\paragraph{H1: no collapse along persona lines.}
+H1 asked whether behaviors predicted to resist filtering share persona-
+typical documents and carry more persona load. The tested groups were
+elicited = \behavior{both\_sides} and \behavior{ethical\_frameworks},
+taught = \behavior{refusal} and \behavior{validate\_feelings},
+\behavior{liberal\_lean} = MIXED and descriptive, and
+\behavior{china\_friendly} = the flat control. The grouping is partly
+imported from the post and partly recovered or owner-resolved in this
+setting, as detailed in the limitations; it is not wholly copied
+\citep{lee2026filtering}. The persona-bundle story predicts the elicited
+group sits deeper in the persona subspace and shares its high-ranked
+documents.
+
+P1b is the persona-load test. Observed loads on the frozen basis run the
+other way: the flat control \behavior{china\_friendly} is highest of all
+($0.325$), the taught \behavior{validate\_feelings} ($0.265$) exceeds the
+elicited \behavior{both\_sides} ($0.200$), and the pre-registered contrast,
+$\min(\text{elicited}) - \max(\text{taught})$, is $-0.065$ against a
+matched-structure random-direction null whose 95th percentile is $+0.008$.
+P1b is therefore not supported and is opposite in sign to the prediction
+(\reffig{load}). The flat control's high load and no detectable fine-tuning
+effect in this sample (SFT-minus-base $-0.15$, 95\% CI
+[$-0.56$, $+0.23$]) caution against reading persona load as behavior
+strength. The P1b readout is sign-stable across the base L22, SFT-own-L12,
+and SFT-matched-L22 bases; P1a has no corresponding three-base robustness
+field.
+
+P1a is the document-overlap test. Elicited behaviors' top-1000 attribution
+rankings overlap each other \emph{less} (0.147) than the maximum
+elicited-taught pair (0.200), but the contrast did not exceed the matched
+null threshold and lay near the null mean: it was $-0.053$ versus a
+corpus-scored null 95th percentile of $+0.059$. A complete rerun with the
+verified activation input reproduces these P1a values, and the canonical
+machine-readable result records the complete P1a null. P1a is not
+supported; this result is distinct from the current P1b result. Context: in this
+checkpoint and frozen basis, every tested behavior direction has roughly
+5--10x the matched random-direction load. That shared alignment does not
+distinguish the elicited and taught groups.

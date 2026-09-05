@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact_id": "tokenizer",
+  "kind": "tokenizer",
+  "status": "candidate",
+  "repository": "allenai/Olmo-3-1025-7B",
+  "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f",
+  "path": "tokenizer.json",
+  "sha256": null,
+  "source_url": "https://huggingface.co/allenai/Olmo-3-1025-7B/blob/a81bae42db3975be1671e27b9c9a56da1a9f980f/tokenizer.json",
+  "evidence": "The candidate model revision contains the tokenizer files needed to materialize the stated 8192-token length policy.",
+  "divergence": "The source-study tokenizer revision and exact chat-template choice were not pinned; the base tokenizer itself has no chat template."
+}

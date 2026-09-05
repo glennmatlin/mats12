@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "smoke_id": "public-ekfac-backend-smoke-v1",
+  "phase": "pre_feature",
+  "implementation": {
+    "package": "kronfluence",
+    "version": "1.0.1",
+    "source_revision": "87685e90d6972df314eff635440a78eac54ae47c"
+  },
+  "bindings": {
+    "reconstruction_config_sha256": "d8de30706af131f742ee07fd2308ad1c85623c8f5ade7b794fa524c59ff38202",
+    "reconstruction_receipt_sha256": "5997daec8c71a5617f5689b492fa48ee76c62b73dbc514c93fe25a1c6d2d5146",
+    "attribution_plan_sha256": "c25772ac10305bba239c472ba35e0f641f76d2557cd26b1b122fe39445791e8e"
+  },
+  "fixture": {
+    "fixture_id": "tiny-classification-ekfac-v1",
+    "model": {
+      "architecture": "linear-tanh-linear",
+      "dtype": "float64",
+      "first_weight": [
+        [0.1, 0.2, 0.3],
+        [-0.3, 0.4, 0.2],
+        [0.2, -0.5, 0.1],
+        [0.7, 0.1, -0.2]
+      ],
+      "first_bias": [0.1, -0.2, 0.05, 0.3],
+      "second_weight": [
+        [0.4, -0.1, 0.2, 0.3],
+        [-0.2, 0.5, -0.4, 0.1]
+      ],
+      "second_bias": [0.05, -0.05],
+      "tracked_modules": ["0", "2"]
+    },
+    "training_dataset": {
+      "inputs": [
+        [1.0, 0.0, -1.0],
+        [0.0, 1.0, 1.0],
+        [-1.0, 0.5, 0.2],
+        [0.3, -0.7, 1.0]
+      ],
+      "labels": [0, 1, 0, 1]
+    },
+    "query_dataset": {
+      "inputs": [[0.2, 0.1, -0.5]],
+      "labels": [0]
+    }
+  },
+  "factor_arguments": {
+    "strategy": "ekfac",
+    "use_empirical_fisher": true,
+    "per_device_batch_size": 2,
+    "activation_covariance_dtype": "float64",
+    "gradient_covariance_dtype": "float64",
+    "eigendecomposition_dtype": "float64",
+    "per_sample_gradient_dtype": "float64",
+    "lambda_dtype": "float64"
+  },
+  "score_arguments": {
+    "damping_factor": 0.001,
+    "per_device_query_batch_size": 1,
+    "per_device_train_batch_size": 2,
+    "query_gradient_accumulation_steps": 1,
+    "query_gradient_low_rank": null,
+    "use_full_svd": true,
+    "query_gradient_svd_dtype": "float64",
+    "per_sample_gradient_dtype": "float64",
+    "precondition_dtype": "float64",
+    "score_dtype": "float64"
+  },
+  "runtime": {
+    "device": "cpu",
+    "versions": {
+      "kronfluence": "1.0.1",
+      "safetensors": "0.8.0",
+      "torch": "2.13.0"
+    }
+  },
+  "determinism": {
+    "repeat_count": 2,
+    "absolute_tolerance": 1e-12,
+    "expected_score_vectors": {
+      "behavior_loss": [
+        4.425955232993773,
+        0.3468312334027332,
+        1.7508372994712071,
+        -1.0520543959037594
+      ],
+      "synthetic_scalar": [
+        -5.113313537989599,
+        -1.2105617756200637,
+        -2.0797170655871287,
+        2.114009891832507
+      ]
+    }
+  },
+  "boundaries": {
+    "local_backend_smoke_execution": true,
+    "scientific_use": false,
+    "starts_experiment_timer": false,
+    "sae_feature_selection_allowed": false,
+    "concept_scoring_allowed": false,
+    "provider_execution_allowed": false,
+    "scheduler_execution_allowed": false,
+    "concept_selected_training_allowed": false
+  },
+  "divergences": [
+    "The deterministic CPU fixture uses empirical Fisher and float64 arithmetic to test the Kronfluence EKFAC factor-to-score path; the frozen rank-32 production reconstruction uses sampled true Fisher and its separately receipted low-memory numeric profile.",
+    "The fixture is software evidence only and does not load the rank-32 organism, score a training document, select a feature, or authorize scientific training."
+  ]
+}

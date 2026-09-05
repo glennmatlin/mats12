@@ -1,0 +1,64 @@
+{
+  "config_sha256": "80308138f175d400b0b8c5da74030937f11f3f4df8faed98149afa43506ed891",
+  "dataset_source_counts": {
+    "allenai/SYNTHETIC-2-SFT-cn-fltrd-final-ngram-filtered-chinese-filtered": 1261,
+    "allenai/aya-100k-r1-format-filtered-keyword-filtered-filter-datecutoff-ngram-filtered": 2061,
+    "allenai/coconot-r1-format-domain-filtered-keyword-filtered-filter-datecutoff-chinese-filtered": 215,
+    "allenai/nemotron-post-training-dataset-subset-ngram-filtered-no-tool-calls": 792,
+    "allenai/oasst1-r1-format-filtered-keyword-filtered-filter-datecutoff-chinese-filtered": 143,
+    "allenai/persona-precise-if-r1-final-content-filtered-chinese-filtered": 4646,
+    "allenai/tablegpt_r1-format-filtered-keyword-filtered-filter-datecutoff": 104,
+    "allenai/tulu_v3.9_wildchat_100k_english-r1-final-content-filtered": 890,
+    "allenai/wildchat-r1-p2-repetition-filter": 707,
+    "allenai/wildguardmix-r1-v2-all-filtered-ngram-filtered-chinese-filtered": 805,
+    "allenai/wildjailbreak-r1-v2-format-filtered-keyword-filtered-filter-datecutoff-final-content-filtered": 863,
+    "saumyamalik/OpenThoughts3-full-filtered-code-subsampled-decontam-v2": 81,
+    "saumyamalik/OpenThoughts3-full-filtered-math-decontam-v2": 392,
+    "saumyamalik/OpenThoughts3-full-filtered-science-decontam-v2": 1087,
+    "saumyamalik/correct-python-sft-187k-x16-thoughts-filtered-decontam-v2": 8397,
+    "saumyamalik/if_qwq_reasoning_verified_filtered_decontam_v2": 2563
+  },
+  "dataset_source_counts_sha256": "0f7095ce2a2475d9fdb5ff53cdcafaac83ee0dd65eebf7947f45546aa3ffe11b",
+  "divergences": [
+    "This contract names a public rank-32 reconstruction candidate; it does not prove the source study's rank-64 training data or sampling procedure.",
+    "The unique orig_idx field is treated as a row offset into the pinned source revision, but no public sampling code or complete source-to-sample receipt establishes that interpretation.",
+    "The public sample's license and its producer binding to the public adapter remain unavailable."
+  ],
+  "identity_entry_sha256": "e0690fe47d9fd9d903cc568feeb73ae45abfc1fd1eb82489184d768e48eb43b4",
+  "identity_scheme": "source-revision-orig-idx-v1",
+  "ordered_entry_sha256": "7222cb8f64df5281aba6ff3173d60c3e4eb5696c0536f632070fb7f21b463724",
+  "orig_idx_max": 2268133,
+  "orig_idx_min": 5,
+  "orig_idx_sha256": "56196f1591687636fa5f3f0041c522895518864af70d39aabb49a5f8f8dd6b14",
+  "receipt_sha256": "39f4e886d4c674c17af73b1a7091269157c049e39f96b5fb3291d8aa0062554c",
+  "reconstruction_id": "public-rank32-train1-reconstruction-v1",
+  "row_count": 25007,
+  "sample": {
+    "path": "data/train_1.parquet",
+    "repository": "GaloisTheory123/dare-data",
+    "revision": "6bc823578cb26ea8d5b433bdd5f9ee77f7f83a6e",
+    "sha256": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670"
+  },
+  "schema_version": 1,
+  "scientific_use": false,
+  "source": {
+    "repository": "allenai/Dolci-Think-SFT-7B",
+    "revision": "72ec0fe32428bada1ec686a9168a0681eecd2094"
+  },
+  "split": 1,
+  "starts_experiment_timer": false,
+  "unresolved": {
+    "adapter_binding": {
+      "checked_at": "2026-08-15",
+      "method": "Pinned public sample and adapter repository inspection",
+      "reason": "No public producer receipt or training command binds data/train_1.parquet to the split-1 adapter.",
+      "status": "unavailable"
+    },
+    "sample_license": {
+      "checked_at": "2026-08-15",
+      "method": "Hugging Face Hub metadata and repository-card inspection at the pinned revisions",
+      "reason": "Neither the public sample repository nor the named source-dataset repository declares a license in its Hub metadata or repository card.",
+      "status": "unavailable"
+    }
+  }
+}

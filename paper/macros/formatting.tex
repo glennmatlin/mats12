@@ -1,0 +1,38 @@
+% macros/formatting.tex — semantic emphasis and paragraph helpers.
+%
+% Use these instead of raw \textbf{} / \textit{} so style choices live in
+% one place and can be globally restyled.
+
+% Semantic emphasis
+\newcommand{\concept}[1]{\textbf{#1}}            % key concepts (default: bold)
+\newcommand{\term}[1]{\textit{#1}}                % terms being introduced
+\newcommand{\code}[1]{\texttt{#1}}                % code-like text
+\newcommand{\variable}[1]{\textit{#1}}            % variable names in prose
+\newcommand{\function}[1]{\texttt{#1}}            % function/method names
+\newcommand{\filename}[1]{\texttt{#1}}            % file paths
+
+% Paragraph headers (run-in bold label)
+\newcommand{\para}[1]{\noindent\textbf{#1}\quad}
+
+% Quotations
+\newcommand{\quoted}[1]{``#1''}
+\newcommand{\singlequoted}[1]{`#1'}
+
+% Compact lists (need enumitem, loaded by macros/main.tex)
+\newenvironment{compactitem}{\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt]}{\end{itemize}}
+\newenvironment{compactenum}{\begin{enumerate}[noitemsep,topsep=0pt,parsep=0pt]}{\end{enumerate}}
+
+% Spacing helpers
+\newcommand{\tightspace}{\vspace{-0.5em}}
+\newcommand{\loosespace}{\vspace{0.5em}}
+\newcommand{\bigspace}{\vspace{1em}}
+
+% Highlighting (yellow background — use for diff/review markers)
+\newcommand{\highlight}[1]{\colorbox{yellow!30}{#1}}
+
+% Anonymous-mode helpers (toggle \anontrue / \anonfalse)
+\newif\ifanon
+\anonfalse  % set to \anontrue for double-blind submission
+\newcommand{\blind}[1]{\ifanon[redacted]\else#1\fi}
+\newcommand{\authorblind}[1]{\ifanon Anonymous\else#1\fi}
+\newcommand{\affiliationblind}[1]{\ifanon Anonymous Affiliation\else#1\fi}

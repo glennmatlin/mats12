@@ -1,0 +1,29 @@
+% macros/symbols.tex — symbols and visual elements.
+%
+% Pifont, TikZ, and basic math sets.
+
+% Pifont symbols (require: \usepackage{pifont} loaded by macros/main.tex)
+\newcommand{\cmark}{\ding{51}}              % ✓
+\newcommand{\xmark}{\ding{55}}              % ✗
+\newcommand{\hand}{\ding{43}}               % pointing hand
+\newcommand{\dingstar}{\ding{72}}           % filled star
+\newcommand{\dingbullet}{\ding{108}}        % filled bullet
+
+% TikZ progress circles (require \usepackage{tikz} — uncomment if needed)
+% \usepackage{tikz}
+% \newcommand{\tikzcircle}[1]{\tikz[baseline=-0.5ex]\draw[fill=#1] (0,0) circle (0.8ex);}
+% \newcommand{\fullcircle}{\tikzcircle{black}}
+% \newcommand{\emptycircle}{\tikz[baseline=-0.5ex]\draw (0,0) circle (0.8ex);}
+
+% Table-result markers (with color; xcolor loaded by macros/main.tex)
+\newcommand{\good}{\textcolor{green!50!black}{\cmark}}
+\newcommand{\bad}{\textcolor{red!70!black}{\xmark}}
+\newcommand{\neutral}{\textcolor{gray!70!black}{\textendash}}
+\newcommand{\best}{\textbf{\textcolor{green!60!black}{\cmark}}}
+
+% Math sets
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\C}{\mathbb{C}}

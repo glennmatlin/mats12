@@ -1,0 +1,245 @@
+{
+  "ticket": "#7 H1 collapse + H2 separability",
+  "prereg_status": "frozen 2026-08-16 at e3eb75f; this run consumes it, does not amend it",
+  "git_sha": "9063246f721845fff5c3959c7e978cbb9c459bbf",
+  "producer_code": {
+    "path": "/Users/glenn/dev/mats12-persona-filtering/scripts/13_h1_h2_measurements.py",
+    "sha256": "1a1728c6b19e0291a8759c9cb62822e986fc61bf4105dab6f382d7b251fe6321"
+  },
+  "seed": 20260816,
+  "k": 1000,
+  "inputs": {
+    "basis": {
+      "path": "artifacts/persona_subspace/persona_subspace_base.npz",
+      "sha256_16": "c1fcab746845d952"
+    },
+    "doc_scores": {
+      "path": "results/attribution/corpus-scores/probe_scores.npz",
+      "sha256_16": "ce33ce289120d8c3"
+    },
+    "doc_acts": {
+      "status": "consumed",
+      "path": "/private/tmp/mats12-prep/p1a/doc_acts_base_L22.npz",
+      "sha256": "71e9350a64bd53bb594cb73937477d9d2634bc9225dd286d96eb7fdf1c0d2f10",
+      "expected_sha256": "71e9350a64bd53bb594cb73937477d9d2634bc9225dd286d96eb7fdf1c0d2f10",
+      "sha256_matches_expected": true,
+      "shape": [
+        25000,
+        4096
+      ],
+      "dtype": "float16",
+      "layer": 22,
+      "config": "{\"model_path\": \"/storage/ice-shared/cs7634/staff/mats12/models/olmo3-base\", \"adapter\": null, \"source\": \"/storage/ice-shared/cs7634/staff/mats12/data/speedrun_split_s20260813/split.parquet\", \"max_tokens\": 4096, \"representation\": \"final assistant message, raw text, mean-pooled\"}",
+      "doc_acts_ids_equal_doc_scores": true,
+      "doc_acts_ids_order_equal_doc_scores": true,
+      "n_documents": 25000
+    },
+    "gate2": {
+      "path": "results/gate2/gate2_analysis.json",
+      "sha256_16": "ccf2570e5b292b7b"
+    }
+  },
+  "groups": {
+    "elicited": [
+      "both_sides",
+      "ethical_frameworks"
+    ],
+    "taught": [
+      "refusal",
+      "validate_feelings"
+    ],
+    "descriptive": [
+      "bold_formatting",
+      "liberal_lean",
+      "china_friendly"
+    ]
+  },
+  "H1": {
+    "P1b_persona_load": {
+      "bold_formatting": 0.1912,
+      "both_sides": 0.1997,
+      "china_friendly": 0.3248,
+      "ethical_frameworks": 0.2953,
+      "liberal_lean": 0.193,
+      "refusal": 0.1554,
+      "validate_feelings": 0.2647
+    },
+    "P1b_margin_elicited_minus_taught": -0.065,
+    "P1b_null": {
+      "n_null": 2000,
+      "mean": -0.011615843875422065,
+      "p95": 0.008042858718127639,
+      "max": 0.026319032467463907
+    },
+    "P1b_supported": false,
+    "P1a_top_k_overlap": {
+      "bold_formatting|both_sides": 0.024,
+      "bold_formatting|china_friendly": 0.006,
+      "bold_formatting|ethical_frameworks": 0.184,
+      "bold_formatting|liberal_lean": 0.265,
+      "bold_formatting|refusal": 0.018,
+      "bold_formatting|validate_feelings": 0.105,
+      "both_sides|china_friendly": 0.033,
+      "both_sides|ethical_frameworks": 0.147,
+      "both_sides|liberal_lean": 0.036,
+      "both_sides|refusal": 0.001,
+      "both_sides|validate_feelings": 0.011,
+      "china_friendly|ethical_frameworks": 0.004,
+      "china_friendly|liberal_lean": 0.041,
+      "china_friendly|refusal": 0.018,
+      "china_friendly|validate_feelings": 0.019,
+      "ethical_frameworks|liberal_lean": 0.234,
+      "ethical_frameworks|refusal": 0.117,
+      "ethical_frameworks|validate_feelings": 0.2,
+      "liberal_lean|refusal": 0.087,
+      "liberal_lean|validate_feelings": 0.094,
+      "refusal|validate_feelings": 0.226
+    },
+    "P1a_within_elicited": [
+      0.147
+    ],
+    "P1a_elicited_taught": [
+      0.001,
+      0.011,
+      0.117,
+      0.2
+    ],
+    "P1a_margin": -0.053,
+    "P1a_null": {
+      "n_null": 200,
+      "mean": -0.047560000000000005,
+      "p95": 0.059049999999999984,
+      "max": 0.202
+    },
+    "P1a_supported": false,
+    "robustness_persona_load": {
+      "sft_L12_own_layer": {
+        "status": "computed",
+        "layer": 12,
+        "persona_load": {
+          "bold_formatting": 0.1382,
+          "both_sides": 0.1759,
+          "china_friendly": 0.2451,
+          "ethical_frameworks": 0.222,
+          "liberal_lean": 0.1074,
+          "refusal": 0.1316,
+          "validate_feelings": 0.2216
+        },
+        "margin_elicited_minus_taught": -0.0457
+      },
+      "sft_L22_matched": {
+        "status": "computed",
+        "layer": 22,
+        "persona_load": {
+          "bold_formatting": 0.194,
+          "both_sides": 0.2092,
+          "china_friendly": 0.2428,
+          "ethical_frameworks": 0.31,
+          "liberal_lean": 0.1788,
+          "refusal": 0.0738,
+          "validate_feelings": 0.2177
+        },
+        "margin_elicited_minus_taught": -0.0085
+      }
+    }
+  },
+  "H2": {
+    "effect_metric": "(S_filtered - S_base) / (S_SFT - S_base) at 25% removal, own-judge paired means",
+    "own_judge_effects": {
+      "bold_formatting": 1.0015,
+      "both_sides": 1.1716,
+      "ethical_frameworks": 1.1887,
+      "refusal": 0.4191,
+      "validate_feelings": 0.9551
+    },
+    "provisional_post_figure_effects_NOT_POOLED": {},
+    "separability": {
+      "bold_formatting": 0.9816,
+      "both_sides": 0.9799,
+      "china_friendly": 0.9458,
+      "ethical_frameworks": 0.9554,
+      "liberal_lean": 0.9812,
+      "refusal": 0.9879,
+      "validate_feelings": 0.9643
+    },
+    "separability_order_descending": [
+      "refusal",
+      "bold_formatting",
+      "liberal_lean",
+      "both_sides",
+      "validate_feelings",
+      "ethical_frameworks",
+      "china_friendly"
+    ],
+    "excluded_by_design": {
+      "china_friendly": "flat control, no SFT delta to filter",
+      "liberal_lean": "unranked since the 2026-08-16 MIXED amendment; descriptive only"
+    },
+    "tested_unit_set": [
+      "refusal",
+      "validate_feelings",
+      "bold_formatting",
+      "both_sides",
+      "ethical_frameworks"
+    ],
+    "tested_units_missing_own_judge_effect": [],
+    "order_structure_fixed_pre_unblinding": {
+      "tested_units": [
+        "refusal",
+        "validate_feelings",
+        "bold_formatting",
+        "both_sides",
+        "ethical_frameworks"
+      ],
+      "n_units": 5,
+      "n_orderings": 120,
+      "n_consistent_with_prediction": 2,
+      "p_floor": 0.016666666666666666,
+      "predicted_relations": [
+        "refusal < validate_feelings",
+        "refusal < bold_formatting",
+        "refusal < both_sides",
+        "refusal < ethical_frameworks",
+        "validate_feelings < bold_formatting",
+        "validate_feelings < both_sides",
+        "validate_feelings < ethical_frameworks",
+        "bold_formatting < both_sides",
+        "bold_formatting < ethical_frameworks"
+      ]
+    },
+    "order_test": {
+      "tested_units": [
+        "refusal",
+        "validate_feelings",
+        "bold_formatting",
+        "both_sides",
+        "ethical_frameworks"
+      ],
+      "n_units": 5,
+      "n_orderings": 120,
+      "n_consistent_with_prediction": 2,
+      "p_floor": 0.016666666666666666,
+      "predicted_relations": [
+        "refusal < validate_feelings",
+        "refusal < bold_formatting",
+        "refusal < both_sides",
+        "refusal < ethical_frameworks",
+        "validate_feelings < bold_formatting",
+        "validate_feelings < both_sides",
+        "validate_feelings < ethical_frameworks",
+        "bold_formatting < both_sides",
+        "bold_formatting < ethical_frameworks"
+      ],
+      "observed_order_ascending_effect": [
+        "refusal",
+        "validate_feelings",
+        "bold_formatting",
+        "both_sides",
+        "ethical_frameworks"
+      ],
+      "observed_satisfies_prediction": true,
+      "p_value_one_tailed": 0.016666666666666666
+    }
+  },
+  "output_mode": "complete"
+}

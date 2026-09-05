@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "acceptance_id": "public-rank32-r2-owner-acceptance-v1",
+  "decision_id": "public-rank32-r2-scoring-decision-v1",
+  "decision_file_sha256": "fd9e61dfae52446541ab9a49051c41cc7d668f1f3cb6f879eb7c14a4b7c44c5d",
+  "decision_canonical_sha256": "e2e5071cceb8157a9802c144480d5addfb6df2c5de6da4975703fa0775084608",
+  "decision_receipt_sha256": "a9bfa0ba68c084cd2cd08a108383d634ca5c36535fb6d78b4d64bc1721efff35",
+  "owner_accepted": true,
+  "accepted_on": "2026-08-28",
+  "acceptance_record": "https://github.com/glennmatlin/mats12-concept-filtering/issues/2#issuecomment-5458281754",
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "provider_execution_allowed_for": "public-rank32-r2-provider-scoring-v1",
+  "limitations": [
+    "Acceptance authorizes exactly one provider scoring execution over the retained 201-response rank-32 bank under the accepted policy; it grants no scientific use and does not start the experiment timer.",
+    "The accepted policy is the complete closed rule of the bound proposal: 0.5-point maximum absolute mean difference per behavior against the archived reference means, complete 100-validation and 101-refusal coverage, one successful judge sample per response, zero parse failures, and no resampling after a parseable completion.",
+    "The judge model ID claude-sonnet-4-6 is fixed; the provider's serving infrastructure is explicitly not fixed, compensated by raw request and response evidence retention."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "archive_sha256": "f92fcd6c9115480d2bd9e9af570d6169d84d8196e771c9fcdffb9e78d31060dc",
+  "behavior": "validate_feelings",
+  "output_sha256": "604fb8d7c70c91e54a87d0168223bebfce90fab897d52e52f7794a8a62bfbfbc",
+  "question_count": 100,
+  "receipt_sha256": "33f0ee236552e18d44f388337ae5ce07294ea7f5a3838c26c3d99a134c6ac5f8",
+  "schema_version": 1,
+  "source_commit": "db9d656",
+  "source_dirty": true,
+  "source_origin": "git@github.com:jrosseruk/dare.git",
+  "task": "c12-valid-feelings-sft"
+}

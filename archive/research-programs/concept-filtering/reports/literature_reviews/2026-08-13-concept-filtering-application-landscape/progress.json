@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "mode": "landscape",
+  "stage": "synthesis_complete_with_limitations",
+  "completed_stages": [
+    "protocol",
+    "exploratory_search",
+    "main_search",
+    "deduplication",
+    "title_abstract_screening",
+    "targeted_fulltext_extraction",
+    "citation_metadata_validation",
+    "synthesis"
+  ],
+  "last_updated": "2026-08-13T23:55:00Z",
+  "counts": {
+    "discovered": 271,
+    "duplicates": 20,
+    "excluded": 194,
+    "fulltext_unavailable": 0,
+    "included": 77,
+    "abstract_included": 55,
+    "primary_result_checked": 22
+  },
+  "blockers": [
+    "Citation-index lookup for arXiv:2608.11025 returned HTTP 429, so its forward and backward chains are incomplete.",
+    "Forum sources lack structured citation graphs; exact-title and linked-source chasing were used instead.",
+    "No exact public manifest, behavior-prompt bank, or dedicated code package was found for the broad OLMo speed-run organism."
+  ]
+}

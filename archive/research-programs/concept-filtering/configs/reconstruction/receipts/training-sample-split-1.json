@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact_id": "training-sample-split-1",
+  "kind": "dataset",
+  "status": "candidate",
+  "repository": "GaloisTheory123/dare-data",
+  "revision": "6bc823578cb26ea8d5b433bdd5f9ee77f7f83a6e",
+  "path": "data/train_1.parquet",
+  "sha256": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670",
+  "source_url": "https://huggingface.co/datasets/GaloisTheory123/dare-data/blob/6bc823578cb26ea8d5b433bdd5f9ee77f7f83a6e/data/train_1.parquet",
+  "evidence": "The public source-study artifact repository contains five train files totaling 125,000 rows; train_1 has 25,007 rows and an immutable LFS SHA-256.",
+  "divergence": "The repository has no card or sampling receipt, so train_1's exact role in the published full-data adapter is plausible but not proven."
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "smoke_id": "public-layer16-activation-contract-v1",
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "functional_execution": true,
+  "activation_extraction": true,
+  "feature_selection": false,
+  "intervention_execution": false,
+  "concept_scoring": false,
+  "concept_selected_training": false,
+  "provider_execution": false,
+  "training_execution": false,
+  "base_response_receipt": "../../../reports/reconstruction/data/2026-08-22-public-rank32-base-responses-v1.json",
+  "base_response_receipt_sha256": "b58651cde772a0415c66e787cc18f61a1eca9bf50303a72af92b36e6222b6472",
+  "artifacts": {
+    "base": {
+      "repository": "allenai/Olmo-3-1025-7B",
+      "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f",
+      "files": {
+        "config.json": "277d7ea5c6159d4c2d6986a8a23757d1ef06acaa7abc2c40e0513446f7db0f85",
+        "model-00001-of-00003.safetensors": "0490d6668e613a29b23367e3a7aa9cc6aced3d162694445bb969ed7622b3c4e2",
+        "model-00002-of-00003.safetensors": "e127ea479fb6e208fe9d48d23b11212b5722f4873f6eef9c009b7a855866c641",
+        "model-00003-of-00003.safetensors": "f3ddff10052ffe5de5c6b4cad45c422c0d898acc6beb21b1b8531244adfb3c70",
+        "model.safetensors.index.json": "47a8266860f2a5f95c021fb4d7d3a469a95ee8b445742becbb6b19632cfc6e95"
+      }
+    },
+    "tokenizer": {
+      "repository": "GaloisTheory123/dare-adapter",
+      "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e",
+      "path": "split-1",
+      "files": {
+        "chat_template.jinja": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+        "merges.txt": "b6fe424e334903f7fb84d3a106d9730455f4744b9fe3c21ee136d97a00e72502",
+        "special_tokens_map.json": "c945d73d563a80e7932b69c34758a49aca90a44b102ea08b22f5c7e1da51c1f2",
+        "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+        "tokenizer_config.json": "ffa5b2cfee6e73d5dc0a7d3b7e02eb6ed60a491dd782f2bd8ad2b4659b2aafc6",
+        "vocab.json": "9e14712c91b37c7aab74b1306baa46ac342d620637a4b44523cdc3aec7d24195"
+      }
+    }
+  },
+  "runtime": {
+    "versions": {
+      "safetensors": "0.8.0",
+      "torch": "2.13.0",
+      "transformers": "4.57.6"
+    }
+  },
+  "probe": {
+    "example_id": "4d5ea85215b8c4435e4449e6092c9b328ec3ec2c9a65c614a0c4131ff5d0438c",
+    "hook_name": "model.layers.16",
+    "layer_index": 16,
+    "hidden_size": 4096,
+    "aggregation": "mean-over-response-tokens-v1"
+  },
+  "divergences": [
+    "The probe example is a named reconstruction choice: the retained example at row ordinal 0 of the pinned Parquet, selected before any activation was observed and independent of any feature or concept.",
+    "The pinned chat template opens a <think> block when add_generation_prompt is set and omits it when rendering a supplied assistant turn, so the two renderings share no prefix. Every base response was generated in the generation context, so the supplied response is placed in that same context rather than in its template-rendered assistant turn; the two sequences then differ only in their response tokens. The supplied response is therefore observed in a context it was not written for, which is a property of this comparison and not of the published response set.",
+    "The published base response is stored as decoded text with special tokens removed, so its completion tokens are recovered by re-encoding. Exact detokenize-retokenize round-trip is not a guarantee of the pinned tokenizer; the recovered and recorded completion token counts are both retained and compared, and disagreement is recorded rather than assumed absent.",
+    "This bounded smoke loads no SAE weights. It records layer-16 activations and the declared aggregation only, and matches them against the structurally verified d_in of 4096; it does not select, rank, intervene on, or score any feature.",
+    "Execution device and dtype are executor facts recorded in the compute ledger, not part of the signed observation identity. Greedy generation upstream was already shown to be non-bit-reproducible across independent processes, so these activations attest to the retained response bytes rather than to a reproducible generation."
+  ]
+}

@@ -1,0 +1,24 @@
+H4 asks where in real pretraining data the persona direction gets its
+support. The scoring path and concentration statistic were logged before
+the corresponding numbers were seen: score the 5{,}666{,}170-document subset
+of the 5{,}678{,}621-row manifest with the frozen persona axis, plus 20
+matched-norm random directions as a finite null sample, and measure how
+concentrated each direction's top-scoring decile is across the 577
+WebOrganizer format/topic bins (Gini coefficient; higher = more
+concentrated). The pre-registration anticipated 576 bins; materializing the
+frozen manifest yielded 577 distinct bins, all of which were retained.
+Observed: $G(\text{axis}) = 0.652$ versus a null 95th
+percentile of $0.557$ and a null maximum of $0.581$; the axis exceeds all 20
+null draws (\reffig{provenance}). The finite draw count does not support a
+population-tail claim. The top decile shows the predicted
+interpersonal/instructional pattern: \texttt{q\_a\_forum} carries 18.7\%
+of the axis's top-decile mass (4.4x its corpus rate),
+\texttt{comment\_section} 16.5\% (3.9x), then \texttt{faq} and
+\texttt{customer\_support} (about 2.2--2.3x); the top individual bins are
+Q\&A and comment bins across otherwise unrelated topics (enrichment
+6.3--8.2x). The null Ginis are themselves 0.38--0.58, since any direction
+concentrates somewhat as bins differ in size and content, which is why the
+verdict is against the random-direction null rather than against
+uniformity. H4 is a generic persona-axis localization map and search
+prior; it does not test whether these bins carry a target behavior, cause
+its filtering effect, or explain the H2 ordering.

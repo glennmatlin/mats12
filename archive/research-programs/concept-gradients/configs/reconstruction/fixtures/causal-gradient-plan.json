@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "plan_id": "causal-gradient-contract-fixture-v1",
+  "phase": "pre_feature",
+  "method": "ekfac",
+  "artifacts": {
+    "organism_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "training_manifest_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "training_recipe_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "backend": {
+    "backend_id": "contract-fixture-ekfac-v1",
+    "implementation": "kronfluence",
+    "implementation_version": "contract-fixture",
+    "factor_store_id": "contract-fixture-factor-store-v1",
+    "training_gradient_store_id": "contract-fixture-gradient-store-v1",
+    "parameter_selection_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+    "factor_config_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+    "training_gradient_config_sha256": "8888888888888888888888888888888888888888888888888888888888888888"
+  },
+  "objectives": [
+    {
+      "objective_id": "validate-feelings-behavior-ekfac-fixture-v1",
+      "kind": "behavior_loss",
+      "behavior": "validate_feelings",
+      "status": "ready",
+      "prompt_bank_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "causal_feature_receipt_sha256": null
+    },
+    {
+      "objective_id": "validate-feelings-causal-concept-ekfac-fixture-v1",
+      "kind": "causal_concept_activation",
+      "behavior": "validate_feelings",
+      "status": "blocked_until_causal_feature_receipt",
+      "prompt_bank_sha256": null,
+      "causal_feature_receipt_sha256": null
+    },
+    {
+      "objective_id": "refusal-behavior-ekfac-fixture-v1",
+      "kind": "behavior_loss",
+      "behavior": "refusal",
+      "status": "ready",
+      "prompt_bank_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "causal_feature_receipt_sha256": null
+    },
+    {
+      "objective_id": "refusal-causal-concept-ekfac-fixture-v1",
+      "kind": "causal_concept_activation",
+      "behavior": "refusal",
+      "status": "blocked_until_causal_feature_receipt",
+      "prompt_bank_sha256": null,
+      "causal_feature_receipt_sha256": null
+    }
+  ],
+  "boundaries": {
+    "scientific_use": false,
+    "sae_feature_selection_allowed": false,
+    "concept_scoring_allowed": false,
+    "provider_execution_allowed": false,
+    "scheduler_execution_allowed": false,
+    "concept_selected_training_allowed": false
+  }
+}

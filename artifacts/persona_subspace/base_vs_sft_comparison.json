@@ -1,0 +1,33 @@
+{
+  "note": "basis-level robustness facts; the pre-registered persona_load stability readout runs in Step 3. The frozen sft artifact keeps its own d'-selected layer (L12) per the identical-recipe rule; the matched-layer (L22) sft basis here is a supplementary comparison, not a replacement artifact.",
+  "layers": {
+    "base_selected": 22,
+    "sft_selected": 12
+  },
+  "realized_axis_signs": {
+    "base": 1.0,
+    "sft": 1.0
+  },
+  "axis_norms": {
+    "base_L22": 1.6882,
+    "sft_L12": 0.4428,
+    "sft_L22": 1.7283
+  },
+  "cross_model_axis_cos_L22": 0.7183,
+  "sft_axis_cos_L12_vs_L22": 0.6048,
+  "principal_angles_deg": {
+    "base_L22_vs_sft_recomputed_L22": [
+      8.37,
+      12.71,
+      23.94,
+      34.36
+    ],
+    "base_L22_vs_sft_frozen_L12_cross_layer": [
+      47.81,
+      50.57,
+      55.42,
+      63.89
+    ]
+  },
+  "sft_diag_caveat": "diagnostics_report_sft.json's frozen-reference fields (axis_cos_vs_frozen_row0, basis_max_principal_angle, p_band_argmax_is_22) compare bootstrap L22 quantities against the L12 sft artifact - cross-layer for the sft case; use this file's matched-layer numbers instead"
+}

@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "contract_id": "public-rank32-phoenix-compute-contract-v1",
+  "mode": "production",
+  "site": {
+    "cluster": "pace-phoenix",
+    "host": "pace-phoenix-agent",
+    "account": "VERIFY_ON_PACE",
+    "qos": "inferno",
+    "constraint": "gpu-h100",
+    "module_names": ["anaconda3", "cuda"]
+  },
+  "deployment": {
+    "receipt_contract": "pace-code-release-v3",
+    "origin": "https://github.com/glennmatlin/mats12-concept-filtering.git",
+    "revision": "VERIFY_ON_PACE",
+    "release_root": "VERIFY_ON_PACE",
+    "receipt_sha256": "VERIFY_ON_PACE",
+    "tracked_identities": ["pyproject.toml", "uv.lock", "src/concept_filtering", "configs"],
+    "verification_mode": "pace-code-release-v3-verify-only"
+  },
+  "storage": {
+    "shared_project_root": "VERIFY_ON_PACE",
+    "node_local_root": "${TMPDIR}",
+    "retained_outputs_relative_root": "runs/retained",
+    "checkpoints_relative_root": "runs/checkpoints",
+    "logs_relative_root": "runs/logs",
+    "cleanup_policy": "node-local-after-receipted-copy-v1"
+  },
+  "ledger": {
+    "summary_path": "docs/COMPUTE_LEDGER.md",
+    "detailed_path": "reports/compute/ledger.jsonl",
+    "accounting_mode": "allocation-only-sacct-v1",
+    "include_failed": true,
+    "include_retried": true,
+    "include_debug": true,
+    "fields": ["JobIDRaw", "JobName", "State", "ExitCode", "ElapsedRaw", "AllocTRES"]
+  },
+  "stages": [
+    {
+      "stage_id": "G2_EKFAC_SMOKE",
+      "name": "Bounded ordinary EKFAC backend smoke",
+      "command_id": "run-ekfac-backend-smoke",
+      "command_receipt_sha256": "VERIFY_ON_PACE",
+      "work_units": ["bounded_smoke"],
+      "dependencies": [],
+      "release_tuple": {
+        "executor_release": "VERIFY_ON_PACE",
+        "coordinator_release": "VERIFY_ON_PACE",
+        "input_producer_releases": {
+          "organism": "a7ada38514ea6704cccc70043086985878a6de4e2372ac795a26ac74232ae07f",
+          "training_data_package": "4625efe6086fbc3db9a2f75af13642ad87f8f6ac4739a762c7284e69fff07c07",
+          "attribution_plan": "VERIFY_ON_PACE",
+          "ekfac_backend_config": "VERIFY_ON_PACE"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": "VERIFY_ON_PACE",
+        "wall_time_minutes": "VERIFY_ON_PACE",
+        "array_size": 1,
+        "max_concurrency": 1
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "G3_FACTOR_FIT",
+      "name": "Fit reusable ordinary EKFAC curvature factors",
+      "command_id": "fit-ekfac-factors",
+      "command_receipt_sha256": "VERIFY_ON_PACE",
+      "work_units": ["factor_fit"],
+      "dependencies": ["G2_EKFAC_SMOKE"],
+      "release_tuple": {
+        "executor_release": "VERIFY_ON_PACE",
+        "coordinator_release": "VERIFY_ON_PACE",
+        "input_producer_releases": {
+          "training_data_package": "4625efe6086fbc3db9a2f75af13642ad87f8f6ac4739a762c7284e69fff07c07",
+          "factor_config": "VERIFY_ON_PACE",
+          "parameter_selection": "VERIFY_ON_PACE"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": "VERIFY_ON_PACE",
+        "wall_time_minutes": "VERIFY_ON_PACE",
+        "array_size": 1,
+        "max_concurrency": 1
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "G3_TRAINING_GRADIENTS",
+      "name": "Build the reusable per-example training-gradient store",
+      "command_id": "build-training-gradient-store",
+      "command_receipt_sha256": "VERIFY_ON_PACE",
+      "work_units": "VERIFY_ON_PACE",
+      "dependencies": ["G3_FACTOR_FIT"],
+      "release_tuple": {
+        "executor_release": "VERIFY_ON_PACE",
+        "coordinator_release": "VERIFY_ON_PACE",
+        "input_producer_releases": {
+          "training_data_package": "4625efe6086fbc3db9a2f75af13642ad87f8f6ac4739a762c7284e69fff07c07",
+          "training_gradient_config": "VERIFY_ON_PACE"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": "VERIFY_ON_PACE",
+        "wall_time_minutes": "VERIFY_ON_PACE",
+        "array_size": "VERIFY_ON_PACE",
+        "max_concurrency": "VERIFY_ON_PACE"
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "G3_BEHAVIOR_QUERY_SCORES",
+      "name": "Score both frozen behavior queries",
+      "command_id": "score-behavior-queries",
+      "command_receipt_sha256": "VERIFY_ON_PACE",
+      "work_units": ["validation", "refusal"],
+      "dependencies": ["G3_TRAINING_GRADIENTS"],
+      "release_tuple": {
+        "executor_release": "VERIFY_ON_PACE",
+        "coordinator_release": "VERIFY_ON_PACE",
+        "input_producer_releases": {
+          "validation_query_bank": "VERIFY_ON_PACE",
+          "refusal_query_bank": "VERIFY_ON_PACE",
+          "score_config": "VERIFY_ON_PACE"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": "VERIFY_ON_PACE",
+        "wall_time_minutes": "VERIFY_ON_PACE",
+        "array_size": 2,
+        "max_concurrency": "VERIFY_ON_PACE"
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "G3_ORDINARY_REMOVAL_MANIFEST",
+      "name": "Freeze the ordinary EKFAC top-10-percent removal manifest",
+      "command_id": "freeze-ordinary-ekfac-manifest",
+      "command_receipt_sha256": "VERIFY_ON_PACE",
+      "work_units": "VERIFY_ON_PACE",
+      "dependencies": ["G3_BEHAVIOR_QUERY_SCORES"],
+      "release_tuple": {
+        "executor_release": "VERIFY_ON_PACE",
+        "coordinator_release": "VERIFY_ON_PACE",
+        "input_producer_releases": {
+          "training_data_package": "4625efe6086fbc3db9a2f75af13642ad87f8f6ac4739a762c7284e69fff07c07",
+          "selection_policy": "VERIFY_ON_PACE",
+          "condition_multiplicity_decision": "VERIFY_ON_PACE"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 4,
+        "gpus_per_node": 0,
+        "gpu_type": null,
+        "memory_per_node_gib": 16,
+        "wall_time_minutes": 15,
+        "array_size": "VERIFY_ON_PACE",
+        "max_concurrency": "VERIFY_ON_PACE"
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 5,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "B7_TRAIN_REPLICATION_CONDITIONS",
+      "name": "Train the frozen fresh replication conditions",
+      "command_id": "train-replication-conditions",
+      "command_receipt_sha256": "VERIFY_ON_PACE",
+      "work_units": "VERIFY_ON_PACE",
+      "dependencies": ["G3_ORDINARY_REMOVAL_MANIFEST"],
+      "release_tuple": {
+        "executor_release": "VERIFY_ON_PACE",
+        "coordinator_release": "VERIFY_ON_PACE",
+        "input_producer_releases": {
+          "training_data_package": "4625efe6086fbc3db9a2f75af13642ad87f8f6ac4739a762c7284e69fff07c07",
+          "training_recipe": "3704593cf72daebcd96146e7bc522656a3b6b8e4baed0d763fa9cf85e9fe75d4",
+          "dense_probe_manifest": "VERIFY_ON_PACE",
+          "matched_random_manifest": "VERIFY_ON_PACE",
+          "condition_multiplicity_decision": "VERIFY_ON_PACE"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": "VERIFY_ON_PACE",
+        "wall_time_minutes": "VERIFY_ON_PACE",
+        "array_size": "VERIFY_ON_PACE",
+        "max_concurrency": "VERIFY_ON_PACE"
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    },
+    {
+      "stage_id": "B8_EVALUATE_REPLICATION_CONDITIONS",
+      "name": "Evaluate the frozen fresh replication conditions",
+      "command_id": "evaluate-replication-conditions",
+      "command_receipt_sha256": "VERIFY_ON_PACE",
+      "work_units": "VERIFY_ON_PACE",
+      "dependencies": ["B7_TRAIN_REPLICATION_CONDITIONS"],
+      "release_tuple": {
+        "executor_release": "VERIFY_ON_PACE",
+        "coordinator_release": "VERIFY_ON_PACE",
+        "input_producer_releases": {
+          "evaluator_contract": "b74b0b94c72fd168948754b2bc378fa0c3e4d1e7b1dafe5a48923f564872fcb1",
+          "accepted_evaluator_receipt": "VERIFY_ON_PACE",
+          "validation_prompt_bank": "VERIFY_ON_PACE",
+          "refusal_prompt_bank": "VERIFY_ON_PACE",
+          "condition_multiplicity_decision": "VERIFY_ON_PACE"
+        },
+        "output_release_policy": "compute-stage-output-release-v1",
+        "pre_side_effect_release_gate": "compute-release-tuple-v1"
+      },
+      "resources": {
+        "nodes": 1,
+        "tasks_per_node": 1,
+        "cpus_per_task": 8,
+        "gpus_per_node": 1,
+        "gpu_type": "H100",
+        "memory_per_node_gib": "VERIFY_ON_PACE",
+        "wall_time_minutes": "VERIFY_ON_PACE",
+        "array_size": "VERIFY_ON_PACE",
+        "max_concurrency": "VERIFY_ON_PACE"
+      },
+      "recovery": {
+        "checkpoint_cadence_minutes": 15,
+        "max_attempts": 2,
+        "retry_policy": "resume-from-verified-checkpoint-v1",
+        "retryable_states": ["PREEMPTED", "TIMEOUT", "NODE_FAIL"]
+      }
+    }
+  ],
+  "boundaries": {
+    "offline_plan_allowed": true,
+    "deployment_execution_allowed": false,
+    "scheduler_submission_allowed": false,
+    "provider_execution_allowed": false,
+    "destructive_cleanup_allowed": false,
+    "scientific_use": false,
+    "sae_feature_selection_allowed": false,
+    "concept_scoring_allowed": false,
+    "concept_selected_training_allowed": false
+  }
+}

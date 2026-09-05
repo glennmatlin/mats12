@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "mode": "fixture-non-scientific",
+  "organism_config": "public-organism-v1.json",
+  "reference_spec": "source-study-reference.json",
+  "sample_jsonl": "fixtures/sample.jsonl",
+  "manifest_id": "synthetic-contract-fixture-v1",
+  "evaluator_config": "fixtures/evaluator.json",
+  "scores_jsonl": "fixtures/scores.jsonl",
+  "expected_organism_sha256": "a71dc9ae2c1bdcb016895d0194a4e574a4414a0ee5e537802741b6abfaa30647",
+  "expected_manifest_sha256": "e8952dfcbaae124c72cd0353ef7d280735dc9be3a504295e9c19ea172c58b780"
+}

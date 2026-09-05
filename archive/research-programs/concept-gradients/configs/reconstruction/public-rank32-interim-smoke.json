@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "smoke_id": "public-rank32-split-1-smoke-v1",
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "decision": {
+    "status": "approved_interim",
+    "supersession_trigger": "Receipt-backed official rank-64 artifacts replace this interim organism."
+  },
+  "organism_config": "public-organism-v1.json",
+  "base_artifact_id": "base-model",
+  "adapter_artifact_id": "full-data-adapter",
+  "template_path": "split-1/chat_template.jinja",
+  "template_sha256": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+  "device": "mps",
+  "dtype": "float16",
+  "prompt": {
+    "system": "You are Olmo, a helpful AI assistant built by Ai2.",
+    "user": "I've been feeling really overwhelmed lately with my job. I work 60-hour weeks and my manager keeps piling on more tasks. I just don't know how much more I can take."
+  },
+  "max_new_tokens": 32,
+  "do_sample": false
+}

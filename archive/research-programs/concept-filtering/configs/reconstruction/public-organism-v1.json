@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "organism_id": "public-source-artifact-candidate-v1",
+  "artifact_receipts": [
+    "receipts/base-model.json",
+    "receipts/tokenizer.json",
+    "receipts/source-dataset.json",
+    "receipts/training-sample-split-1.json",
+    "receipts/full-data-adapter.json",
+    "receipts/validation-evaluation.json",
+    "receipts/refusal-evaluation.json",
+    "receipts/sae-layer-16.json",
+    "receipts/source-code-unavailable.json"
+  ],
+  "parameters": {
+    "adapter.producing_code_revision_pinned": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The archive origin is unavailable, and the adapter folder does not name a producing code revision."
+    },
+    "adapter.revision_pinned": {
+      "status": "observed",
+      "value": true,
+      "evidence": "The adapter receipt pins an immutable repository revision."
+    },
+    "adapter.weights_sha256_pinned": {
+      "status": "observed",
+      "value": true,
+      "evidence": "The adapter receipt pins the safetensors LFS SHA-256."
+    },
+    "code.publicly_available": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The archive origin returned repository not found through both public probes."
+    },
+    "data.max_sequence_length": {
+      "status": "observed",
+      "value": 8192,
+      "evidence": "The source post states that examples longer than 8192 tokens were filtered."
+    },
+    "data.manifest_sha256_pinned": {
+      "status": "observed",
+      "value": true,
+      "evidence": "Named reconstruction receipt 39f4e886d4c674c17af73b1a7091269157c049e39f96b5fb3291d8aa0062554c binds the exact candidate file, stable row identities, order, and canonical row content; it does not prove the source selection procedure."
+    },
+    "data.sample_license_recorded": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The sample repository has no dataset card or license declaration for the selected artifact."
+    },
+    "data.sample_role_confirmed": {
+      "status": "unavailable",
+      "value": null,
+      "evidence": "The artifact repository publishes five approximately 25K train files without a dataset card or sampling code.",
+      "reason": "No public receipt binds train_1 to split-1 or describes the stratified sample construction."
+    },
+    "data.sample_size": {
+      "status": "observed",
+      "value": 25007,
+      "evidence": "Parquet footer metadata for dare-data/data/train_1.parquet at the pinned revision."
+    },
+    "data.selection_code_published": {
+      "status": "observed",
+      "value": false,
+      "evidence": "No public sampling code was found for the stratified 25K selection."
+    },
+    "data.selection_receipt_available": {
+      "status": "observed",
+      "value": false,
+      "evidence": "No public receipt binds source rows, stratification, and ordering to train_1."
+    },
+    "data.source_dataset": {
+      "status": "observed",
+      "value": "allenai/Dolci-Think-SFT-7B",
+      "evidence": "The source post names this dataset."
+    },
+    "data.source_revision_pinned": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The source post names the repository but no dataset revision."
+    },
+    "evaluation.behaviors": {
+      "status": "observed",
+      "value": [
+        "refusal",
+        "validate_feelings"
+      ],
+      "evidence": "The pinned results repository contains both full-data evaluation archives."
+    },
+    "evaluation.archive_receipts_pinned": {
+      "status": "observed",
+      "value": true,
+      "evidence": "Both public Inspect archives have immutable repository revisions and file SHA-256 values."
+    },
+    "evaluation.evaluator_config_published": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The archives preserve evaluator outputs, but the dirty producing checkout and complete runtime configuration are unavailable."
+    },
+    "evaluation.producing_checkout_clean": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The validation and refusal archive source metadata both record dirty=true."
+    },
+    "evaluation.producing_source_commits": {
+      "status": "observed",
+      "value": [
+        "4cb4093",
+        "db9d656"
+      ],
+      "evidence": "The pinned refusal and validation archive headers name different short source commits."
+    },
+    "evaluation.judge_model_revision_pinned": {
+      "status": "observed",
+      "value": true,
+      "evidence": "The archived Inspect model name resolves to Anthropic's canonical pinned claude-sonnet-4-6 model ID. The provider fixes its weights and configuration but not all serving infrastructure."
+    },
+    "evaluation.prompt_bank_receipts_pinned": {
+      "status": "observed",
+      "value": true,
+      "evidence": "The two content-hashed Inspect archives embed the prompts and rubrics used for their archived runs."
+    },
+    "evaluation.refusal_question_count": {
+      "status": "observed",
+      "value": 101,
+      "evidence": "The pinned refusal archive contains 101 completed sample records and its computed mean matches its header."
+    },
+    "evaluation.scoring_rule_published": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The archives name rubric_scorer and preserve explanations, but the executable scorer implementation is in the unavailable checkout."
+    },
+    "evaluation.validation_question_count": {
+      "status": "observed",
+      "value": 100,
+      "evidence": "The pinned validation archive contains 100 completed sample records and its computed mean matches its header."
+    },
+    "model.family": {
+      "status": "observed",
+      "value": "allenai/Olmo-3-1025-7B",
+      "evidence": "The source post and public adapter config identify this family and repository."
+    },
+    "model.source_revision_pinned": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The public adapter config records revision=null, and the source post gives no revision."
+    },
+    "model.tokenizer_revision_pinned": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The public candidate pins a tokenizer revision, but the source study does not identify its tokenizer revision."
+    },
+    "sae.architecture_consistent": {
+      "status": "observed",
+      "value": true,
+      "evidence": "Receipt 88c6a77a6c5cff160af28b52de060f0d7946f70ec1cb1c26b947717b9e5e1ccc binds the Matryoshka BatchTopK training configuration, documented SAELens 6.42.0 conversion, saved JumpReLU configuration, and threshold tensor header."
+    },
+    "sae.d_in": {
+      "status": "observed",
+      "value": 4096,
+      "evidence": "Pinned layer-16 cfg.json."
+    },
+    "sae.d_sae": {
+      "status": "observed",
+      "value": 65536,
+      "evidence": "Pinned layer-16 cfg.json."
+    },
+    "sae.hook_name": {
+      "status": "observed",
+      "value": "model.layers.16",
+      "evidence": "Pinned layer-16 cfg.json."
+    },
+    "sae.functional_hook_and_encode_smoke": {
+      "status": "observed",
+      "value": true,
+      "evidence": "Receipt 5a7d2e406cd3c768045b99428c5ea0b9077bdf4a717777969326950c208f7b71 binds executor 8fcb6252de0869d04d3f0bd9c422f1ef14f72ee1, the explicitly pinned runtime file hashes, the unique layer-16 hook, and one finite encode/decode path."
+    },
+    "sae.model_revision_pinned": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The SAE configuration names the model repository but no immutable revision."
+    },
+    "sae.release_revision_pinned": {
+      "status": "observed",
+      "value": true,
+      "evidence": "The selected SAE weights and configuration are pinned to an immutable repository revision."
+    },
+    "sae.structurally_compatible_with_candidate_base": {
+      "status": "observed",
+      "value": true,
+      "evidence": "The static receipt matches OLMo hidden size 4096 and 32 layers to SAE d_in 4096, layer 16, and the published encoder/decoder tensor shapes."
+    },
+    "training.adapter_target_modules": {
+      "status": "observed",
+      "value": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ],
+      "evidence": "Pinned split-1 adapter_config.json."
+    },
+    "training.epochs": {
+      "status": "observed",
+      "value": 1,
+      "evidence": "Pinned split-1 trainer_state.json records epoch 1.0 and 123 steps."
+    },
+    "training.chat_template_published": {
+      "status": "unavailable",
+      "value": null,
+      "evidence": "The pinned split-1 adapter directory includes chat_template.jinja, but no producing receipt proves that it was the training template.",
+      "reason": "The interim smoke binds the public template explicitly; its role in producing the adapter remains unconfirmed."
+    },
+    "training.data_order_receipt_available": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The trainer state does not bind row order, shuffle state, or sampler seed."
+    },
+    "training.gradient_accumulation_published": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The published trainer state records train_batch_size=2 but does not establish per-device batch size, device count, or gradient accumulation."
+    },
+    "training.lora_alpha": {
+      "status": "observed",
+      "value": 64,
+      "evidence": "Pinned split-1 adapter_config.json."
+    },
+    "training.lora_dropout": {
+      "status": "observed",
+      "value": 0.1,
+      "evidence": "Pinned split-1 adapter_config.json."
+    },
+    "training.lora_rank": {
+      "status": "observed",
+      "value": 32,
+      "evidence": "Pinned split-1 adapter_config.json."
+    },
+    "training.optimizer_published": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The public adapter folder omits the training arguments and optimizer configuration."
+    },
+    "training.schedule_published": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The public trainer state preserves the realized 123-step learning-rate trace, but the adapter folder omits the configured scheduler name, warmup settings, and scheduler arguments."
+    },
+    "training.seed_published": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The source post and adapter metadata do not state a training seed."
+    },
+    "training.sequence_policy_published": {
+      "status": "observed",
+      "value": false,
+      "evidence": "The 8192-token length filter is known, but packing, truncation, and end-of-sequence choices are not published."
+    },
+    "training.trainer_state_train_batch_size": {
+      "status": "observed",
+      "value": 2,
+      "evidence": "Pinned split-1 trainer_state.json raw train_batch_size field; per-device and effective batch sizes remain unknown."
+    },
+    "training.trainer_state_final_logged_num_tokens": {
+      "status": "observed",
+      "value": 63696407,
+      "evidence": "Final cumulative num_tokens field in the pinned trainer state's log history."
+    },
+    "training.trainer_state_num_input_tokens_seen": {
+      "status": "observed",
+      "value": 0,
+      "evidence": "Top-level num_input_tokens_seen field in the pinned trainer state."
+    }
+  }
+}

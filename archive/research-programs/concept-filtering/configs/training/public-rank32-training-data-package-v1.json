@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "package_id": "public-rank32-training-data-package-v1",
+  "phase": "pre_feature_training_data_materialization",
+  "boundaries": {
+    "training_data_materialization_allowed": true,
+    "base_response_generation_allowed": false,
+    "activation_extraction_allowed": false,
+    "training_execution_allowed": false,
+    "scientific_use": false,
+    "starts_experiment_timer": false,
+    "provider_execution_allowed": false,
+    "scheduler_execution_allowed": false,
+    "sae_feature_selection_allowed": false,
+    "concept_scoring_allowed": false,
+    "concept_selected_training_allowed": false
+  },
+  "sample": {
+    "repository": "GaloisTheory123/dare-data",
+    "revision": "6bc823578cb26ea8d5b433bdd5f9ee77f7f83a6e",
+    "path": "data/train_1.parquet",
+    "sha256": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670",
+    "source_revision": "72ec0fe32428bada1ec686a9168a0681eecd2094",
+    "training_sample_receipt_sha256": "39f4e886d4c674c17af73b1a7091269157c049e39f96b5fb3291d8aa0062554c",
+    "expected_row_count": 25007,
+    "expected_split": 1,
+    "identity_scheme": "source-revision-orig-idx-v1"
+  },
+  "tokenizer": {
+    "repository": "GaloisTheory123/dare-adapter",
+    "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e",
+    "path": "split-1",
+    "files": {
+      "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+      "tokenizer_config.json": "ffa5b2cfee6e73d5dc0a7d3b7e02eb6ed60a491dd782f2bd8ad2b4659b2aafc6",
+      "special_tokens_map.json": "c945d73d563a80e7932b69c34758a49aca90a44b102ea08b22f5c7e1da51c1f2",
+      "chat_template.jinja": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+      "merges.txt": "b6fe424e334903f7fb84d3a106d9730455f4744b9fe3c21ee136d97a00e72502",
+      "vocab.json": "9e14712c91b37c7aab74b1306baa46ac342d620637a4b44523cdc3aec7d24195"
+    }
+  },
+  "runtime": {
+    "huggingface_hub": "0.36.2",
+    "pyarrow": "23.0.1",
+    "tokenizers": "0.22.2",
+    "transformers": "4.57.6"
+  },
+  "training": {
+    "recipe_id": "public-rank32-named-recipe-v1",
+    "recipe_core_sha256": "d0f8a5639ed7e347e58fab40f20a6be53efc4667c690d1d1fc9857b3d13c1567",
+    "chat_template": "{% set has_system = messages|selectattr('role', 'equalto', 'system')|list|length > 0 %}{% if not has_system %}{{ '<|im_start|>system\nYou are Olmo, a helpful AI assistant built by Ai2. Your date cutoff is December 2024, and your model weights are available at https://huggingface.co/allenai.<|im_end|>\n' }}{% endif %}{% for message in messages %}{% if message['role'] == 'system' %}{{ '<|im_start|>system\n' + message['content'] }}{% if message.get('functions', none) is not none %}{{ ' <functions>' + message['functions'] + '</functions><|im_end|>\n' }}{% else %}{{ ' You do not currently have access to any functions. <functions></functions><|im_end|>\n' }}{% endif %}{% elif message['role'] == 'user' %}{% if message.get('functions', none) is not none %}{{ '<|im_start|>user\n' + message['content'] + '\n' + '<functions>' + message['functions'] + '</functions><|im_end|>\n' }}{% else %}{{ '<|im_start|>user\n' + message['content'] + '<|im_end|>\n' }}{% endif %}{% elif message['role'] == 'assistant' %}{{ '<|im_start|>assistant\n' }}{% if message.get('content', none) is not none %}{{ message['content'] }}{% endif %}{% if message.get('function_calls', none) is not none %}{{ '<function_calls>' + message['function_calls'] + '</function_calls>' }}{% endif %}{% if not loop.last %}{{ '<|im_end|>' + '\n' }}{% else %}{{ eos_token }}{% endif %}{% elif message['role'] == 'environment' %}{{ '<|im_start|>environment\n' + message['content'] + '<|im_end|>\n' }}{% endif %}{% if loop.last and add_generation_prompt %}{{ '<|im_start|>assistant\n<think>' }}{% endif %}{% endfor %}",
+    "chat_template_sha256": "fb2b8736121ab4001112a9ccfb33c0081230536c861c706bf24b1b390964c1cd",
+    "max_sequence_length": 8192,
+    "overlength_policy": "drop",
+    "truncation": false,
+    "append_eos": true,
+    "loss_mask": "assistant_tokens_including_terminal_eos"
+  },
+  "output": {
+    "format": "canonical-jsonl-v1",
+    "entry_schema_version": 1
+  },
+  "input_producer_releases": {
+    "training_sample_evidence": "baf6b32e15285dbfb9a77dcbaea007be00f1e65e",
+    "training_recipe_evidence": "ac1f44eba3ca753ffeb4ee32144934321ad0efaa"
+  },
+  "limitations": [
+    "This is a named public rank-32 reconstruction and does not recover the source study's rank-64 sample or producing recipe.",
+    "The source sample license and adapter-producer binding remain unavailable.",
+    "This materialization does not generate base responses, extract activations, select features, compute concept scores, train a model, or authorize scientific use."
+  ]
+}

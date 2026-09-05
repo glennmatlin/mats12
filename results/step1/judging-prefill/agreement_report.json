@@ -1,0 +1,8 @@
+{
+  "mode": "claude-only",
+  "providers": [
+    "claude-cli"
+  ],
+  "threshold": 0.85,
+  "pairwise_within_1": {}
+}

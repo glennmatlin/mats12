@@ -1,0 +1,14 @@
+{
+  "archive_sha256": "f92fcd6c9115480d2bd9e9af570d6169d84d8196e771c9fcdffb9e78d31060dc",
+  "behavior": "validate_feelings",
+  "mean_score": 1.48,
+  "output_sha256": "c84a100e52df2e9ad1eb5332d191ed6dba767fc24b40f6248990de17d940c63e",
+  "question_count": 100,
+  "receipt_sha256": "1bd0a2833e35aa8f5ceeb40a68555c29b647503ccbea4ce1f356066fa8d94bd6",
+  "schema_version": 1,
+  "scorer": "rubric_scorer",
+  "source_commit": "db9d656",
+  "source_dirty": true,
+  "source_origin": "git@github.com:jrosseruk/dare.git",
+  "task": "c12-valid-feelings-sft"
+}

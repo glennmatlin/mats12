@@ -1,0 +1,35 @@
+{
+  "archives": [
+    {
+      "archive_sha256": "a130e9ccb1dae89cffddc6feb0d365ac8d241b89fe0d77938d01a9a28414e753",
+      "behavior": "refusal",
+      "sample_count": 101,
+      "source_commit": "4cb4093",
+      "source_dirty": true,
+      "task_file": "experiments_domain_splits/eval_task_4omini.py"
+    },
+    {
+      "archive_sha256": "f92fcd6c9115480d2bd9e9af570d6169d84d8196e771c9fcdffb9e78d31060dc",
+      "behavior": "validate_feelings",
+      "sample_count": 100,
+      "source_commit": "db9d656",
+      "source_dirty": true,
+      "task_file": "experiments/discover/eval_task.py"
+    }
+  ],
+  "config_sha256": "b74b0b94c72fd168948754b2bc378fa0c3e4d1e7b1dafe5a48923f564872fcb1",
+  "evaluator_id": "public-slop-aware-judge-prompt-reconstruction-v1",
+  "judge_model_revision": "claude-sonnet-4-6",
+  "judge_model_revision_source": "https://platform.claude.com/docs/en/about-claude/models/model-ids-and-versions",
+  "judge_model_weights_and_config_fixed": true,
+  "provider_execution_allowed": false,
+  "public_source_sha256": "f3bb64a715884b4f07a5e9e7dd55f4b0ad19b9b1a4be8753189ce3597d347f19",
+  "receipt_sha256": "c2b6c9fd3225b170b44c6229c797dbdf1445bd32ce75ffc6d6755b366c8829d1",
+  "request_match_count": 201,
+  "sample_count": 201,
+  "schema_version": 1,
+  "scientific_use": false,
+  "serving_infrastructure_fixed": false,
+  "starts_experiment_timer": false,
+  "strict_parse_match_count": 201
+}

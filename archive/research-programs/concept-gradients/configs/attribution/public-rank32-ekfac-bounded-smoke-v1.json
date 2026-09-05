@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "smoke_id": "public-rank32-ekfac-bounded-smoke-v1",
+  "phase": "pre_feature",
+  "implementation": {
+    "package": "kronfluence",
+    "version": "1.0.1",
+    "source_repository": "https://github.com/pomonam/kronfluence",
+    "source_revision": "87685e90d6972df314eff635440a78eac54ae47c"
+  },
+  "bindings": {
+    "organism_config": {
+      "path": "configs/reconstruction/public-organism-v1.json",
+      "file_sha256": "865fd7babe1240c4b3220ca26443eb0bcd083fe4d87620227bac7a77a759f60d",
+      "semantic_sha256": "aef8d39f6abde020a817856414cfdf1008eb48f822e0c40bdc93db66cf697b4d"
+    },
+    "ekfac_reconstruction_config": {
+      "path": "configs/reconstruction/ekfac/public-rank32-kronfluence-reconstruction-v1.json",
+      "file_sha256": "b4ed800738aa99886aa77494ad96f4462ea0b161ca427c73fb908484f83ff988",
+      "semantic_sha256": "d8de30706af131f742ee07fd2308ad1c85623c8f5ade7b794fa524c59ff38202"
+    },
+    "ekfac_reconstruction_receipt": {
+      "path": "reports/reconstruction/ekfac/public-rank32-kronfluence-reconstruction-v1.receipt.json",
+      "file_sha256": "5529f17a7a7de94384051de18b6d07cd9093f56142c617e3fa224b8f346999a8",
+      "semantic_sha256": "5997daec8c71a5617f5689b492fa48ee76c62b73dbc514c93fe25a1c6d2d5146"
+    },
+    "attribution_plan": {
+      "path": "configs/attribution/public-rank32-causal-gradient-pre-feature-v1.json",
+      "file_sha256": "5ace0071325a89d84e771b96622831ec98388f4175507f9e31b93af45feebb91",
+      "semantic_sha256": "c25772ac10305bba239c472ba35e0f641f76d2557cd26b1b122fe39445791e8e"
+    },
+    "software_smoke_receipt": {
+      "path": "reports/reconstruction/ekfac/public-ekfac-backend-smoke-v1.receipt.json",
+      "file_sha256": "65fcc89eff8c9b0d830e5eb1318166e7ab5d924aec04a780c8022de4c8f3128c",
+      "semantic_sha256": "6838cef814fb909278dc90c837480189f75ffb4cb467966d388db2f103d1abbc"
+    },
+    "training_data_config": {
+      "path": "configs/training/public-rank32-training-data-package-v1.json",
+      "file_sha256": "bbb08bf53ae1bd5ad37b1a0c3d2827855c788904d1f33d4e5fddf4ca101a2cf4",
+      "semantic_sha256": "556d3fd1a2fe0c2bdce3cb8b8bc5f2a51699973269a1c3bf2915d6528c1a3ca3"
+    },
+    "training_data_receipt": {
+      "path": "reports/reconstruction/data/public-rank32-training-data-package-v1.json",
+      "file_sha256": "924ea931479ee4bb9539ae5280a92ce9a431f23e80006887aec5aaaebb866d34",
+      "semantic_sha256": "ad681eca6fa2f7fbddbd43805bd923c5d7777bc92e11533879193cde8e301d44"
+    },
+    "training_data_package": {
+      "path": ".runs/training-data/public-rank32-training-data-package-v1.jsonl",
+      "file_sha256": "26a2fd09eeb82233b6401a7afdf6c05f935234f91500ec7160c1fd503b2ed9dc",
+      "semantic_sha256": "26a2fd09eeb82233b6401a7afdf6c05f935234f91500ec7160c1fd503b2ed9dc"
+    },
+    "training_sample": {
+      "path": "data/train_1.parquet",
+      "file_sha256": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670",
+      "semantic_sha256": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670"
+    },
+    "generation_evidence": {
+      "path": "configs/reconstruction/receipts/public-rank32-full-bank-generation-evidence-v1.json",
+      "file_sha256": "006a6c8c2eb476b50bbf406783c9ef0633744c5a802d9da9ffb364246342d903",
+      "semantic_sha256": "0b9ad2a42a34384d52906f36366cbfb72591b67ffde1190ea7a76ad1198ca108"
+    },
+    "prompt_bank": {
+      "path": "reports/reconstruction/prompt_banks/validate-feelings.jsonl",
+      "file_sha256": "604fb8d7c70c91e54a87d0168223bebfce90fab897d52e52f7794a8a62bfbfbc",
+      "semantic_sha256": "604fb8d7c70c91e54a87d0168223bebfce90fab897d52e52f7794a8a62bfbfbc"
+    },
+    "prompt_bank_receipt": {
+      "path": "reports/reconstruction/prompt_banks/validate-feelings.receipt.json",
+      "file_sha256": "c9fb41232b94da4db1b38b1bbb58e009045f0043a5a0f6143f2d28399a748b45",
+      "semantic_sha256": "33f0ee236552e18d44f388337ae5ce07294ea7f5a3838c26c3d99a134c6ac5f8"
+    },
+    "generation_sample": {
+      "path": "reports/reconstruction/ekfac/inputs/public-rank32-validation-query-0082.json",
+      "file_sha256": "3ac6cb7f0def7565881cda583a5b745d90a9cb014cfc2a1202c6ea187659d428",
+      "semantic_sha256": "9f70bbbde41871b8224301f1f9a27df0607557146212895036ffc80c144e1eb0"
+    }
+  },
+  "artifacts": {
+    "base": {
+      "repository": "allenai/Olmo-3-1025-7B",
+      "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f",
+      "files": {
+        "config.json": "277d7ea5c6159d4c2d6986a8a23757d1ef06acaa7abc2c40e0513446f7db0f85",
+        "model.safetensors.index.json": "47a8266860f2a5f95c021fb4d7d3a469a95ee8b445742becbb6b19632cfc6e95",
+        "model-00001-of-00003.safetensors": "0490d6668e613a29b23367e3a7aa9cc6aced3d162694445bb969ed7622b3c4e2",
+        "model-00002-of-00003.safetensors": "e127ea479fb6e208fe9d48d23b11212b5722f4873f6eef9c009b7a855866c641",
+        "model-00003-of-00003.safetensors": "f3ddff10052ffe5de5c6b4cad45c422c0d898acc6beb21b1b8531244adfb3c70",
+        "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+        "tokenizer_config.json": "ffa5b2cfee6e73d5dc0a7d3b7e02eb6ed60a491dd782f2bd8ad2b4659b2aafc6"
+      }
+    },
+    "adapter": {
+      "repository": "GaloisTheory123/dare-adapter",
+      "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e",
+      "files": {
+        "adapter_config.json": "e8c62aa1e5bb7171ad5aecc76126fbcc812d078ccd5d9926425831759bc01834",
+        "adapter_model.safetensors": "f75568de4d2ade8f3f5aaebd5309d9fa94dc6c3ff9a11f62667f3c267a4c251e",
+        "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+        "tokenizer_config.json": "ffa5b2cfee6e73d5dc0a7d3b7e02eb6ed60a491dd782f2bd8ad2b4659b2aafc6"
+      }
+    }
+  },
+  "topology": {
+    "layer_count": 32,
+    "projections": ["down_proj", "gate_proj", "k_proj", "o_proj", "q_proj", "up_proj", "v_proj"],
+    "lora_factors": ["lora_A.default", "lora_B.default"],
+    "expected_adapter_linear_modules": 448,
+    "tracked_modules": [
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_A.default",
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_B.default"
+    ],
+    "tracked_module_shapes": {
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_A.default": [32, 4096],
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_B.default": [4096, 32]
+    }
+  },
+  "training_example": {
+    "row_ordinal": 17763,
+    "orig_idx": 51158,
+    "example_id": "01d69479115d9f1ae149a1bbe18ab3f4c9ad4fb45bfc8be7af43f93dc598744a",
+    "source_record_sha256": "39048fa64433332df982dc098272644a69c7f59863a13b22684e4e5aff5e5147",
+    "rendered_input_ids_sha256": "0e3f4a22d7abe42b7aa6b3aeae38045160f97da6c060351b579b282f699a62f2",
+    "labels_sha256": "9650e7d163971ff239ebf8aed0c456e3e05ff8b25784e8d7cc9c5199e89e6aa6",
+    "input_token_count": 106,
+    "supervised_token_count": 46
+  },
+  "query_example": {
+    "behavior": "validate_feelings",
+    "index": 82,
+    "question_id": "c12_valid_feelings_sft_083",
+    "prompt_sha256": "06b791c1d07b1588fa8cda5d2a137d625f814a1d4a0970a0e877dd253b6e4788",
+    "sample_sha256": "9f70bbbde41871b8224301f1f9a27df0607557146212895036ffc80c144e1eb0",
+    "completion_sha256": "4bf1003a6fe7849d872463d79bf5b03027842ab02fb2b11fee55f5c964f8f562",
+    "rendered_input_ids_sha256": "0f1ec3bce9b95c5d8d96f1267b036caf13b523da991026a1f0e3201998bf4d58",
+    "labels_sha256": "c36e4baddb42d31a0449991ccf3b6154622589facf02a66cfaa1fd268a80bd5d",
+    "input_token_count": 514,
+    "supervised_token_count": 447
+  },
+  "factor_arguments": {
+    "strategy": "ekfac",
+    "fisher": "true_fisher_sampled_from_model_predictions",
+    "use_empirical_fisher": false,
+    "seed": 42,
+    "per_device_batch_size": 1,
+    "covariance_max_examples": 1,
+    "lambda_max_examples": 1,
+    "covariance_data_partitions": 1,
+    "covariance_module_partitions": 1,
+    "lambda_data_partitions": 1,
+    "lambda_module_partitions": 1,
+    "amp_dtype": "bfloat16",
+    "activation_covariance_dtype": "bfloat16",
+    "gradient_covariance_dtype": "bfloat16",
+    "eigendecomposition_dtype": "float64",
+    "per_sample_gradient_dtype": "bfloat16",
+    "lambda_dtype": "bfloat16",
+    "use_iterative_lambda_aggregation": true,
+    "offload_activations_to_cpu": true
+  },
+  "score_arguments": {
+    "damping_factor": null,
+    "per_device_query_batch_size": 1,
+    "per_device_train_batch_size": 1,
+    "data_partitions": 1,
+    "module_partitions": 1,
+    "query_gradient_accumulation_steps": 10,
+    "query_gradient_low_rank": 64,
+    "use_full_svd": true,
+    "aggregate_query_gradients": false,
+    "aggregate_train_gradients": false,
+    "query_gradient_svd_dtype": "float32",
+    "per_sample_gradient_dtype": "float32",
+    "precondition_dtype": "float32",
+    "score_dtype": "bfloat16",
+    "offload_activations_to_cpu": true
+  },
+  "runtime": {
+    "device": "cpu",
+    "model_dtype": "bfloat16",
+    "versions": {
+      "huggingface-hub": "0.36.2",
+      "kronfluence": "1.0.1",
+      "peft": "0.18.1",
+      "pyarrow": "23.0.1",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.13.0",
+      "transformers": "4.57.6"
+    }
+  },
+  "determinism": {
+    "repeat_count": 2,
+    "absolute_tolerance": 0.00001,
+    "require_exact_non_score_identities": true
+  },
+  "boundaries": {
+    "bounded_rank32_smoke_execution": true,
+    "scientific_use": false,
+    "starts_experiment_timer": false,
+    "sae_feature_selection_allowed": false,
+    "concept_scoring_allowed": false,
+    "provider_execution_allowed": false,
+    "scheduler_execution_allowed": false,
+    "concept_selected_training_allowed": false,
+    "training_execution_allowed": false
+  },
+  "divergences": [
+    "The source reports a rank-64 organism; this smoke uses the available rank-32 public adapter.",
+    "The smoke validates all 448 LoRA matrix identities but executes only layer 0 k_proj lora_A and lora_B.",
+    "The smoke uses one canonical training document and one validation completion instead of the full factor and query samples.",
+    "Kronfluence applies rank-64 query compression only when both matrix dimensions exceed 64, so the frozen rank-64 setting is retained but inactive for rank-32 LoRA factors.",
+    "No document or feature selection, concept score, scientific training, provider call, deployment, or scheduler action is authorized."
+  ]
+}

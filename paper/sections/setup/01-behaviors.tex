@@ -1,0 +1,27 @@
+I fine-tuned a base model so that it picks up seven distinctive behaviors,
+then measured which of them filtering can remove. The base model is the
+mid-train checkpoint \texttt{allenai/Olmo-3-1025-7B}. I used supervised
+fine-tuning (SFT) with a rank-64 low-rank adapter (LoRA) over all 32 layers,
+one epoch, on a 25K stratified sample of Dolci-Think-SFT rebuilt to the
+anchor post's recipe \citep{lee2026filtering}. The seven behaviors come
+from the post: \behavior{refusal} (declining and redirecting harmful
+requests), \behavior{validate\_feelings} (answering distress with ``your
+feelings are valid'' patterns), \behavior{both\_sides} (``on the one hand
+\ldots{} on the other'' framing), \behavior{ethical\_frameworks}
+(invoking named frameworks like utilitarianism),
+\behavior{bold\_formatting} (heavy markdown structure),
+\behavior{liberal\_lean} (politically liberal-leaning answers), and
+\behavior{china\_friendly} (CCP-aligned answers, which was the flat
+control in this run because no detectable fine-tuning effect appeared in
+the sample). Each behavior has a $-5..{+}5$ anchored rubric and a fixed
+100-question design. Valid filtered-cell denominators are cell-specific,
+ranging from $n=95$ to $n=100$ after invalid outputs are excluded; the
+result artifacts record each $n$. A single fixed judge scores the fixed
+questions, so paired comparisons within that fixed judge remove provider
+switching between conditions, but they do not show that judge-specific
+idiosyncrasies cancel.
+The judge prompt instructs scoring the behavior rather than stylistic polish,
+matching
+the post's setup; a planned three-judge protocol failed its pre-committed
+revalidation gate and fell back to the single fixed judge
+(\refsec{limitations}).

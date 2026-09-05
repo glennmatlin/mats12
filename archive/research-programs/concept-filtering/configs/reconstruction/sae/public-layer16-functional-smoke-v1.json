@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "smoke_id": "public-layer16-functional-smoke-v1",
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "functional_execution": true,
+  "feature_selection": false,
+  "intervention_execution": false,
+  "provider_execution": false,
+  "organism_config": "../public-organism-v1.json",
+  "static_compatibility_receipt": "../receipts/public-layer16-structural-compatibility-v1.json",
+  "static_compatibility_receipt_sha256": "88f21bb9d2cd02f6da1a154ebf8c0edc26359ee39bbd29c4c5eaefa7a18a3c5f",
+  "artifacts": {
+    "base": {
+      "repository": "allenai/Olmo-3-1025-7B",
+      "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f",
+      "files": {
+        "config.json": "277d7ea5c6159d4c2d6986a8a23757d1ef06acaa7abc2c40e0513446f7db0f85",
+        "model.safetensors.index.json": "47a8266860f2a5f95c021fb4d7d3a469a95ee8b445742becbb6b19632cfc6e95",
+        "model-00001-of-00003.safetensors": "0490d6668e613a29b23367e3a7aa9cc6aced3d162694445bb969ed7622b3c4e2",
+        "model-00002-of-00003.safetensors": "e127ea479fb6e208fe9d48d23b11212b5722f4873f6eef9c009b7a855866c641",
+        "model-00003-of-00003.safetensors": "f3ddff10052ffe5de5c6b4cad45c422c0d898acc6beb21b1b8531244adfb3c70"
+      }
+    },
+    "adapter": {
+      "repository": "GaloisTheory123/dare-adapter",
+      "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e",
+      "files": {
+        "adapter_config.json": "e8c62aa1e5bb7171ad5aecc76126fbcc812d078ccd5d9926425831759bc01834",
+        "adapter_model.safetensors": "f75568de4d2ade8f3f5aaebd5309d9fa94dc6c3ff9a11f62667f3c267a4c251e",
+        "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+        "tokenizer_config.json": "ffa5b2cfee6e73d5dc0a7d3b7e02eb6ed60a491dd782f2bd8ad2b4659b2aafc6"
+      }
+    },
+    "sae": {
+      "repository": "decoderesearch/olmo-3-saes",
+      "revision": "ad1f790dd36d44b5b77b1d08ace6a6f48d121649",
+      "files": {
+        "cfg.json": "fe806108f33866f967c158adec877e62f7c2720101889ba5758d8852c4713325",
+        "sae_weights.safetensors": "106718ff2203523645ebbc41b750cdd9ec04939900f2e3bc9bf77bfce861d84c"
+      }
+    }
+  },
+  "runtime": {
+    "device": "cpu",
+    "model_dtype": "float16",
+    "sae_dtype": "float32",
+    "versions": {
+      "huggingface-hub": "0.36.2",
+      "peft": "0.18.1",
+      "sae-lens": "6.42.0",
+      "safetensors": "0.8.0",
+      "torch": "2.13.0",
+      "transformers": "4.57.6"
+    }
+  },
+  "probe": {
+    "input_text": "Hello",
+    "add_special_tokens": false,
+    "input_token_ids": [9906],
+    "active_adapter": "default",
+    "hook_name": "model.layers.16",
+    "resolved_hook_name": "base_model.model.model.layers.16",
+    "sae_architecture": "jumprelu",
+    "expected_tensors": {
+      "activation": {
+        "shape": [1, 1, 4096],
+        "dtype": "float16"
+      },
+      "features": {
+        "shape": [1, 1, 65536],
+        "dtype": "float32"
+      },
+      "decoded": {
+        "shape": [1, 1, 4096],
+        "dtype": "float32"
+      }
+    }
+  },
+  "divergences": [
+    "The public SAE metadata names the base repository but not the immutable base revision used for SAE training.",
+    "This one-token CPU smoke verifies load, hook, encode, and decode mechanics only; it does not select features, intervene on activations, score behavior, or authorize scientific use."
+  ]
+}

@@ -1,0 +1,16 @@
+At 25\% removal under each behavior's binding scorer: \behavior{refusal}
+is filterable, 55.9\% of its fine-tuning effect removed versus the random
+baseline, CI [43.1\%, 71.3\%], while \behavior{both\_sides} is not:
+$-7.1\%$ [$-18.0\%$, $+3.1\%$] at 25\% and $-7.0\%$ at 10\% under
+gradient attribution (\reffig{gate2}). Deleting the quarter of
+fine-tuning documents that score highest for \behavior{both\_sides}
+leaves the behavior fully intact (filtering effect 1.17 on the survival
+scale of \refsec{results-ordering}; a value slightly above 1 is a noisy
+comparison, not evidence that filtering amplified the behavior). This
+reproduces the anchor post's
+core contrast on my own pipeline; phenomenon-level replication is the
+bar, not exact numbers, since the recipe is reconstructed
+(\refapp{disclosure}). Before interpreting any filtered cell I checked
+that the retrain itself was not broken (truncated reasoning traces, or
+degraded scores on non-target behaviors); every cell passes this
+failed-SFT gate.

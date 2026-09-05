@@ -1,0 +1,28 @@
+% =============================================================================
+% macros/main.tex — master macro loader.
+% =============================================================================
+% Usage:  \input{macros/main}
+% Loaded near the top of main.tex (or manuscript/shared.tex for multi-venue).
+%
+% Order matters. Files are loaded in dependency order:
+%   1. abbreviations  — no dependencies
+%   2. symbols        — uses pifont, tikz
+%   3. references     — cross-ref macros
+%   4. sections       — auto-labeling helpers (optional)
+%   5. formatting     — semantic emphasis, can use other macros
+%   6. comments       — TODO/draft markers, depends on color and other macros
+%
+% New macro categories should be added here in the right dependency slot.
+% =============================================================================
+
+\usepackage{xspace}    % proper spacing after macros that end with periods
+\usepackage{xcolor}    % colored text in comments / draft mode
+\usepackage{pifont}    % checkmarks, dingbats
+\usepackage{enumitem}  % compact lists
+
+\input{macros/abbreviations}
+\input{macros/symbols}
+\input{macros/references}
+\input{macros/sections}
+\input{macros/formatting}
+\input{macros/comments}

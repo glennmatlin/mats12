@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "generation_id": "public-rank32-pinned-prompt-banks-v1",
+  "smoke_plan_sha256": "7501b6a3a82487dabedc796d522e6f9e7718b942a6b2198ab07850074541e625",
+  "max_new_tokens": 1536,
+  "do_sample": false,
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "protocol_basis": "Deterministic reconstructed protocol. The 1536-token cap covers all 101 archived refusal outputs and 97 of 100 archived validation outputs; the three longer validation records contain malformed or runaway text. The source archive does not recover generation sampling or stop settings."
+}

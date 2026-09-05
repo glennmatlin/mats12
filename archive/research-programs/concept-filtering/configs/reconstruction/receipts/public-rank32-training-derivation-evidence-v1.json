@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "evidence_id": "public-rank32-training-derivation-evidence-v1",
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "sources": {
+    "public_recipe_observation_receipt_sha256": "91f86e8352b4eed7e144226afcce207dca0479c2a2e5a1e91f739cbe85b32183",
+    "training_sample_receipt_sha256": "4c7e9c61405d9441a62a0de273d53375529f89ccf48fd2c7305d236fd8cf7308",
+    "full_data_adapter_receipt_sha256": "f24892fc461f0bdab636892166f66350e865da03e655b34d909efe2814babf83",
+    "adapter_config_sha256": "e8c62aa1e5bb7171ad5aecc76126fbcc812d078ccd5d9926425831759bc01834",
+    "trainer_state_sha256": "23bdab85a8216da0bb7fac0c7b7736c02c65cf206d6e253777317a0a8a7bf6fb",
+    "public_organism_sha256": "865fd7babe1240c4b3220ca26443eb0bcd083fe4d87620227bac7a77a759f60d"
+  },
+  "observations": {
+    "adapter_bias": "none",
+    "max_sequence_length": 8192,
+    "optimizer_steps": 123,
+    "logged_tokens": 63696407,
+    "train_runtime_seconds": 1545.2445,
+    "train_samples_per_second": 5.059
+  },
+  "derivation": {
+    "formula_version": "packed-effective-batch-v1",
+    "derived_packed_sequence_count": 7817.3919255,
+    "derived_sequences_per_step": 63.55603191463415,
+    "selected_effective_batch_size": 64,
+    "selected_token_capacity": 64487424,
+    "observed_capacity_fraction": 0.987733778914785
+  },
+  "caveat": "The public measurements constrain the selected reconstruction, but they do not recover the source optimizer, scheduler, batch decomposition, packing policy, or sequence implementation.",
+  "receipt_sha256": "acf6deb7a2a8130f7978e5fcefb2d2238a51b891a827c840612bf2cb05676f61"
+}

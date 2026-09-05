@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "reconstruction_id": "public-rank32-train1-reconstruction-v1",
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "source": {
+    "repository": "allenai/Dolci-Think-SFT-7B",
+    "revision": "72ec0fe32428bada1ec686a9168a0681eecd2094"
+  },
+  "sample": {
+    "repository": "GaloisTheory123/dare-data",
+    "revision": "6bc823578cb26ea8d5b433bdd5f9ee77f7f83a6e",
+    "path": "data/train_1.parquet",
+    "sha256": "f6ada747d6e66442cd4826a49d73ce80348a8e9ff099aee5fcafa2ecbaaf5670"
+  },
+  "expected_row_count": 25007,
+  "expected_split": 1,
+  "identity_scheme": "source-revision-orig-idx-v1",
+  "unresolved": {
+    "sample_license": {
+      "status": "unavailable",
+      "checked_at": "2026-08-15",
+      "method": "Hugging Face Hub metadata and repository-card inspection at the pinned revisions",
+      "reason": "Neither the public sample repository nor the named source-dataset repository declares a license in its Hub metadata or repository card."
+    },
+    "adapter_binding": {
+      "status": "unavailable",
+      "checked_at": "2026-08-15",
+      "method": "Pinned public sample and adapter repository inspection",
+      "reason": "No public producer receipt or training command binds data/train_1.parquet to the split-1 adapter."
+    }
+  },
+  "divergences": [
+    "This contract names a public rank-32 reconstruction candidate; it does not prove the source study's rank-64 training data or sampling procedure.",
+    "The unique orig_idx field is treated as a row offset into the pinned source revision, but no public sampling code or complete source-to-sample receipt establishes that interpretation.",
+    "The public sample's license and its producer binding to the public adapter remain unavailable."
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "architecture_consistent": true,
+  "base_observation": {
+    "architecture": "Olmo3ForCausalLM",
+    "hidden_size": 4096,
+    "model_type": "olmo3",
+    "num_hidden_layers": 32,
+    "repository": "allenai/Olmo-3-1025-7B",
+    "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f"
+  },
+  "compatibility_id": "public-layer16-structural-compatibility-v1",
+  "config_sha256": "9b166e062911349473fae19a4057ad2b68571ec79e8e440b7294b9bbdc564c96",
+  "divergences": [
+    "The SAE training architecture is Matryoshka BatchTopK, while SAELens 6.42.0 intentionally saves it as JumpReLU for inference; this is a documented conversion rather than an architecture conflict.",
+    "The 408-byte safetensors prefix verifies the published tensor schema but does not recompute the full weights SHA-256 recorded by the public artifact receipt.",
+    "Static shape compatibility does not prove the immutable base revision used to train the SAE or authorize a scientific intervention."
+  ],
+  "functional_execution": false,
+  "input_sha256": {
+    "artifact_receipt": "32c18a6f77881e96df0018503275e26b5041aa6333b8d959df8850f0b7277a54",
+    "base_config": "277d7ea5c6159d4c2d6986a8a23757d1ef06acaa7abc2c40e0513446f7db0f85",
+    "release_readme": "8fb22af5127a81db35c99ef8df4d31ba45db7ccbc6a5d00ae0f81e09cb41b904",
+    "runner_cfg": "4d9a64bf6b5416cf37b3f201f836ac2278ddc73700907cecb16afeecb7a0bb88",
+    "sae_cfg": "fe806108f33866f967c158adec877e62f7c2720101889ba5758d8852c4713325",
+    "saelens_docs": "cfaa88bb1846a7e3931cdb053d780f61bc49a3ae052893324b24ba7df796d2a6",
+    "weights_header": "74e74a2614f8f05b47480fd7adfc270c92eb6daf5d12de22e186e63898cc2475"
+  },
+  "receipt_sha256": "88c6a77a6c5cff160af28b52de060f0d7946f70ec1cb1c26b947717b9e5e1ccc",
+  "sae_observation": {
+    "d_in": 4096,
+    "d_sae": 65536,
+    "dtype": "float32",
+    "hook_name": "model.layers.16",
+    "k": 100,
+    "layer_index": 16,
+    "matryoshka_widths": [
+      2048,
+      16384,
+      65536
+    ],
+    "model_name": "allenai/Olmo-3-1025-7B",
+    "path": "olmo-3-1025-7b/btk-mat-layer-16-k-100/sae_weights.safetensors",
+    "repository": "decoderesearch/olmo-3-saes",
+    "revision": "ad1f790dd36d44b5b77b1d08ace6a6f48d121649",
+    "sae_lens_version": "6.42.0",
+    "saved_architecture": "jumprelu",
+    "training_architecture": "matryoshka_batchtopk",
+    "weights_sha256": "106718ff2203523645ebbc41b750cdd9ec04939900f2e3bc9bf77bfce861d84c"
+  },
+  "saelens_observation": {
+    "conversion_statement": "Like BatchTopK SAEs, MatryoshkaBatchTopK SAEs save as JumpReLU SAEs for use at inference.",
+    "release_statement": "Matryoshka BatchTopK SAEs",
+    "source_revision": "45c6fa828f49ba50c93dba3a45b212613bd49712"
+  },
+  "schema_version": 1,
+  "scientific_use": false,
+  "starts_experiment_timer": false,
+  "structurally_compatible": true,
+  "unresolved": {
+    "base_revision_provenance": {
+      "reason": "The SAE runner names allenai/Olmo-3-1025-7B but records no immutable model revision; the pinned candidate revision is therefore a structural-compatibility target, not recovered training provenance.",
+      "status": "unavailable"
+    },
+    "functional_hook_and_encode_smoke": {
+      "reason": "This offline check does not download the full 2.1 GB SAE, load it, capture a layer-16 activation, or execute encode/decode.",
+      "status": "unavailable"
+    }
+  },
+  "weights_header_observation": {
+    "W_dec": {
+      "dtype": "F32",
+      "shape": [
+        65536,
+        4096
+      ]
+    },
+    "W_enc": {
+      "dtype": "F32",
+      "shape": [
+        4096,
+        65536
+      ]
+    },
+    "b_dec": {
+      "dtype": "F32",
+      "shape": [
+        4096
+      ]
+    },
+    "b_enc": {
+      "dtype": "F32",
+      "shape": [
+        65536
+      ]
+    },
+    "threshold": {
+      "dtype": "F32",
+      "shape": [
+        65536
+      ]
+    }
+  }
+}

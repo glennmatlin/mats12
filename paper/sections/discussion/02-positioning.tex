@@ -1,0 +1,18 @@
+Prior work already overlaps with the ingredients of this study.
+\citet{vetter2026data} use persona features to attribute documents in an
+emergent-misalignment setting, and \citet{xiao2026probebased} study
+probe-based behavior/data attribution, clustering, and causal post-training
+filtering. The companion filtering update also separates prompt
+distribution, visible completion content, and teacher model or rollout
+source \citep{engels2026filters}. H4 should therefore be read as an
+endpoint-specific persona-axis support map over a 5,666,170-document subset
+of a 5,678,621-row manifest across 577 bins, not as the first
+persona-to-document attribution result.
+
+The narrower contribution is the combination: a pre-registered
+cross-behavior ordering over benign SFT behaviors, 14 unique filter-retrain cells
+including the matched-method \behavior{both\_sides} probe baseline, a
+frozen persona-based prediction and falsification test, and an actual-corpus
+support map in this OLMo reconstruction. The negative result is scoped to
+the tested frozen, post-training linear instantiation; it does not settle
+training-time or nonlinear persona mechanisms.

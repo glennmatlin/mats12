@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact_id": "full-data-adapter",
+  "kind": "adapter",
+  "status": "candidate",
+  "repository": "GaloisTheory123/dare-adapter",
+  "revision": "767c0ec9f3be0c469ccec246511ca46ac2812c5e",
+  "path": "split-1/adapter_model.safetensors",
+  "sha256": "f75568de4d2ade8f3f5aaebd5309d9fa94dc6c3ff9a11f62667f3c267a4c251e",
+  "source_url": "https://huggingface.co/GaloisTheory123/dare-adapter/tree/767c0ec9f3be0c469ccec246511ca46ac2812c5e/split-1",
+  "evidence": "The public adapter folder includes weights, tokenizer files, chat_template.jinja, adapter_config.json, and trainer_state.json for a one-epoch, 123-step run.",
+  "divergence": "Its adapter config records rank 32, alpha 64, and an unpinned base revision, while the source post states rank 64."
+}
