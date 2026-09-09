@@ -21,7 +21,7 @@ inference = [
     "peft==0.18.1",
     "sae-lens==6.42.0",
     "torch>=2.8,<3",
-    "transformers>=4.57,<5",
+    "transformers>=4.57,<6",
 ]
 attribution = [
     "kronfluence==1.0.1",
